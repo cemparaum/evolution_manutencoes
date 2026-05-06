@@ -33,6 +33,7 @@
     <!-- GSAP for animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
         body {
@@ -131,8 +132,36 @@
 
         /* --- REMOVED DEAD BUTTON CSS --- */
 
+        /* --- 2ª DOBRA (BENTO GRID ANIMATIONS) --- */
+        @keyframes laser-scan {
+            0% { transform: translateY(-100%); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(400px); opacity: 0; }
+        }
+        .scanner-laser {
+            animation: laser-scan 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
 
+        /* Ambient Orbs */
+        @keyframes float-orb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(3%, -3%) scale(1.05); }
+            66% { transform: translate(-3%, 3%) scale(0.95); }
+        }
+        .animate-orb-1 { animation: float-orb 20s ease-in-out infinite; }
+        .animate-orb-2 { animation: float-orb 25s ease-in-out infinite reverse; }
 
+        /* Strong Hover Constraints for 3D Effect */
+        .bento-item {
+            transition: border-color 0.4s ease, box-shadow 0.4s ease, z-index 0s;
+        }
+        .bento-item:hover {
+            border-color: rgba(253, 208, 23, 0.7) !important;
+            box-shadow: 0 0 50px rgba(253, 208, 23, 0.2) !important;
+            z-index: 50;
+        }
+        
     </style>
 </head>
 <body class="relative flex flex-col justify-between">
@@ -165,9 +194,11 @@
 
     <!-- 4. NAVBAR -->
     <nav class="relative z-20 w-full px-6 md:px-12 py-6 flex justify-between items-center opacity-0" id="nav-animate">
-        <!-- Brand Badge: Um 'pill' elegante na cor Creme do cliente para proteger a logo JPEG e manter 100% das cores originais -->
-        <div class="bg-evo-cream py-2.5 px-5 md:py-3 md:px-6 rounded-2xl shadow-[0_10px_40px_rgba(253,208,23,0.15),inset_0_2px_0_rgba(255,255,255,1)] border border-evo-gold/20 flex items-center justify-center transform transition-transform hover:scale-105">
-            <img src="raw_file/logo_evolution_manutencao.jpg" alt="Evolution Logo" class="h-12 md:h-16 lg:h-20 object-contain mix-blend-multiply">
+        <!-- Brand Logo -->
+        <div class="relative inline-flex items-center justify-center transform transition-transform hover:scale-105">
+            <!-- Círculo branco ao fundo para destacar o raio preto vazado do SVG -->
+            <div class="absolute w-[45%] h-[45%] bg-[#F8F5ED] rounded-full z-0"></div>
+            <img src="raw_file/LOGOBRUTO.svg" alt="Evolution Logo" class="relative z-10 h-12 md:h-16 lg:h-20 object-contain">
         </div>
         <div class="hidden md:flex gap-8 text-[11px] font-extrabold tracking-[0.2em] text-white/50 uppercase">
             <a href="#" class="hover:text-evo-gold transition-colors">Início</a>
@@ -229,14 +260,159 @@
         </div>
     </main>
 
+    <!-- ========================================== -->
+    <!-- 7. SEÇÃO: DIFERENCIAIS (2ª Dobra)         -->
+    <!-- ========================================== -->
+    <section id="diferenciais" class="relative z-30 w-full bg-[#050505] text-white py-24 md:py-32 overflow-hidden border-t border-white/5">
+        
+        <!-- Background Cinemático (Orbs flutuantes + Noise) -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <!-- Textura de ruído (Noise) sutil para acabamento premium -->
+            <div class="absolute inset-0 opacity-[0.04] mix-blend-overlay" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
+            
+            <!-- Orbs Dourados Flutuantes -->
+            <div class="absolute top-[-30%] left-[-10%] w-[1000px] h-[1000px] bg-[#FDD017]/10 blur-[150px] rounded-full mix-blend-screen animate-orb-1 opacity-70"></div>
+            <div class="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-orange-600/10 blur-[150px] rounded-full mix-blend-screen animate-orb-2 opacity-50"></div>
+        </div>
 
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <!-- Título Reimaginado -->
+            <div class="mb-20 md:mb-28 text-center md:text-left relative">
+                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-6 shadow-xl">
+                    <span class="w-2 h-2 rounded-full bg-[#FDD017] animate-pulse"></span>
+                    <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#FDD017]">O Padrão Evolution</span>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-medium tracking-tighter text-white mb-6">
+                    Engenharia de <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FDD017] to-yellow-600">Alta Performance</span>
+                </h2>
+                <p class="text-lg text-white/50 max-w-2xl mx-auto md:mx-0 font-medium leading-relaxed">
+                    Não fazemos apenas limpeza, resolvemos o seu problema com extrema eficiência. Através de um trabalho manual meticuloso e processos otimizados, blindamos o seu patrimônio e garantimos a máxima geração da sua usina solar.
+                </p>
+            </div>
+
+            <!-- Grid de Blocos -->
+            <!-- Bento Box Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[280px]" id="bento-grid">
+                
+                <!-- Bloco A: Diagnóstico (Span 2 cols, 2 rows na horizontal/vertical) -->
+                <div class="bento-item opacity-0 translate-y-12 md:col-span-2 md:row-span-2 relative overflow-hidden bg-white/5 border border-white/10 rounded-[2rem] p-10 flex flex-col justify-end group hover:border-[#FDD017]/30 transition-colors duration-500 shadow-2xl backdrop-blur-md">
+                    <!-- Fundo Drone Interface (Thermal UI) -->
+                    <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-[2rem]">
+                        <!-- Malha de pontos (Radar matrix) -->
+                        <div class="absolute inset-0 bg-[radial-gradient(#ffffff15_1px,transparent_1px)] bg-[size:16px_16px] opacity-40"></div>
+                        
+                        <!-- Ponto Quente (Hotspot) - Simulação Termográfica -->
+                        <div class="absolute top-[30%] left-[60%] w-40 h-40 bg-orange-600/30 blur-[40px] rounded-full animate-pulse mix-blend-screen group-hover:bg-orange-500/40 transition-colors duration-700"></div>
+                        <div class="absolute top-[30%] left-[60%] w-16 h-16 bg-[#FDD017]/40 blur-[20px] rounded-full mix-blend-screen"></div>
+
+                        <!-- UI do Drone (Cantoneiras e Crosshair) -->
+                        <div class="absolute inset-8 border border-white/5 opacity-30 group-hover:opacity-60 transition-opacity duration-700">
+                            <!-- Info Text -->
+                            <div class="absolute top-2 left-3 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                                <span class="text-[9px] font-mono font-bold text-white/50 uppercase tracking-widest">Therma-Cam Rec</span>
+                            </div>
+                            <!-- Cantoneiras SVG -->
+                            <svg class="absolute -top-1 -left-1 w-6 h-6 text-[#FDD017]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 10V4h6" /></svg>
+                            <svg class="absolute -top-1 -right-1 w-6 h-6 text-[#FDD017]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20 10V4h-6" /></svg>
+                            <svg class="absolute -bottom-1 -left-1 w-6 h-6 text-[#FDD017]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14v6h6" /></svg>
+                            <svg class="absolute -bottom-1 -right-1 w-6 h-6 text-[#FDD017]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20 14v6h-6" /></svg>
+                            <!-- Crosshair central -->
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 border border-white/20 rounded-full flex items-center justify-center">
+                                <div class="w-1 h-1 bg-[#FDD017] rounded-full"></div>
+                                <div class="absolute top-1/2 -left-2 w-2 h-[1px] bg-white/30"></div>
+                                <div class="absolute top-1/2 -right-2 w-2 h-[1px] bg-white/30"></div>
+                                <div class="absolute -top-2 left-1/2 w-[1px] h-2 bg-white/30"></div>
+                                <div class="absolute -bottom-2 left-1/2 w-[1px] h-2 bg-white/30"></div>
+                            </div>
+                        </div>
+
+                        <!-- Scanner Laser -->
+                        <div class="absolute left-0 right-0 h-[1px] bg-[#FDD017] shadow-[0_0_30px_3px_#FDD017] scanner-laser mix-blend-screen opacity-80"></div>
+                    </div>
+                    
+                    <div class="relative z-10 max-w-lg mt-auto">
+                        <div class="w-14 h-14 rounded-2xl bg-[#FDD017]/10 backdrop-blur-md border border-[#FDD017]/20 flex items-center justify-center mb-6 shadow-[0_0_15px_rgba(253,208,23,0.15)] group-hover:scale-110 transition-transform duration-500">
+                            <i data-lucide="microscope" class="w-7 h-7 text-[#FDD017]"></i>
+                        </div>
+                        <h3 class="text-3xl font-medium tracking-tight text-white mb-4">Diagnóstico Preciso e Rápido</h3>
+                        <p class="text-lg text-white/50 leading-relaxed font-medium">Inspeção aérea avançada detecta pontos quentes invisíveis a olho nu. Cortamos as falhas pela raiz antes que elas afetem a sua geração de energia e o seu bolso.</p>
+                    </div>
+                </div>
+
+                <!-- Bloco B: Agilidade (Quadrado Superior Direito) -->
+                <div class="bento-item opacity-0 translate-y-12 relative overflow-hidden bg-white/5 border border-white/10 rounded-[2rem] p-8 flex flex-col justify-between group shadow-2xl backdrop-blur-md">
+                    <div class="absolute -top-4 -right-4 p-6 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all duration-700 pointer-events-none">
+                        <i data-lucide="zap" class="w-32 h-32 text-[#FDD017]"></i>
+                    </div>
+                    
+                    <!-- Borda Giratória Hover -->
+                    <div class="absolute inset-0 overflow-hidden rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-[-1]">
+                        <div class="absolute inset-[-100%] w-[300%] h-[300%] left-[-100%] top-[-100%] animate-[spin_4s_linear_infinite]" style="background: conic-gradient(from 0deg, transparent 0deg, transparent 80deg, rgba(253,208,23,0.6) 180deg, transparent 280deg, transparent 360deg);"></div>
+                        <div class="absolute inset-[1px] rounded-[2rem] bg-[#0A0A0A]"></div>
+                    </div>
+                    
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:bg-[#FDD017]/10 transition-colors">
+                            <i data-lucide="clock" class="w-5 h-5 text-[#FDD017]" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-1">Suporte Ininterrupto</h3>
+                        <p class="text-sm text-white/50 font-medium">Monitoramento ativo e equipes a postos a qualquer momento.</p>
+                    </div>
+                    <div class="relative z-10 mt-auto">
+                        <div class="flex items-baseline text-6xl font-black tracking-tighter text-[#FDD017]">
+                            <span class="counter-time">24</span>
+                            <span class="opacity-80 ml-2">/</span>
+                            <span class="opacity-80 ml-2">7</span>
+                        </div>
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-white/40 mt-2">Prontidão Total</div>
+                    </div>
+                </div>
+
+                <!-- Bloco C: Performance (Quadrado Inferior Direito) -->
+                <div class="bento-item opacity-0 translate-y-12 relative overflow-hidden bg-white/5 border border-white/10 rounded-[2rem] p-8 flex flex-col justify-between group shadow-2xl backdrop-blur-md">
+                    <!-- Líquido animado de limpeza -->
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#FDD017]/20 to-[#FDD017]/5 w-full h-[0%] liquid-fill z-0 border-t border-[#FDD017]/40 backdrop-blur-sm transition-all duration-[2s] ease-out"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:bg-[#FDD017]/10 transition-colors">
+                            <i data-lucide="droplets" class="w-5 h-5 text-[#FDD017]"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white mb-1">Performance Garantida</h3>
+                        <p class="text-sm text-white/50 font-medium">Limpeza manual meticulosa.</p>
+                    </div>
+                    <div class="relative z-10 mt-auto">
+                        <div class="text-6xl font-black text-white tracking-tighter"><span class="counter-perf text-[#FDD017]">0</span>%</div>
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-white/40 mt-2">Potência Restaurada</div>
+                    </div>
+                </div>
+
+                <!-- Bloco D: Parceria Estratégica (Largo na Base) -->
+                <div class="bento-item opacity-0 translate-y-12 md:col-span-3 h-auto min-h-[140px] relative overflow-hidden bg-gradient-to-r from-[#FDD017] to-[#d4aa00] rounded-[2rem] p-8 md:px-12 flex flex-col md:flex-row items-start md:items-center justify-between group cursor-pointer shadow-2xl shadow-[#FDD017]/10 hover:shadow-[#FDD017]/30 transition-all duration-500 hover:-translate-y-1">
+                    <div class="flex flex-col md:flex-row items-start md:items-center gap-6 mb-6 md:mb-0 relative z-10">
+                        <div class="w-16 h-16 rounded-2xl bg-black/10 backdrop-blur-sm border border-black/10 flex items-center justify-center shrink-0 group-hover:rotate-12 transition-transform duration-500">
+                            <i data-lucide="handshake" class="w-8 h-8 text-[#000000]"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-[#000000] tracking-tight mb-2">Especialização Inovadora</h3>
+                            <p class="text-[#000000]/80 font-semibold max-w-2xl text-sm leading-relaxed">Mais do que uma prestadora de serviços pontuais, atuamos como braço tecnológico focado em blindar seu patrimônio e esticar a vida útil da sua planta.</p>
+                        </div>
+                    </div>
+                    <a href="#contato" class="relative z-10 bg-[#000000] text-[#FDD017] px-8 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase flex items-center gap-3 transform group-hover:scale-105 transition-transform duration-300 shadow-xl">
+                        Fale com Especialista <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
     <!-- INITIALIZATION SCRIPT -->
     <script>
         lucide.createIcons();
 
         document.addEventListener("DOMContentLoaded", () => {
-            gsap.registerPlugin(TextPlugin);
+            gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
             const tl = gsap.timeline();
 
@@ -306,6 +482,87 @@
                     cursor.style.animation = 'none';
                 }
             }, 6000);
+            
+            // --- 2ª DOBRA: ANIMAÇÕES DE SCROLL (DIFERENCIAIS) ---
+            
+            // Sublinhado do Título (Surge ao scrolar)
+            ScrollTrigger.create({
+                trigger: "#diferenciais",
+                start: "top 75%",
+                onEnter: () => {
+                    gsap.to("#title-underline", { scaleX: 1, duration: 1.2, ease: "power4.out" });
+                }
+            });
+
+            // Montagem do Bento Box em Cascata
+            gsap.to(".bento-item", {
+                scrollTrigger: {
+                    trigger: "#bento-grid",
+                    start: "top 80%",
+                },
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                stagger: 0.15,
+                ease: "expo.out",
+                onComplete: () => {
+                    // Inicia animações internas após os cards montarem
+                    
+                    // Contador de suporte 24/7
+                    gsap.fromTo(".counter-time", 
+                        { textContent: "0" },
+                        { textContent: "24", duration: 2, snap: { textContent: 1 }, ease: "power2.out" }
+                    );
+
+                    // Contador de Performance (100%)
+                    gsap.fromTo(".counter-perf",
+                        { textContent: "0" },
+                        { textContent: "100", duration: 4.5, snap: { textContent: 1 }, ease: "power2.out" }
+                    );
+
+                    // Efeito Líquido preenchendo o card
+                    gsap.fromTo(".liquid-fill", 
+                        { height: "0%" },
+                        { height: "100%", duration: 4.5, ease: "power2.inOut", repeat: -1, yoyo: true, repeatDelay: 1.5 }
+                    );
+                }
+            });
+
+            // --- BENTO GRID 3D HOVER EFFECT ---
+            const bentoItems = document.querySelectorAll('.bento-item');
+            
+            bentoItems.forEach(item => {
+                // Configura perspectiva para o efeito 3D
+                gsap.set(item, { transformPerspective: 1000 });
+
+                item.addEventListener("mousemove", (e) => {
+                    const rect = item.getBoundingClientRect();
+                    // Posição do mouse relativa ao centro do card (-1 a 1)
+                    const x = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+                    const y = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+
+                    // Rotaciona de forma equilibrada (máx 8 graus) e aplica scale sutil para elegância
+                    gsap.to(item, {
+                        rotationY: x * 8,
+                        rotationX: -y * 8,
+                        scale: 1.02,
+                        ease: "power2.out",
+                        duration: 0.5
+                    });
+                });
+
+                item.addEventListener("mouseleave", () => {
+                    // Efeito elástico ao soltar o card
+                    gsap.to(item, {
+                        rotationY: 0,
+                        rotationX: 0,
+                        scale: 1,
+                        ease: "elastic.out(1, 0.3)",
+                        duration: 1.5
+                    });
+                });
+            });
+
         });
     </script>
 </body>
