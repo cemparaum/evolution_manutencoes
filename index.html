@@ -161,6 +161,34 @@
             box-shadow: 0 0 50px rgba(253, 208, 23, 0.2) !important;
             z-index: 50;
         }
+
+        /* --- 3ª DOBRA (PREMIUM SERVICES) --- */
+        .card-container { perspective: 2500px; }
+        .card-flipper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 1s cubic-bezier(0.85, 0, 0.15, 1);
+            transform-style: preserve-3d;
+        }
+        .card-container:hover .card-flipper { transform: rotateY(180deg); }
+        .card-front, .card-back {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 2.5rem;
+        }
+        .card-back { transform: rotateY(180deg); }
+
+        /* Floating elements animations */
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .animate-float-slow { animation: float-slow 4s ease-in-out infinite; }
+        .animate-float-delayed { animation: float-slow 5s ease-in-out infinite; animation-delay: 1.5s; }
         
     </style>
 </head>
@@ -407,6 +435,170 @@
         </div>
     </section>
 
+    <!-- ========================================== -->
+    <!-- 8. SEÇÃO: SERVIÇOS PREMIUM (3ª Dobra)     -->
+    <!-- ========================================== -->
+    <section id="servicos" class="relative z-30 w-full bg-[#050505] py-32 overflow-hidden border-t border-white/5">
+        <!-- Textura de ruído e iluminação cinemática -->
+        <div class="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
+        <div class="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-[#FDD017]/10 blur-[150px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <!-- Título Premium -->
+            <div class="mb-24 text-center md:text-left flex flex-col items-center md:items-start relative servicos-title opacity-0 translate-y-12">
+                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6 shadow-2xl">
+                    <span class="w-2 h-2 rounded-full bg-[#FDD017] shadow-[0_0_10px_#FDD017] animate-pulse"></span>
+                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FDD017]">O Ciclo da Energia Renovada</span>
+                </div>
+                <h2 class="text-4xl md:text-6xl lg:text-[4rem] font-medium tracking-tighter text-white leading-[1.1]">
+                    Nossos Serviços: <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FDD017] to-yellow-600 font-black pr-2">Soluções Completas</span><br class="hidden md:block"/> para Sua Energia Solar
+                </h2>
+            </div>
+
+            <!-- Grade de Cards Premium -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10" id="servicos-grid">
+                
+                <!-- Card 1: Manutenção Preventiva -->
+                <div class="card-container w-full h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer">
+                    <div class="card-flipper shadow-2xl hover:shadow-[0_40px_80px_-20px_rgba(253,208,23,0.25)] rounded-[2.5rem]">
+                        <!-- Front (True Glassmorphism) -->
+                        <div class="card-front bg-[#111111]/40 backdrop-blur-3xl border border-white/10 p-10 flex flex-col justify-between overflow-hidden">
+                            <!-- Reflexos de vidro e luz -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-30 pointer-events-none"></div>
+                            <div class="absolute -top-32 -left-32 w-80 h-80 bg-[#FDD017]/20 blur-[80px] rounded-full pointer-events-none animate-pulse"></div>
+                            
+                            <!-- Ícones em Camadas -->
+                            <div class="relative w-full h-48 flex items-center justify-center mt-4">
+                                <div class="absolute w-20 h-20 bg-[#FDD017]/30 rounded-full blur-[30px] animate-pulse"></div>
+                                <div class="relative z-10 w-28 h-28 bg-white/5 backdrop-blur-xl border border-white/20 rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] flex items-center justify-center transform group-hover:scale-110 transition-transform duration-700">
+                                    <i data-lucide="shield-check" class="w-14 h-14 text-[#FDD017]"></i>
+                                </div>
+                                <div class="absolute top-2 right-4 animate-float-slow">
+                                    <div class="w-12 h-12 bg-white/5 backdrop-blur-lg rounded-full flex items-center justify-center shadow-lg border border-white/20">
+                                        <i data-lucide="search" class="w-5 h-5 text-white"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative z-10">
+                                <div class="w-12 h-1.5 bg-[#FDD017] mb-6 rounded-full shadow-[0_0_15px_rgba(253,208,23,0.4)]"></div>
+                                <h3 class="text-[28px] font-black text-white tracking-tight leading-none mb-3">Manutenção<br/>Preventiva</h3>
+                                <p class="text-[#FDD017]/80 font-bold uppercase tracking-[0.15em] text-[10px]">Inspeção & Blindagem</p>
+                            </div>
+                        </div>
+                        <!-- Back (Dark) -->
+                        <div class="card-back bg-[#0A0A0A] border border-[#FDD017]/30 p-10 flex flex-col justify-between overflow-hidden">
+                            <div class="absolute inset-0 opacity-[0.15]" style="background-image: radial-gradient(#FDD017 1px, transparent 1px); background-size: 24px 24px;"></div>
+                            <div class="relative z-10">
+                                <div class="w-14 h-14 rounded-2xl bg-[#FDD017]/10 flex items-center justify-center mb-8 border border-[#FDD017]/20">
+                                    <i data-lucide="shield" class="w-7 h-7 text-[#FDD017]"></i>
+                                </div>
+                                <h3 class="text-3xl font-black text-white mb-4 leading-tight">Prevenção<br/>Total</h3>
+                                <p class="text-white/60 font-medium leading-relaxed text-sm">Inspeções termográficas e análises profundas que localizam microfissuras e falhas invisíveis a olho nu, garantindo 100% de performance contínua.</p>
+                            </div>
+                            <button class="relative z-10 w-full bg-[#FDD017] text-[#000000] py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_30px_rgba(253,208,23,0.3)] hover:bg-[#ffdf4d]">
+                                Saiba Mais
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Manutenção Corretiva -->
+                <div class="card-container w-full h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer">
+                    <div class="card-flipper shadow-2xl hover:shadow-[0_40px_80px_-20px_rgba(253,208,23,0.25)] rounded-[2.5rem]">
+                        <!-- Front (True Glassmorphism) -->
+                        <div class="card-front bg-[#111111]/40 backdrop-blur-3xl border border-white/10 p-10 flex flex-col justify-between overflow-hidden">
+                            <!-- Reflexos de vidro e luz -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-30 pointer-events-none"></div>
+                            <div class="absolute -top-32 -left-32 w-80 h-80 bg-[#FDD017]/20 blur-[80px] rounded-full pointer-events-none animate-pulse"></div>
+                            
+                            <!-- Ícones em Camadas -->
+                            <div class="relative w-full h-48 flex items-center justify-center mt-4">
+                                <div class="absolute w-20 h-20 bg-[#FDD017]/30 rounded-full blur-[30px] animate-pulse"></div>
+                                <div class="relative z-10 w-28 h-28 bg-white/5 backdrop-blur-xl border border-white/20 rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] flex items-center justify-center transform group-hover:scale-110 transition-transform duration-700">
+                                    <i data-lucide="zap" class="w-14 h-14 text-[#FDD017]"></i>
+                                </div>
+                                <div class="absolute bottom-4 left-6 animate-float-delayed">
+                                    <div class="w-12 h-12 bg-white/5 backdrop-blur-lg rounded-full flex items-center justify-center shadow-lg border border-white/20">
+                                        <i data-lucide="wrench" class="w-5 h-5 text-white"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative z-10">
+                                <div class="w-12 h-1.5 bg-[#FDD017] mb-6 rounded-full shadow-[0_0_15px_rgba(253,208,23,0.4)]"></div>
+                                <h3 class="text-[28px] font-black text-white tracking-tight leading-none mb-3">Manutenção<br/>Corretiva</h3>
+                                <p class="text-[#FDD017]/80 font-bold uppercase tracking-[0.15em] text-[10px]">Intervenção Imediata</p>
+                            </div>
+                        </div>
+                        <!-- Back (Dark) -->
+                        <div class="card-back bg-[#0A0A0A] border border-[#FDD017]/30 p-10 flex flex-col justify-between overflow-hidden">
+                            <div class="absolute inset-0 opacity-[0.15]" style="background-image: radial-gradient(#FDD017 1px, transparent 1px); background-size: 24px 24px;"></div>
+                            <div class="relative z-10">
+                                <div class="w-14 h-14 rounded-2xl bg-[#FDD017]/10 flex items-center justify-center mb-8 border border-[#FDD017]/20">
+                                    <i data-lucide="power" class="w-7 h-7 text-[#FDD017]"></i>
+                                </div>
+                                <h3 class="text-3xl font-black text-white mb-4 leading-tight">Resposta<br/>Imediata</h3>
+                                <p class="text-white/60 font-medium leading-relaxed text-sm">Problemas acontecem. Nossa equipe técnica de elite entra em ação rapidamente para consertar inversores e módulos, reduzindo seu tempo de inatividade a zero.</p>
+                            </div>
+                            <button class="relative z-10 w-full bg-[#FDD017] text-[#000000] py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_30px_rgba(253,208,23,0.3)] hover:bg-[#ffdf4d]">
+                                Saiba Mais
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Limpeza Técnica -->
+                <div class="card-container w-full h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer">
+                    <div class="card-flipper shadow-2xl hover:shadow-[0_40px_80px_-20px_rgba(253,208,23,0.25)] rounded-[2.5rem]">
+                        <!-- Front (True Glassmorphism) -->
+                        <div class="card-front bg-[#111111]/40 backdrop-blur-3xl border border-white/10 p-10 flex flex-col justify-between overflow-hidden">
+                            <!-- Reflexos de vidro e luz -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-30 pointer-events-none"></div>
+                            <div class="absolute -top-32 -left-32 w-80 h-80 bg-[#FDD017]/20 blur-[80px] rounded-full pointer-events-none animate-pulse"></div>
+                            
+                            <!-- Ícones em Camadas -->
+                            <div class="relative w-full h-48 flex items-center justify-center mt-4">
+                                <div class="absolute w-20 h-20 bg-[#FDD017]/30 rounded-full blur-[30px] animate-pulse"></div>
+                                <div class="relative z-10 w-28 h-28 bg-white/5 backdrop-blur-xl border border-white/20 rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] flex items-center justify-center transform group-hover:scale-110 transition-transform duration-700">
+                                    <i data-lucide="droplets" class="w-14 h-14 text-[#FDD017]"></i>
+                                </div>
+                                <div class="absolute top-2 right-4 animate-float-slow">
+                                    <div class="w-8 h-8 bg-white/5 backdrop-blur-lg rounded-full flex items-center justify-center shadow-lg border border-white/20">
+                                        <i data-lucide="sparkles" class="w-3 h-3 text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="absolute bottom-6 left-8 animate-float-delayed">
+                                    <div class="w-10 h-10 bg-white/5 backdrop-blur-lg rounded-full flex items-center justify-center shadow-lg border border-white/20">
+                                        <i data-lucide="sun" class="w-4 h-4 text-white"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative z-10">
+                                <div class="w-12 h-1.5 bg-[#FDD017] mb-6 rounded-full shadow-[0_0_15px_rgba(253,208,23,0.4)]"></div>
+                                <h3 class="text-[28px] font-black text-white tracking-tight leading-none mb-3">Limpeza<br/>Técnica</h3>
+                                <p class="text-[#FDD017]/80 font-bold uppercase tracking-[0.15em] text-[10px]">Lavagem Especializada</p>
+                            </div>
+                        </div>
+                        <!-- Back (Dark) -->
+                        <div class="card-back bg-[#0A0A0A] border border-[#FDD017]/30 p-10 flex flex-col justify-between overflow-hidden">
+                            <div class="absolute inset-0 opacity-[0.15]" style="background-image: radial-gradient(#FDD017 1px, transparent 1px); background-size: 24px 24px;"></div>
+                            <div class="relative z-10">
+                                <div class="w-14 h-14 rounded-2xl bg-[#FDD017]/10 flex items-center justify-center mb-8 border border-[#FDD017]/20">
+                                    <i data-lucide="sun-medium" class="w-7 h-7 text-[#FDD017]"></i>
+                                </div>
+                                <h3 class="text-3xl font-black text-white mb-4 leading-tight">Potência<br/>Restaurada</h3>
+                                <p class="text-white/60 font-medium leading-relaxed text-sm">Remoção meticulosa de sujidades usando produtos que não agridem os módulos, restaurando até 30% da potência perdida pela poeira.</p>
+                            </div>
+                            <button class="relative z-10 w-full bg-[#FDD017] text-[#000000] py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_30px_rgba(253,208,23,0.3)] hover:bg-[#ffdf4d]">
+                                Saiba Mais
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- INITIALIZATION SCRIPT -->
     <script>
         lucide.createIcons();
@@ -526,6 +718,30 @@
                         { height: "100%", duration: 4.5, ease: "power2.inOut", repeat: -1, yoyo: true, repeatDelay: 1.5 }
                     );
                 }
+            });
+
+            // --- 3ª DOBRA: SERVIÇOS SCROLL ANIMATIONS ---
+            gsap.to(".servicos-title", {
+                scrollTrigger: {
+                    trigger: "#servicos",
+                    start: "top 75%",
+                },
+                y: 0,
+                opacity: 1,
+                duration: 1.2,
+                ease: "power4.out"
+            });
+
+            gsap.to(".servico-item", {
+                scrollTrigger: {
+                    trigger: "#servicos-grid",
+                    start: "top 80%",
+                },
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                stagger: 0.2,
+                ease: "back.out(1.2)"
             });
 
             // --- BENTO GRID 3D HOVER EFFECT ---
