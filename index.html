@@ -4,7 +4,8 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Evolution Manutenção | O Poder do Sol</title>
-    
+    <link rel="icon" type="image/svg+xml" href="./raw_file/LOGOBRUTOsvg.svg">
+    <link rel="shortcut icon" href="./raw_file/LOGOBRUTOsvg.svg">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
@@ -171,7 +172,10 @@
             transition: transform 1s cubic-bezier(0.85, 0, 0.15, 1);
             transform-style: preserve-3d;
         }
-        .card-container:hover .card-flipper { transform: rotateY(180deg); }
+        @media (hover: hover) {
+            .card-container:hover .card-flipper { transform: rotateY(180deg); }
+        }
+        .card-container.flipped .card-flipper { transform: rotateY(180deg); }
         .card-front, .card-back {
             position: absolute;
             top: 0; left: 0;
@@ -189,6 +193,48 @@
         }
         .animate-float-slow { animation: float-slow 4s ease-in-out infinite; }
         .animate-float-delayed { animation: float-slow 5s ease-in-out infinite; animation-delay: 1.5s; }
+        
+        /* --- 5ª DOBRA (CONTATO) --- */
+        .input-group input:not(:placeholder-shown) + label,
+        .input-group textarea:not(:placeholder-shown) + label {
+            top: 0.5rem;
+            font-size: 10px;
+            color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            50% { transform: rotate(10deg); }
+            75% { transform: rotate(-10deg); }
+        }
+        .animate-wave {
+            animation: wave 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse-subtle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.01); }
+        }
+        .animate-pulse-subtle {
+            animation: pulse-subtle 3s infinite ease-in-out;
+        }
+        
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fade-in 0.5s ease-out forwards;
+        }
         
     </style>
 </head>
@@ -208,7 +254,7 @@
     </div>
 
     <!-- 3. DS ENERGY BEAMS -->
-    <div class="ds-grid hidden md:flex">
+    <div class="ds-grid flex">
         <!-- Linha 1 (Lateral Esquerda) -->
         <div class="ds-col"><div class="beam h-[200px]" style="animation-duration: 5s; animation-delay: 1s;"></div></div>
         <!-- Linhas Centrais -->
@@ -220,23 +266,51 @@
         <div class="beam h-[220px]" style="left: auto; right: -1px; animation-duration: 6s; animation-delay: 2s;"></div>
     </div>
 
-    <!-- 4. NAVBAR -->
-    <nav class="relative z-20 w-full px-6 md:px-12 py-6 flex justify-between items-center opacity-0" id="nav-animate">
-        <!-- Brand Logo -->
-        <div class="relative inline-flex items-center justify-center transform transition-transform hover:scale-105">
-            <!-- Círculo branco ao fundo para destacar o raio preto vazado do SVG -->
-            <div class="absolute w-[45%] h-[45%] bg-[#F8F5ED] rounded-full z-0"></div>
-            <img src="raw_file/LOGOBRUTO.svg" alt="Evolution Logo" class="relative z-10 h-12 md:h-16 lg:h-20 object-contain">
+    <!-- HERO SECTION WRAPPER -->
+    <header class="relative w-full min-h-[100dvh] flex flex-col">
+        <!-- 4. NAVBAR -->
+        <nav class="relative z-50 w-full px-6 md:px-12 py-8 flex justify-between items-center opacity-0" id="nav-animate">
+            <!-- Brand Logo -->
+            <div class="relative inline-flex items-center justify-center transform transition-transform hover:scale-105">
+                <!-- Círculo branco ao fundo para destacar o raio preto vazado do SVG -->
+                <div class="absolute w-[45%] h-[45%] bg-[#F8F5ED] rounded-full z-0"></div>
+                <img src="raw_file/LOGOBRUTO.svg" alt="Evolution Logo" class="relative z-10 h-12 md:h-16 lg:h-20 object-contain">
+            </div>
+            
+            <div class="hidden md:flex gap-8 text-[11px] font-extrabold tracking-[0.2em] text-white/50 uppercase">
+                <a href="#" class="hover:text-evo-gold transition-colors">Início</a>
+                <a href="#diferenciais" class="hover:text-evo-gold transition-colors">Diferenciais</a>
+                <a href="#servicos" class="hover:text-evo-gold transition-colors">Serviços</a>
+                <a href="#sobre" class="hover:text-evo-gold transition-colors">Sobre Nós</a>
+                <a href="#contato" class="hover:text-evo-gold transition-colors">Contato</a>
+            </div>
+
+            <!-- Hamburger Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-[#FDD017] p-2 focus:outline-none hover:scale-110 transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-[#000000]/60 z-[60] hidden flex-col items-center justify-center backdrop-blur-lg transition-all duration-300 opacity-0 translate-y-[-20px]">
+            <button id="close-menu-btn" class="absolute top-8 right-6 text-[#FDD017] p-2 focus:outline-none hover:scale-110 transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <div class="flex flex-col items-center gap-10 text-xl font-bold tracking-widest text-[#F8F5ED] uppercase">
+                <a href="#" class="mobile-link hover:text-[#FDD017] transition-colors">Início</a>
+                <a href="#diferenciais" class="mobile-link hover:text-[#FDD017] transition-colors">Diferenciais</a>
+                <a href="#servicos" class="mobile-link hover:text-[#FDD017] transition-colors">Serviços</a>
+                <a href="#sobre" class="mobile-link hover:text-[#FDD017] transition-colors">Sobre Nós</a>
+                <a href="#contato" class="mobile-link hover:text-[#FDD017] transition-colors">Contato</a>
+            </div>
         </div>
-        <div class="hidden md:flex gap-8 text-[11px] font-extrabold tracking-[0.2em] text-white/50 uppercase">
-            <a href="#" class="hover:text-evo-gold transition-colors">Início</a>
-            <a href="#" class="hover:text-evo-gold transition-colors">Especialidade</a>
-            <a href="#" class="hover:text-evo-gold transition-colors">Contato</a>
-        </div>
-    </nav>
 
     <!-- 5. MAIN CONTENT (Compact & Centered) -->
-    <main class="relative z-10 flex-1 flex flex-col items-center justify-center px-4 w-full max-w-5xl mx-auto text-center mt-8 md:mt-12 mb-16">
+    <main class="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-8 w-full max-w-5xl mx-auto text-center pb-12">
         
         <!-- Badge -->
         <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-evo-gold/30 bg-evo-gold/5 backdrop-blur-sm mb-6 opacity-0" id="badge-animate">
@@ -248,12 +322,12 @@
         </div>
 
         <!-- Headline -->
-        <h1 class="text-3xl md:text-5xl lg:text-[4rem] font-extrabold leading-[1.1] tracking-tight mb-6 min-h-[100px] md:min-h-[140px] flex items-center justify-center flex-wrap">
+        <h1 class="text-[1.75rem] md:text-5xl lg:text-[4rem] font-extrabold leading-tight tracking-tight mb-6 min-h-[120px] md:min-h-[140px] flex items-center justify-center flex-wrap px-2">
             <span id="headline"></span><span class="typewriter-cursor"></span>
         </h1>
 
         <!-- Subheadline -->
-        <p class="text-base md:text-xl font-medium text-white/70 max-w-2xl leading-relaxed mb-8 opacity-0" id="subheadline">
+        <p class="text-sm sm:text-base md:text-xl font-medium text-white/70 max-w-2xl leading-relaxed mb-10 opacity-0 px-2" id="subheadline">
             Especialistas em manutenção que transformam problemas em <span class="text-evo-cream font-bold relative inline-block">potência<span class="absolute bottom-1 left-0 w-full h-1 bg-evo-gold/40 -z-10"></span></span> e tranquilidade.
         </p>
 
@@ -276,7 +350,7 @@
                     </div>
                     
                     <!-- Texto -->
-                    <span class="whitespace-nowrap relative z-10 font-bold tracking-widest text-sm md:text-base text-[#F8F5ED]/95 group-hover:text-[#FDD017] transition-colors uppercase">Recupere Sua Energia</span>
+                    <span class="whitespace-nowrap relative z-10 font-bold tracking-widest text-sm md:text-base text-[#F8F5ED]/95 group-hover:text-[#FDD017] transition-colors uppercase">Falar com Especialista</span>
                     
                     <!-- Seta Direita -->
                     <span class="inline-flex items-center justify-center z-10 bg-white/10 w-7 h-7 rounded-full ml-1 relative group-hover:translate-x-1 group-hover:bg-[#FDD017] group-hover:text-[#000000] transition-all duration-300 text-white/80">
@@ -286,7 +360,13 @@
                 </div>
             </a>
         </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-0 cursor-pointer hover:scale-110 transition-transform" id="scroll-indicator" onclick="document.getElementById('diferenciais').scrollIntoView({behavior: 'smooth'})">
+            <i data-lucide="chevron-down" class="w-8 h-8 text-[#FDD017] animate-bounce"></i>
+        </div>
     </main>
+    </header>
 
     <!-- ========================================== -->
     <!-- 7. SEÇÃO: DIFERENCIAIS (2ª Dobra)         -->
@@ -320,10 +400,10 @@
 
             <!-- Grid de Blocos -->
             <!-- Bento Box Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[280px]" id="bento-grid">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-auto md:auto-rows-[280px]" id="bento-grid">
                 
                 <!-- Bloco A: Diagnóstico (Span 2 cols, 2 rows na horizontal/vertical) -->
-                <div class="bento-item opacity-0 translate-y-12 md:col-span-2 md:row-span-2 relative overflow-hidden bg-white/5 border border-white/10 rounded-[2rem] p-10 flex flex-col justify-end group hover:border-[#FDD017]/30 transition-colors duration-500 shadow-2xl backdrop-blur-md">
+                <div class="bento-item opacity-0 translate-y-12 md:col-span-2 md:row-span-2 relative overflow-hidden bg-white/5 border border-white/10 rounded-[2rem] p-6 md:p-10 flex flex-col justify-end group hover:border-[#FDD017]/30 transition-colors duration-500 shadow-2xl backdrop-blur-md min-h-[450px]">
                     <!-- Fundo Drone Interface (Thermal UI) -->
                     <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-[2rem]">
                         <!-- Malha de pontos (Radar matrix) -->
@@ -334,7 +414,7 @@
                         <div class="absolute top-[30%] left-[60%] w-16 h-16 bg-[#FDD017]/40 blur-[20px] rounded-full mix-blend-screen"></div>
 
                         <!-- UI do Drone (Cantoneiras e Crosshair) -->
-                        <div class="absolute inset-8 border border-white/5 opacity-30 group-hover:opacity-60 transition-opacity duration-700">
+                        <div class="absolute inset-4 md:inset-8 border border-white/5 opacity-30 group-hover:opacity-60 transition-opacity duration-700">
                             <!-- Info Text -->
                             <div class="absolute top-2 left-3 flex items-center gap-2">
                                 <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
@@ -346,7 +426,7 @@
                             <svg class="absolute -bottom-1 -left-1 w-6 h-6 text-[#FDD017]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 14v6h6" /></svg>
                             <svg class="absolute -bottom-1 -right-1 w-6 h-6 text-[#FDD017]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20 14v6h-6" /></svg>
                             <!-- Crosshair central -->
-                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 border border-white/20 rounded-full flex items-center justify-center">
+                            <div class="absolute top-[40%] md:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 border border-white/20 rounded-full flex items-center justify-center">
                                 <div class="w-1 h-1 bg-[#FDD017] rounded-full"></div>
                                 <div class="absolute top-1/2 -left-2 w-2 h-[1px] bg-white/30"></div>
                                 <div class="absolute top-1/2 -right-2 w-2 h-[1px] bg-white/30"></div>
@@ -360,11 +440,11 @@
                     </div>
                     
                     <div class="relative z-10 max-w-lg mt-auto">
-                        <div class="w-14 h-14 rounded-2xl bg-[#FDD017]/10 backdrop-blur-md border border-[#FDD017]/20 flex items-center justify-center mb-6 shadow-[0_0_15px_rgba(253,208,23,0.15)] group-hover:scale-110 transition-transform duration-500">
-                            <i data-lucide="microscope" class="w-7 h-7 text-[#FDD017]"></i>
+                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-[#FDD017]/10 backdrop-blur-md border border-[#FDD017]/20 flex items-center justify-center mb-4 md:mb-6 shadow-[0_0_15px_rgba(253,208,23,0.15)] group-hover:scale-110 transition-transform duration-500">
+                            <i data-lucide="microscope" class="w-6 h-6 md:w-7 md:h-7 text-[#FDD017]"></i>
                         </div>
-                        <h3 class="text-3xl font-medium tracking-tight text-white mb-4">Diagnóstico Preciso e Rápido</h3>
-                        <p class="text-lg text-white/50 leading-relaxed font-medium">Inspeção aérea avançada detecta pontos quentes invisíveis a olho nu. Cortamos as falhas pela raiz antes que elas afetem a sua geração de energia e o seu bolso.</p>
+                        <h3 class="text-2xl md:text-3xl font-medium tracking-tight text-white mb-3 md:mb-4">Diagnóstico Preciso e Rápido</h3>
+                        <p class="text-base md:text-lg text-white/50 leading-relaxed font-medium">Inspeção aérea avançada detecta pontos quentes invisíveis a olho nu. Cortamos as falhas pela raiz antes que elas afetem a sua geração de energia e o seu bolso.</p>
                     </div>
                 </div>
 
@@ -456,10 +536,14 @@
             </div>
 
             <!-- Grade de Cards Premium -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10" id="servicos-grid">
+            <style>
+                .hide-scrollbar::-webkit-scrollbar { display: none; }
+                .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+            </style>
+            <div class="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-6 md:gap-10 pb-8 md:pb-0 hide-scrollbar" id="servicos-grid">
                 
                 <!-- Card 1: Manutenção Preventiva -->
-                <div class="card-container w-full h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer">
+                <div class="card-container w-[85vw] max-w-[350px] md:max-w-none md:w-full shrink-0 snap-center h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer">
                     <div class="card-flipper shadow-2xl hover:shadow-[0_40px_80px_-20px_rgba(253,208,23,0.25)] rounded-[2.5rem]">
                         <!-- Front (True Glassmorphism) -->
                         <div class="card-front bg-[#111111]/40 backdrop-blur-3xl border border-white/10 p-10 flex flex-col justify-between overflow-hidden">
@@ -503,7 +587,7 @@
                 </div>
 
                 <!-- Card 2: Manutenção Corretiva -->
-                <div class="card-container w-full h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer">
+                <div class="card-container w-[85vw] max-w-[350px] md:max-w-none md:w-full shrink-0 snap-center h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer">
                     <div class="card-flipper shadow-2xl hover:shadow-[0_40px_80px_-20px_rgba(253,208,23,0.25)] rounded-[2.5rem]">
                         <!-- Front (True Glassmorphism) -->
                         <div class="card-front bg-[#111111]/40 backdrop-blur-3xl border border-white/10 p-10 flex flex-col justify-between overflow-hidden">
@@ -547,7 +631,7 @@
                 </div>
 
                 <!-- Card 3: Limpeza Técnica -->
-                <div class="card-container w-full h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer">
+                <div class="card-container w-[85vw] max-w-[350px] md:max-w-none md:w-full shrink-0 snap-center h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer">
                     <div class="card-flipper shadow-2xl hover:shadow-[0_40px_80px_-20px_rgba(253,208,23,0.25)] rounded-[2.5rem]">
                         <!-- Front (True Glassmorphism) -->
                         <div class="card-front bg-[#111111]/40 backdrop-blur-3xl border border-white/10 p-10 flex flex-col justify-between overflow-hidden">
@@ -596,6 +680,16 @@
                 </div>
 
             </div>
+
+        <!-- Mobile Carousel Indicator -->
+        <div class="flex md:hidden flex-col items-center justify-center mt-6 opacity-0 translate-y-8 servico-indicator">
+            <div class="flex gap-2">
+                <div class="w-8 h-1.5 rounded-full bg-[#FDD017] shadow-[0_0_10px_rgba(253,208,23,0.5)]"></div>
+                <div class="w-3 h-1.5 rounded-full bg-white/20"></div>
+                <div class="w-3 h-1.5 rounded-full bg-white/20"></div>
+            </div>
+        </div>
+            
         </div>
     </section>
 
@@ -807,6 +901,277 @@
         </div>
     </section>
 
+    <!-- ========================================== -->
+    <!-- SESSÃO 5: CONTATO (HUB DE CONVERSÃO)       -->
+    <!-- ========================================== -->
+    <section id="contato" class="relative w-full bg-[#000000] py-32 z-50 overflow-hidden border-t border-white/10">
+        
+        <!-- Fundo Cinemático e Luzes -->
+        <div class="absolute inset-0 opacity-[0.05] mix-blend-overlay pointer-events-none" style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"></div>
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-[#FDD017]/10 blur-[150px] rounded-full pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-[#FDD017]/5 blur-[150px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            
+            <!-- Headline de Impacto -->
+            <div class="mb-20 text-center md:text-left flex flex-col items-center md:items-start contato-header opacity-0 translate-y-12">
+                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6 shadow-2xl">
+                    <span class="w-2 h-2 rounded-full bg-[#FDD017] shadow-[0_0_10px_#FDD017] animate-pulse"></span>
+                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FDD017]">Conexão Imediata</span>
+                </div>
+                <h2 class="text-4xl md:text-6xl lg:text-[4rem] font-medium tracking-tighter text-[#F8F5ED] leading-[1.1] mb-6">
+                    Sua Solução Solar <br class="hidden md:block"/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#FDD017] to-yellow-600 font-black pr-2">Começa Aqui.</span>
+                </h2>
+                <p class="text-lg md:text-xl text-[#F8F5ED]/70 font-medium max-w-2xl mx-auto md:mx-0">
+                    Pronto para Otimizar Sua Energia? Fale Conosco Agora e garanta a máxima performance da sua usina.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                
+                <!-- Formulário de Contato -->
+                <div class="lg:col-span-7 bg-[#111111]/40 border border-white/10 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden contato-form opacity-0 translate-y-12">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-50 pointer-events-none"></div>
+                    
+                    <div id="evolution-form" class="relative z-10 space-y-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <!-- Input Nome -->
+                            <div class="input-group relative">
+                                <input type="text" id="nome" class="w-full bg-[#F8F5ED] text-[#000000] border-2 border-transparent rounded-xl px-5 pt-7 pb-3 text-sm md:text-base font-bold focus:outline-none focus:border-[#FDD017] transition-colors peer shadow-inner" placeholder=" " required oninput="checkInput(this)">
+                                <label for="nome" class="absolute left-5 top-5 text-[#000000]/60 text-sm md:text-base font-bold transition-all peer-focus:text-[10px] peer-focus:top-2 peer-focus:text-[#000000]/80 pointer-events-none uppercase tracking-widest">Nome Completo</label>
+                                <i data-lucide="check" class="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#FDD017] opacity-0 scale-0 transition-all duration-300 input-check"></i>
+                            </div>
+
+                            <!-- Input Telefone -->
+                            <div class="input-group relative">
+                                <input type="tel" id="telefone" class="w-full bg-[#F8F5ED] text-[#000000] border-2 border-transparent rounded-xl px-5 pt-7 pb-3 text-sm md:text-base font-bold focus:outline-none focus:border-[#FDD017] transition-colors peer shadow-inner mask-phone" placeholder=" " required oninput="checkInput(this)">
+                                <label for="telefone" class="absolute left-5 top-5 text-[#000000]/60 text-sm md:text-base font-bold transition-all peer-focus:text-[10px] peer-focus:top-2 peer-focus:text-[#000000]/80 pointer-events-none uppercase tracking-widest">WhatsApp</label>
+                                <i data-lucide="check" class="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#FDD017] opacity-0 scale-0 transition-all duration-300 input-check"></i>
+                            </div>
+                        </div>
+
+                        <!-- Input E-mail -->
+                        <div class="input-group relative">
+                            <input type="email" id="email" class="w-full bg-[#F8F5ED] text-[#000000] border-2 border-transparent rounded-xl px-5 pt-7 pb-3 text-sm md:text-base font-bold focus:outline-none focus:border-[#FDD017] transition-colors peer shadow-inner" placeholder=" " required oninput="checkInput(this)">
+                            <label for="email" class="absolute left-5 top-5 text-[#000000]/60 text-sm md:text-base font-bold transition-all peer-focus:text-[10px] peer-focus:top-2 peer-focus:text-[#000000]/80 pointer-events-none uppercase tracking-widest">E-mail</label>
+                            <i data-lucide="check" class="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#FDD017] opacity-0 scale-0 transition-all duration-300 input-check"></i>
+                        </div>
+
+                        <!-- Input Problema (Sugestões Animadas) -->
+                        <div class="input-group relative problem-group">
+                            <textarea id="problema" rows="3" class="w-full bg-[#F8F5ED] text-[#000000] border-2 border-transparent rounded-xl px-5 pt-8 pb-3 text-sm md:text-base font-bold focus:outline-none focus:border-[#FDD017] transition-colors peer shadow-inner resize-none" placeholder=" " required oninput="checkInput(this); hideSuggestions()"></textarea>
+                            <label for="problema" class="absolute left-5 top-5 text-[#000000]/60 text-sm md:text-base font-bold transition-all peer-focus:text-[10px] peer-focus:top-2 peer-focus:text-[#000000]/80 pointer-events-none uppercase tracking-widest">Qual problema seu sistema apresenta?</label>
+                            <i data-lucide="check" class="absolute right-5 top-5 w-5 h-5 text-[#FDD017] opacity-0 scale-0 transition-all duration-300 input-check"></i>
+                            
+                            <!-- Sugestões Animadas -->
+                            <div class="absolute left-5 bottom-3 right-10 flex gap-2 overflow-x-auto no-scrollbar suggestions-container pointer-events-none transition-opacity duration-300">
+                                <span class="text-[10px] font-bold bg-[#000000]/10 text-[#000000]/60 px-2 py-1 rounded-md whitespace-nowrap animate-pulse">Inversor Desarmando</span>
+                                <span class="text-[10px] font-bold bg-[#000000]/10 text-[#000000]/60 px-2 py-1 rounded-md whitespace-nowrap animate-pulse" style="animation-delay: 0.5s;">Queda na Geração</span>
+                                <span class="text-[10px] font-bold bg-[#000000]/10 text-[#000000]/60 px-2 py-1 rounded-md whitespace-nowrap animate-pulse" style="animation-delay: 1s;">Sujeira Excessiva</span>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="button" onclick="submitForm()" id="submit-btn" class="w-full bg-[#FDD017] text-[#000000] py-4 rounded-xl font-black text-[11px] md:text-sm tracking-widest md:tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_40px_rgba(253,208,23,0.4)] hover:bg-[#ffdf4d] hover:-translate-y-1 relative overflow-hidden group flex items-center justify-center min-h-[4rem]">
+                            <span class="btn-text relative z-10 flex items-center justify-center gap-2 w-full px-4">
+                                <span>Enviar para WhatsApp</span> 
+                                <i data-lucide="arrow-right" class="w-4 h-4 shrink-0 group-hover:translate-x-2 transition-transform"></i>
+                            </span>
+                            <span class="btn-loader absolute inset-0 flex items-center justify-center opacity-0 scale-50 transition-all duration-300">
+                                <i data-lucide="settings" class="w-6 h-6 animate-spin text-[#000000]"></i>
+                            </span>
+                            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
+                        </button>
+                        
+                        <!-- Success Message -->
+                        <div id="success-msg" class="hidden text-center text-[#FDD017] font-bold text-sm tracking-widest uppercase mt-4 animate-fade-in flex items-center justify-center gap-2">
+                            <i data-lucide="check-circle" class="w-5 h-5"></i> Redirecionando para o WhatsApp...
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Canais de Contato Direto & Info -->
+                <div class="lg:col-span-5 flex flex-col gap-10 contato-info opacity-0 translate-y-12">
+                    
+                    <!-- WhatsApp Buttons -->
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-bold text-[#F8F5ED] flex items-center gap-3">
+                            <i data-lucide="message-square" class="w-6 h-6 text-[#FDD017]"></i> Fale Conosco via WhatsApp:
+                        </h3>
+                        
+                        <div class="grid gap-4">
+                            <!-- Botão Único WhatsApp -->
+                            <button type="button" onclick="enviarWhatsappSimples(event)" class="w-full text-left group bg-[#FDD017] text-[#000000] p-4 rounded-2xl flex items-center gap-5 hover:bg-[#ffdf4d] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(253,208,23,0.3)] animate-pulse-subtle">
+                                <div class="w-12 h-12 bg-[#000000]/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#000000]/20 transition-colors">
+                                    <svg class="w-7 h-7 group-hover:animate-wave origin-bottom" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-black text-lg">Falar com Especialista</h4>
+                                    <p class="text-[10px] font-bold text-[#000000]/70 uppercase tracking-widest mt-0.5">Atendimento em todo o Espírito Santo</p>
+                                </div>
+                                <i data-lucide="arrow-up-right" class="w-6 h-6 ml-auto opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Informações de Apoio -->
+                    <div class="mt-4 space-y-4 bg-white/5 border border-white/10 rounded-[2rem] p-8 backdrop-blur-md">
+                        <div class="flex items-center gap-4 text-[#F8F5ED]">
+                            <div class="w-10 h-10 rounded-full bg-[#FDD017]/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="clock" class="w-5 h-5 text-[#FDD017]"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-xs font-bold text-[#FDD017] tracking-widest uppercase mb-1">Horário de Funcionamento</h5>
+                                <p class="text-sm font-medium opacity-80">Seg - Sex: 7h às 18h | Sáb: 7h às 12h</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 text-[#F8F5ED]">
+                            <div class="w-10 h-10 rounded-full bg-[#FDD017]/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="mail" class="w-5 h-5 text-[#FDD017]"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <h5 class="text-xs font-bold text-[#FDD017] tracking-widest uppercase mb-1">E-mail Comercial</h5>
+                                <p class="text-sm font-medium opacity-80 break-all">contato@evolutionmanutencoes.com.br</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mensagem Final Animada -->
+                    <div class="mt-4 flex items-center gap-3">
+                        <span class="relative flex h-3 w-3">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FDD017] opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-[#FDD017]"></span>
+                        </span>
+                        <p class="text-sm md:text-base font-bold text-[#F8F5ED] tracking-wide">
+                            Sua energia está esperando para evoluir. <span class="text-[#FDD017]">Dê o primeiro passo!</span>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 8. FOOTER (Rodapé)                         -->
+    <!-- ========================================== -->
+    <footer class="relative z-50 w-full bg-[#000000] text-[#F8F5ED] pt-20 pb-8 overflow-hidden border-t border-white/5">
+        
+        <!-- Animação de Fundo -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
+            <div class="absolute bottom-[-20%] left-[20%] w-[500px] h-[500px] bg-[#FDD017]/5 blur-[100px] rounded-full mix-blend-screen animate-pulse-subtle"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8 mb-16">
+                
+                <!-- Coluna 1: Logo e Descrição -->
+                <div class="flex flex-col items-start footer-col opacity-0 translate-y-8">
+                    <div class="relative inline-flex items-center justify-center transform transition-transform hover:scale-105 mb-6 group">
+                        <div class="absolute w-[45%] h-[45%] bg-[#F8F5ED] rounded-full z-0 group-hover:shadow-[0_0_20px_#FDD017] transition-shadow duration-500 animate-pulse-subtle"></div>
+                        <img src="raw_file/LOGOBRUTO.svg" alt="Evolution Logo" class="relative z-10 h-10 md:h-12 object-contain filter drop-shadow-lg">
+                    </div>
+                    <p class="text-sm text-[#F8F5ED]/70 leading-relaxed mb-6 font-medium">
+                        Especialistas em manutenção que transformam problemas em potência e tranquilidade para sua usina solar.
+                    </p>
+                    <!-- Redes Sociais -->
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-[#FDD017]/10 flex items-center justify-center text-[#FDD017] hover:bg-[#FDD017] hover:text-[#000000] transition-all duration-300 hover:-translate-y-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-[#FDD017]/10 flex items-center justify-center text-[#FDD017] hover:bg-[#FDD017] hover:text-[#000000] transition-all duration-300 hover:-translate-y-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-[#FDD017]/10 flex items-center justify-center text-[#FDD017] hover:bg-[#FDD017] hover:text-[#000000] transition-all duration-300 hover:-translate-y-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coluna 2: Navegação Rápida -->
+                <div class="flex flex-col footer-col opacity-0 translate-y-8">
+                    <h4 class="text-lg font-black tracking-widest text-[#FDD017] uppercase mb-6">Navegação</h4>
+                    <ul class="flex flex-col gap-4">
+                        <li>
+                            <a href="#" class="text-[#F8F5ED]/80 font-bold hover:text-[#FDD017] transition-colors relative inline-block group">
+                                Início
+                                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FDD017] transition-all duration-300 group-hover:w-full"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#diferenciais" class="text-[#F8F5ED]/80 font-bold hover:text-[#FDD017] transition-colors relative inline-block group">
+                                Diferenciais
+                                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FDD017] transition-all duration-300 group-hover:w-full"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#servicos" class="text-[#F8F5ED]/80 font-bold hover:text-[#FDD017] transition-colors relative inline-block group">
+                                Serviços
+                                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FDD017] transition-all duration-300 group-hover:w-full"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#sobre" class="text-[#F8F5ED]/80 font-bold hover:text-[#FDD017] transition-colors relative inline-block group">
+                                Sobre Nós
+                                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FDD017] transition-all duration-300 group-hover:w-full"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#contato" class="text-[#F8F5ED]/80 font-bold hover:text-[#FDD017] transition-colors relative inline-block group">
+                                Contato
+                                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FDD017] transition-all duration-300 group-hover:w-full"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 3: Contato -->
+                <div class="flex flex-col footer-col opacity-0 translate-y-8">
+                    <h4 class="text-lg font-black tracking-widest text-[#FDD017] uppercase mb-6">Contato</h4>
+                    <ul class="flex flex-col gap-5">
+                        <li class="flex items-start gap-3 group">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-[#FDD017] shrink-0 mt-0.5 opacity-80 group-hover:opacity-100 group-hover:animate-bounce transition-all"></i>
+                            <span class="text-sm font-medium text-[#F8F5ED]/80 leading-relaxed">Vitória, Espírito Santo<br>Atendimento em todo o estado.</span>
+                        </li>
+                        <li class="flex items-center gap-3 group">
+                            <i data-lucide="phone" class="w-5 h-5 text-[#FDD017] shrink-0 opacity-80 group-hover:opacity-100 group-hover:animate-pulse transition-all"></i>
+                            <a href="#" class="text-sm font-bold text-[#FDD017] hover:text-[#ffdf4d] transition-colors">(27) 99999-9999</a>
+                        </li>
+                        <li class="flex items-center gap-3 group">
+                            <i data-lucide="mail" class="w-5 h-5 text-[#FDD017] shrink-0 opacity-80 group-hover:opacity-100 group-hover:animate-pulse transition-all"></i>
+                            <a href="mailto:contato@evolutionmanutencoes.com.br" class="text-sm font-medium text-[#F8F5ED]/80 hover:text-[#FDD017] transition-colors">contato@evolutionmanutencoes.com.br</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+            <!-- Direitos Autorais e Políticas -->
+            <div class="border-t border-white/10 pt-8 mt-8 flex flex-col md:flex-row items-center justify-between gap-4 footer-bottom opacity-0">
+                <p class="text-xs font-medium text-[#F8F5ED]/50">
+                    &copy; 2026 Evolution Manutenção. Todos os direitos reservados.
+                </p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-xs font-bold text-[#F8F5ED]/50 hover:text-[#FDD017] transition-colors relative inline-block group">
+                        Política de Privacidade
+                        <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#FDD017] transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#" class="text-xs font-bold text-[#F8F5ED]/50 hover:text-[#FDD017] transition-colors relative inline-block group">
+                        Termos de Uso
+                        <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#FDD017] transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[60] w-10 h-10 md:w-12 md:h-12 bg-black/40 backdrop-blur-md border border-[#FDD017]/40 rounded-full flex items-center justify-center opacity-0 pointer-events-none translate-y-8 transition-all duration-500 hover:bg-[#FDD017]/10 hover:border-[#FDD017]/80 group shadow-lg" aria-label="Voltar ao topo">
+        <i data-lucide="chevron-up" class="w-5 h-5 text-[#FDD017] group-hover:-translate-y-0.5 transition-all duration-300"></i>
+    </button>
+
     <!-- INITIALIZATION SCRIPT -->
     <script>
         lucide.createIcons();
@@ -852,6 +1217,13 @@
                 { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.5)" },
                 "-=0.4"
             )
+            
+            // Scroll Indicator Fade In
+            .fromTo("#scroll-indicator",
+                { y: -10, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
+                "-=0.2"
+            );
 
 
             // --- ALTA PERFORMANCE MOUSE FOLLOWER (GSAP QuickTo) ---
@@ -940,7 +1312,7 @@
                 ease: "power4.out"
             });
 
-            gsap.to(".servico-item", {
+            gsap.to(".servico-item, .servico-indicator", {
                 scrollTrigger: {
                     trigger: "#servicos-grid",
                     start: "top 80%",
@@ -1046,29 +1418,231 @@
             ease: "back.out(1.5)"
         });
 
-        // Bloco de Missão deslizando da esquerda
+        // Bloco de Missão deslizando de baixo
         gsap.to(".missao-block", {
             scrollTrigger: {
                 trigger: ".missao-block",
-                start: "top 85%",
+                start: "top 95%",
             },
-            x: 0,
+            y: 0,
             opacity: 1,
-            duration: 1.2,
+            duration: 0.6,
             ease: "power4.out"
         });
 
         // Cards de Valores deslizando de baixo
         gsap.to(".valor-item", {
             scrollTrigger: {
-                trigger: ".valores-grid",
+                trigger: ".missao-block",
+                start: "top 95%",
+            },
+            y: 0,
+            opacity: 1,
+            duration: 0.6,
+            stagger: 0.2,
+            ease: "back.out(1.2)"
+        });
+
+        // --- 5ª DOBRA: CONTATO SCROLL ANIMATIONS ---
+        gsap.to(".contato-header", {
+            scrollTrigger: {
+                trigger: "#contato",
+                start: "top 75%",
+            },
+            y: 0,
+            opacity: 1,
+            duration: 1.2,
+            ease: "power4.out"
+        });
+
+        gsap.to(".contato-form", {
+            scrollTrigger: {
+                trigger: ".contato-form",
+                start: "top 80%",
+            },
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "back.out(1.2)"
+        });
+
+        gsap.to(".contato-info", {
+            scrollTrigger: {
+                trigger: ".contato-info",
+                start: "top 80%",
+            },
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            delay: 0.3,
+            ease: "back.out(1.2)"
+        });
+
+        // --- FOOTER SCROLL ANIMATIONS ---
+        gsap.to(".footer-col", {
+            scrollTrigger: {
+                trigger: "footer",
                 start: "top 85%",
             },
             y: 0,
             opacity: 1,
             duration: 1,
-            stagger: 0.2,
+            stagger: 0.15,
             ease: "back.out(1.2)"
+        });
+
+        gsap.to(".footer-bottom", {
+            scrollTrigger: {
+                trigger: "footer",
+                start: "top 85%",
+            },
+            opacity: 1,
+            duration: 1,
+            delay: 0.6,
+            ease: "power2.out"
+        });
+
+        // --- FORMULÁRIO INTERAÇÕES ---
+        // Funcionalidade de Label Flutuante
+        function checkInput(el) {
+            const checkIcon = el.parentElement.querySelector('.input-check');
+            if (el.value.trim() !== '') {
+                if(checkIcon) {
+                    checkIcon.classList.remove('opacity-0', 'scale-0');
+                    checkIcon.classList.add('opacity-100', 'scale-100');
+                }
+            } else {
+                if(checkIcon) {
+                    checkIcon.classList.add('opacity-0', 'scale-0');
+                    checkIcon.classList.remove('opacity-100', 'scale-100');
+                }
+            }
+        }
+
+        function hideSuggestions() {
+            const suggestions = document.querySelector('.suggestions-container');
+            if(suggestions) {
+                suggestions.classList.add('opacity-0');
+            }
+        }
+
+        // Phone Mask
+        const phoneInput = document.getElementById('telefone');
+        if(phoneInput) {
+            phoneInput.addEventListener('input', function (e) {
+                let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+                e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+            });
+        }
+
+        function submitForm() {
+            const btn = document.getElementById('submit-btn');
+            const btnText = btn.querySelector('.btn-text');
+            const btnLoader = btn.querySelector('.btn-loader');
+            const successMsg = document.getElementById('success-msg');
+            
+            // Collect Form Data
+            const nomeInput = document.getElementById('nome').value;
+            const nome = nomeInput.trim() !== '' ? nomeInput : 'Cliente';
+            const problemaInput = document.getElementById('problema').value;
+            const problema = problemaInput.trim() !== '' ? problemaInput : 'Gostaria de um orçamento para minha usina solar.';
+
+            // Create WhatsApp Message
+            const text = `Olá, Evolution Manutenção! Meu nome é *${nome}*.\n\nPreciso de ajuda com o seguinte:\n_${problema}_`;
+            const encodedText = encodeURIComponent(text);
+            const whatsappUrl = `https://wa.me/5527999999999?text=${encodedText}`;
+
+            // Show loader
+            btnText.classList.add('opacity-0');
+            btnLoader.classList.remove('opacity-0', 'scale-50');
+            btnLoader.classList.add('opacity-100', 'scale-100');
+
+            setTimeout(() => {
+                // Hide loader
+                btnText.classList.remove('opacity-0');
+                btnLoader.classList.add('opacity-0', 'scale-50');
+                btnLoader.classList.remove('opacity-100', 'scale-100');
+                
+                // Show success message temporarily
+                successMsg.classList.remove('hidden');
+                setTimeout(() => successMsg.classList.add('hidden'), 3000);
+
+                // Redirect to WhatsApp in new tab
+                window.open(whatsappUrl, '_blank');
+            }, 800);
+        }
+
+        function enviarWhatsappSimples(e) {
+            if (e) e.preventDefault();
+            const text = `Olá, Evolution Manutenção! Gostaria de falar com um especialista.`;
+            const encodedText = encodeURIComponent(text);
+            const whatsappUrl = `https://wa.me/5527999999999?text=${encodedText}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function openMenu() {
+            mobileMenu.classList.remove('hidden');
+            mobileMenu.classList.add('flex');
+            requestAnimationFrame(() => {
+                mobileMenu.classList.remove('opacity-0', 'translate-y-[-20px]');
+            });
+            document.body.style.overflow = 'hidden'; // prevent scrolling
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.add('opacity-0', 'translate-y-[-20px]');
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                document.body.style.overflow = ''; // allow scrolling
+            }, 300);
+        }
+
+        if(mobileBtn) mobileBtn.addEventListener('click', openMenu);
+        if(closeBtn) closeBtn.addEventListener('click', closeMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+        
+        // Close when clicking the frosted background (overlay)
+        if(mobileMenu) {
+            mobileMenu.addEventListener('click', (e) => {
+                if (e.target === mobileMenu) {
+                    closeMenu();
+                }
+            });
+        }
+
+        // --- BACK TO TOP LOGIC ---
+        const backToTopBtn = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-8');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-8');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // --- MOBILE FLIP CARDS LOGIC ---
+        const flipCards = document.querySelectorAll('.card-container');
+        flipCards.forEach(card => {
+            card.addEventListener('click', function() {
+                if (window.matchMedia("(hover: none)").matches) {
+                    this.classList.toggle('flipped');
+                }
+            });
         });
 
     </script>
