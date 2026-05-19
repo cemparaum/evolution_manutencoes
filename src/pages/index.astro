@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/sections/Header.astro";
 import Hero from "../components/sections/Hero.astro";
 import Diferenciais from "../components/sections/Diferenciais.astro";
 import Servicos from "../components/sections/Servicos.astro";
@@ -10,14 +9,11 @@ import Footer from "../components/sections/Footer.astro";
 ---
 
 <Layout>
-    <Header />
-    <main>
-        <Hero />
-        <Diferenciais />
-        <Servicos />
-        <Sobre />
-        <Contato />
-    </main>
+    <Hero />
+    <Diferenciais />
+    <Servicos />
+    <Sobre />
+    <Contato />
     <Footer />
 </Layout>
 
@@ -25,7 +21,7 @@ import Footer from "../components/sections/Footer.astro";
     // @ts-ignore
     window.addEventListener("load", () => {
         // @ts-ignore
-        gsap.registerPlugin(ScrollTrigger);
+        gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
         // @ts-ignore
         const tl = gsap.timeline();
@@ -47,12 +43,12 @@ import Footer from "../components/sections/Footer.astro";
             ease: "power3.out",
             delay: 0.2,
         })
-        // Headline Fade-in
-        .fromTo(
-            "#headline",
-            { opacity: 0, y: 10 },
-            { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }
-        )
+        // Typewriter Effect
+        .to("#headline", {
+            duration: 2.5,
+            text: "Seu Investimento Solar Merece Evoluir.<br><span style='color: #FDD017;'>N\u00f3s Garantimos.</span>",
+            ease: "none",
+        })
         // Subheadline Slide Up
         .fromTo(
             "#subheadline",
@@ -343,76 +339,102 @@ import Footer from "../components/sections/Footer.astro";
         });
 
         // --- 5ª DOBRA: CONTATO SCROLL ANIMATIONS ---
+        // Usa fromTo() explícito para não depender da leitura de transforms CSS do Tailwind
+        // (evita falha em mobile onde o GSAP pode não ler corretamente o translate-y-12 inicial)
         // @ts-ignore
-        gsap.to(".contato-header", {
-            scrollTrigger: {
-                trigger: "#contato",
-                start: "top 75%",
-            },
-            y: 0,
-            opacity: 1,
-            duration: 1.2,
-            ease: "power4.out",
-        });
+        gsap.fromTo(".contato-header",
+            { y: 48, opacity: 0 },
+            {
+                scrollTrigger: {
+                    trigger: "#contato",
+                    start: "top 90%",
+                    invalidateOnRefresh: true,
+                },
+                y: 0,
+                opacity: 1,
+                duration: 1.2,
+                ease: "power4.out",
+            }
+        );
 
         // @ts-ignore
-        gsap.to(".contato-form", {
-            scrollTrigger: {
-                trigger: ".contato-form",
-                start: "top 80%",
-            },
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "back.out(1.2)",
-        });
+        gsap.fromTo(".contato-form",
+            { y: 48, opacity: 0 },
+            {
+                scrollTrigger: {
+                    trigger: "#contato",
+                    start: "top 80%",
+                    invalidateOnRefresh: true,
+                },
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                ease: "back.out(1.2)",
+            }
+        );
 
         // @ts-ignore
-        gsap.to(".contato-info", {
-            scrollTrigger: {
-                trigger: ".contato-info",
-                start: "top 80%",
-            },
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            delay: 0.3,
-            ease: "back.out(1.2)",
-        });
+        gsap.fromTo(".contato-info",
+            { y: 48, opacity: 0 },
+            {
+                scrollTrigger: {
+                    trigger: "#contato",
+                    start: "top 75%",
+                    invalidateOnRefresh: true,
+                },
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                delay: 0.3,
+                ease: "back.out(1.2)",
+            }
+        );
 
         // --- FOOTER SCROLL ANIMATIONS ---
         // @ts-ignore
-        gsap.to(".footer-col", {
-            scrollTrigger: {
-                trigger: "footer",
-                start: "top 85%",
-            },
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            stagger: 0.15,
-            ease: "back.out(1.2)",
-        });
+        gsap.fromTo(".footer-col",
+            { y: 48, opacity: 0 },
+            {
+                scrollTrigger: {
+                    trigger: "footer",
+                    start: "top 90%",
+                    invalidateOnRefresh: true,
+                },
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                stagger: 0.15,
+                ease: "back.out(1.2)",
+            }
+        );
 
         // @ts-ignore
-        gsap.to(".footer-bottom", {
-            scrollTrigger: {
-                trigger: "footer",
-                start: "top 85%",
-            },
-            opacity: 1,
-            duration: 1,
-            delay: 0.6,
-            ease: "power2.out",
-        });
+        gsap.fromTo(".footer-bottom",
+            { opacity: 0 },
+            {
+                scrollTrigger: {
+                    trigger: "footer",
+                    start: "top 90%",
+                    invalidateOnRefresh: true,
+                },
+                opacity: 1,
+                duration: 1,
+                delay: 0.6,
+                ease: "power2.out",
+            }
+        );
+
+        // Renderiza todos os ícones Lucide (data-lucide="...")
+        // @ts-ignore
+        if (typeof lucide !== "undefined") lucide.createIcons();
 
         // @ts-ignore
         ScrollTrigger.refresh();
 
-        // Garante recalculo perfeito do posicionamento de todos os gatilhos no mobile real
+        // Garante recalculo perfeito no mobile (URL bar do browser ajusta o viewport)
         setTimeout(() => {
             // @ts-ignore
             ScrollTrigger.refresh();
-        }, 300);
+        }, 800);
     });
 </script>

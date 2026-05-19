@@ -446,6 +446,16 @@ import Icon from "../Icon.astro";
         transform: rotateY(180deg);
     }
 
+    /* Mobile: borda mais visível para separar card do fundo */
+    @media (max-width: 767px) {
+        .card-front {
+            border-color: rgba(253, 208, 23, 0.25) !important;
+            box-shadow:
+                0 0 0 1px rgba(253, 208, 23, 0.12),
+                0 20px 60px rgba(0, 0, 0, 0.6);
+        }
+    }
+
     /* Floating elements animations */
     @keyframes float-slow {
         0%,

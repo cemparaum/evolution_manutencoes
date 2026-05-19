@@ -415,7 +415,97 @@ import Icon from "../Icon.astro";
                         </p>
                     </div>
                 </div>
-            </div>
-        </div>
     </div>
 </section>
+
+<style>
+    /* =============================================
+       MOBILE: Estado "hover ativo" permanente
+       No mobile não há cursor, então os cards ficam
+       sempre no estado totalmente visível (= hover desktop)
+       ============================================= */
+    @media (max-width: 767px) {
+
+        /* --- MISSÃO BLOCK --- */
+        .missao-block {
+            box-shadow: 0 20px 60px rgba(253, 208, 23, 0.15) !important;
+            border-color: rgba(255,255,255,0.20) !important;
+        }
+        /* Radial glow fundo sempre visível */
+        .missao-block > div:first-child {
+            opacity: 1 !important;
+        }
+        /* Glow blur do fundo sempre visível */
+        .missao-block > div:nth-child(2) {
+            background-color: rgba(253, 208, 23, 0.20) !important;
+        }
+        /* Ícone Target */
+        .missao-block .group-hover\:bg-\[\#FDD017\]\/20 {
+            background-color: rgba(253, 208, 23, 0.20) !important;
+        }
+        .missao-block .group-hover\:border-\[\#FDD017\]\/50 {
+            border-color: rgba(253, 208, 23, 0.50) !important;
+        }
+        /* "blindando" highlight sempre ativo */
+        .missao-block .group-hover\:bg-\[\#FDD017\] {
+            background-color: #FDD017 !important;
+        }
+        .missao-block .group-hover\:border-\[\#FDD017\] {
+            border-color: #FDD017 !important;
+        }
+        .missao-block .group-hover\:text-black {
+            color: #000000 !important;
+        }
+
+        /* --- VALOR ITEMS --- */
+        .valor-item {
+            background-color: rgba(255, 255, 255, 0.10) !important;
+            border-color: rgba(253, 208, 23, 0.30) !important;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(253,208,23,0.1) !important;
+        }
+        /* Gradient de fundo sempre visível */
+        .valor-item > div:first-child {
+            opacity: 1 !important;
+        }
+        .valor-item .group-hover\:bg-\[\#FDD017\]\/20 {
+            background-color: rgba(253, 208, 23, 0.20) !important;
+        }
+        .valor-item .group-hover\:border-\[\#FDD017\]\/50 {
+            border-color: rgba(253, 208, 23, 0.50) !important;
+        }
+        .valor-item .group-hover\:text-\[\#FDD017\] {
+            color: #FDD017 !important;
+        }
+        .valor-item .group-hover\:text-white\/80 {
+            color: rgba(255,255,255,0.80) !important;
+        }
+
+        /* --- TIMELINE NODES: cards sempre no estado ativo --- */
+        .timeline-node .group-hover\:bg-\[\#FDD017\]\/30 {
+            background-color: rgba(253, 208, 23, 0.30) !important;
+        }
+        .timeline-node .group-hover\:border-\[\#FDD017\] {
+            border-color: #FDD017 !important;
+        }
+        /* Ghost year mais visível */
+        .timeline-node .group-hover\:text-white\/\[0\.25\] {
+            color: rgba(255,255,255,0.25) !important;
+        }
+        .timeline-node .group-hover\:text-\[\#FDD017\]\/\[0\.28\] {
+            color: rgba(253,208,23,0.28) !important;
+        }
+        /* Título dourado */
+        .timeline-node .group-hover\:text-\[\#FDD017\] {
+            color: #FDD017 !important;
+        }
+        /* Texto do parágrafo mais visível */
+        .timeline-node .group-hover\:text-white\/70 {
+            color: rgba(255,255,255,0.70) !important;
+        }
+        /* Borda superior dourada sempre acesa */
+        .timeline-node .group-hover\:via-\[\#FDD017\] {
+            --tw-gradient-via: #FDD017 !important;
+            background-image: linear-gradient(to right, transparent, #FDD017, transparent) !important;
+        }
+    }
+</style>

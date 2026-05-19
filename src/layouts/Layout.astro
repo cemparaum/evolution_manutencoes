@@ -34,6 +34,10 @@ const {
             href="https://cdnjs.cloudflare.com"
             crossorigin
         />
+        <link rel="preconnect" href="https://unpkg.com" crossorigin />
+
+        <!-- Lucide Icons -->
+        <script defer src="https://unpkg.com/lucide@latest"></script>
 
         <!-- Preloads for Critical Scripts and LCP -->
         <link
@@ -233,64 +237,9 @@ const {
                 style="display:none;visibility:hidden"></iframe>
         </noscript>
 
-        <!-- 1. CINEMATIC BACKGROUND -->
-        <div class="video-wrapper" id="video-bg">
-            <video autoplay loop muted playsinline fetchpriority="low">
-                <source
-                    src="https://assets.mixkit.co/videos/preview/mixkit-solar-panels-in-a-field-under-the-sun-43343-large.mp4"
-                    type="video/mp4"
-                />
-            </video>
-            <div class="vignette-overlay"></div>
-        </div>
-
-        <!-- 2. SOLAR GLOW (Mouse Follower) -->
+        <!-- 2. SOLAR GLOW (Mouse Follower) — position:fixed, efeito global intencional -->
         <div class="solar-glow-wrapper">
             <div class="solar-glow"></div>
-        </div>
-
-        <!-- 3. DS ENERGY BEAMS -->
-        <div class="ds-grid flex">
-            <div class="ds-col">
-                <div
-                    class="beam h-[200px]"
-                    style="animation-duration: 5s; animation-delay: 1s;"
-                >
-                </div>
-            </div>
-            <div class="ds-col">
-                <div
-                    class="beam h-[150px]"
-                    style="animation-duration: 4s; animation-delay: 0s;"
-                >
-                </div>
-            </div>
-            <div class="ds-col">
-                <div
-                    class="beam h-[250px]"
-                    style="animation-duration: 5.5s; animation-delay: 1.5s;"
-                >
-                </div>
-            </div>
-            <div class="ds-col">
-                <div
-                    class="beam h-[120px]"
-                    style="animation-duration: 3.5s; animation-delay: 2.5s;"
-                >
-                </div>
-            </div>
-            <div class="ds-col">
-                <div
-                    class="beam h-[180px]"
-                    style="animation-duration: 4.5s; animation-delay: 0.5s;"
-                >
-                </div>
-            </div>
-            <div
-                class="beam h-[220px]"
-                style="left: auto; right: -1px; animation-duration: 6s; animation-delay: 2s;"
-            >
-            </div>
         </div>
 
         <slot />
