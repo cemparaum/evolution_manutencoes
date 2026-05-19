@@ -233,7 +233,7 @@ import Icon from '../components/Icon.astro';
     </style>
     
     <!-- Google Tag Manager (Lazy Load Otimizado para Lighthouse) -->
-    <script>
+    <script is:inline>
         const loadGTM = () => {
             if (window.gtmLoaded) return;
             window.gtmLoaded = true;
@@ -1186,7 +1186,7 @@ import Icon from '../components/Icon.astro';
     </button>
 
     <!-- INITIALIZATION SCRIPT -->
-    <script>
+    <script is:inline>
         document.addEventListener("DOMContentLoaded", () => {
             gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
