@@ -126,20 +126,7 @@ import Footer from "../components/sections/Footer.astro";
 
         // --- 2ª DOBRA: ANIMAÇÕES DE SCROLL (DIFERENCIAIS) ---
 
-        // Sublinhado do Título (Surge ao scrolar)
-        // @ts-ignore
-        ScrollTrigger.create({
-            trigger: "#diferenciais",
-            start: "top 75%",
-            onEnter: () => {
-                // @ts-ignore
-                gsap.to("#title-underline", {
-                    scaleX: 1,
-                    duration: 1.2,
-                    ease: "power4.out",
-                });
-            },
-        });
+
 
         // Montagem do Bento Box em Cascata
         // @ts-ignore
@@ -305,7 +292,7 @@ import Footer from "../components/sections/Footer.astro";
         gsap.to(".sobre-title, .sobre-desc", {
             scrollTrigger: {
                 trigger: "#sobre",
-                start: "top 75%",
+                start: "top 85%",
             },
             y: 0,
             opacity: 1,
@@ -319,7 +306,7 @@ import Footer from "../components/sections/Footer.astro";
         gsap.to(".timeline-node", {
             scrollTrigger: {
                 trigger: ".timeline-container",
-                start: "top 60%",
+                start: "top 85%",
             },
             y: 0,
             opacity: 1,
@@ -333,7 +320,7 @@ import Footer from "../components/sections/Footer.astro";
         gsap.to(".missao-block", {
             scrollTrigger: {
                 trigger: ".missao-block",
-                start: "top 95%",
+                start: "top 85%",
             },
             y: 0,
             opacity: 1,
@@ -346,7 +333,7 @@ import Footer from "../components/sections/Footer.astro";
         gsap.to(".valor-item", {
             scrollTrigger: {
                 trigger: ".missao-block",
-                start: "top 95%",
+                start: "top 85%",
             },
             y: 0,
             opacity: 1,
