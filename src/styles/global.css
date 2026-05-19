@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@theme {
+  --color-evo-gold: #FDD017;
+  --color-evo-black: #000000;
+  --color-evo-cream: #F8F5ED;
+  --font-sans: 'Montserrat', sans-serif;
+}
