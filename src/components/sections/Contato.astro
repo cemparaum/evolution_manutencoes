@@ -1,0 +1,529 @@
+---
+import Icon from "../Icon.astro";
+---
+
+<section
+    id="contato"
+    class="relative w-full bg-[#000000] py-32 z-50 overflow-hidden border-t border-white/10"
+>
+    <!-- Fundo Cinemático e Luzes -->
+    <div
+        class="absolute inset-0 opacity-[0.05] mix-blend-overlay pointer-events-none"
+        style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E');"
+    >
+    </div>
+    <div
+        class="absolute top-0 right-0 w-[600px] h-[600px] bg-[#FDD017]/10 blur-[150px] rounded-full pointer-events-none"
+    >
+    </div>
+    <div
+        class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-[#FDD017]/5 blur-[150px] rounded-full pointer-events-none"
+    >
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+        <!-- Headline de Impacto -->
+        <div
+            class="mb-20 text-center md:text-left flex flex-col items-center md:items-start contato-header opacity-0 translate-y-12"
+        >
+            <div
+                class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6 shadow-2xl"
+            >
+                <span
+                    class="w-2 h-2 rounded-full bg-[#FDD017] shadow-[0_0_10px_#FDD017] animate-pulse"
+                ></span>
+                <span
+                    class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FDD017]"
+                    >Conexão Imediata</span
+                >
+            </div>
+            <h2
+                class="text-4xl md:text-6xl lg:text-[4rem] font-medium tracking-tighter text-[#F8F5ED] leading-[1.1] mb-6"
+            >
+                Sua Solução Solar <br class="hidden md:block" />
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-[#FDD017] to-yellow-600 font-black pr-2"
+                    >Começa Aqui.</span
+                >
+            </h2>
+            <p
+                class="text-lg md:text-xl text-[#F8F5ED]/70 font-medium max-w-2xl mx-auto md:mx-0"
+            >
+                Pronto para Otimizar Sua Energia? Fale Conosco Agora e
+                garanta a máxima performance da sua usina.
+            </p>
+        </div>
+
+        <div
+            class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start"
+        >
+            <!-- Formulário de Contato -->
+            <div
+                class="lg:col-span-7 bg-[#111111]/40 border border-white/10 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden contato-form opacity-0 translate-y-12"
+            >
+                <div
+                    class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-50 pointer-events-none"
+                >
+                </div>
+
+                <div
+                    id="evolution-form"
+                    class="relative z-10 space-y-8"
+                >
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Input Nome -->
+                        <div class="input-group relative">
+                            <input
+                                type="text"
+                                id="nome"
+                                class="w-full bg-[#F8F5ED] text-[#000000] border-2 border-transparent rounded-xl px-5 pt-7 pb-3 text-sm md:text-base font-bold focus:outline-none focus:border-[#FDD017] transition-colors peer shadow-inner"
+                                placeholder=" "
+                                required
+                            />
+                            <label
+                                for="nome"
+                                class="absolute left-5 top-5 text-[#000000]/60 text-sm md:text-base font-bold transition-all peer-focus:text-[10px] peer-focus:top-2 peer-focus:text-[#000000]/80 pointer-events-none uppercase tracking-widest"
+                                >Nome Completo</label
+                            >
+                            <Icon
+                                name="check"
+                                class="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#FDD017] opacity-0 scale-0 transition-all duration-300 input-check"
+                            />
+                        </div>
+
+                        <!-- Input Telefone -->
+                        <div class="input-group relative">
+                            <input
+                                type="tel"
+                                id="telefone"
+                                class="w-full bg-[#F8F5ED] text-[#000000] border-2 border-transparent rounded-xl px-5 pt-7 pb-3 text-sm md:text-base font-bold focus:outline-none focus:border-[#FDD017] transition-colors peer shadow-inner mask-phone"
+                                placeholder=" "
+                                required
+                            />
+                            <label
+                                for="telefone"
+                                class="absolute left-5 top-5 text-[#000000]/60 text-sm md:text-base font-bold transition-all peer-focus:text-[10px] peer-focus:top-2 peer-focus:text-[#000000]/80 pointer-events-none uppercase tracking-widest"
+                                >WhatsApp</label
+                            >
+                            <Icon
+                                name="check"
+                                class="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#FDD017] opacity-0 scale-0 transition-all duration-300 input-check"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Input E-mail -->
+                    <div class="input-group relative">
+                        <input
+                            type="email"
+                            id="email"
+                            class="w-full bg-[#F8F5ED] text-[#000000] border-2 border-transparent rounded-xl px-5 pt-7 pb-3 text-sm md:text-base font-bold focus:outline-none focus:border-[#FDD017] transition-colors peer shadow-inner"
+                            placeholder=" "
+                            required
+                        />
+                        <label
+                            for="email"
+                            class="absolute left-5 top-5 text-[#000000]/60 text-sm md:text-base font-bold transition-all peer-focus:text-[10px] peer-focus:top-2 peer-focus:text-[#000000]/80 pointer-events-none uppercase tracking-widest"
+                            >E-mail</label
+                        >
+                        <Icon
+                            name="check"
+                            class="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#FDD017] opacity-0 scale-0 transition-all duration-300 input-check"
+                        />
+                    </div>
+
+                    <!-- Input Problema (Sugestões Animadas) -->
+                    <div class="input-group relative problem-group">
+                        <textarea
+                            id="problema"
+                            rows="3"
+                            class="w-full bg-[#F8F5ED] text-[#000000] border-2 border-transparent rounded-xl px-5 pt-8 pb-3 text-sm md:text-base font-bold focus:outline-none focus:border-[#FDD017] transition-colors peer shadow-inner resize-none"
+                            placeholder=" "
+                            required
+                        ></textarea>
+                        <label
+                            for="problema"
+                            class="absolute left-5 top-5 text-[#000000]/60 text-sm md:text-base font-bold transition-all peer-focus:text-[10px] peer-focus:top-2 peer-focus:text-[#000000]/80 pointer-events-none uppercase tracking-widest"
+                            >Qual problema seu sistema apresenta?</label
+                        >
+                        <Icon
+                            name="check"
+                            class="absolute right-5 top-5 w-5 h-5 text-[#FDD017] opacity-0 scale-0 transition-all duration-300 input-check"
+                        />
+
+                        <!-- Sugestões Animadas -->
+                        <div
+                            class="absolute left-5 bottom-3 right-10 flex gap-2 overflow-x-auto no-scrollbar suggestions-container pointer-events-none transition-opacity duration-300"
+                        >
+                            <span
+                                class="text-[10px] font-bold bg-[#000000]/10 text-[#000000]/60 px-2 py-1 rounded-md whitespace-nowrap animate-pulse cursor-pointer pointer-events-auto"
+                                >Inversor Desarmando</span
+                            >
+                            <span
+                                class="text-[10px] font-bold bg-[#000000]/10 text-[#000000]/60 px-2 py-1 rounded-md whitespace-nowrap animate-pulse cursor-pointer pointer-events-auto"
+                                style="animation-delay: 0.5s;"
+                                >Queda na Geração</span
+                            >
+                            <span
+                                class="text-[10px] font-bold bg-[#000000]/10 text-[#000000]/60 px-2 py-1 rounded-md whitespace-nowrap animate-pulse cursor-pointer pointer-events-auto"
+                                style="animation-delay: 1s;"
+                                >Sujeira Excessiva</span
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button
+                        type="button"
+                        id="submit-btn"
+                        class="w-full bg-[#FDD017] text-[#000000] py-4 rounded-xl font-black text-[11px] md:text-sm tracking-widest md:tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_40px_rgba(253,208,23,0.4)] hover:bg-[#ffdf4d] hover:-translate-y-1 relative overflow-hidden group flex items-center justify-center min-h-[4rem]"
+                    >
+                        <span
+                            class="btn-text relative z-10 flex items-center justify-center gap-2 w-full px-4"
+                        >
+                            <span>Enviar para WhatsApp</span>
+                            <Icon
+                                name="arrow-right"
+                                class="w-4 h-4 shrink-0 group-hover:translate-x-2 transition-transform"
+                            />
+                        </span>
+                        <span
+                            class="btn-loader absolute inset-0 flex items-center justify-center opacity-0 scale-50 transition-all duration-300"
+                        >
+                            <Icon
+                                name="settings"
+                                class="w-6 h-6 animate-spin text-[#000000]"
+                            />
+                        </span>
+                        <div
+                            class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"
+                        >
+                        </div>
+                    </button>
+
+                    <!-- Success Message -->
+                    <div
+                        id="success-msg"
+                        class="hidden text-center text-[#FDD017] font-bold text-sm tracking-widest uppercase mt-4 animate-fade-in flex items-center justify-center gap-2"
+                    >
+                        <Icon name="check-circle" class="w-5 h-5" /> Redirecionando
+                        para o WhatsApp...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Canais de Contato Direto & Info -->
+            <div
+                class="lg:col-span-5 flex flex-col gap-10 contato-info opacity-0 translate-y-12"
+            >
+                <!-- WhatsApp Buttons -->
+                <div class="space-y-6">
+                    <h3
+                        class="text-2xl font-bold text-[#F8F5ED] flex items-center gap-3"
+                    >
+                        <Icon
+                            name="message-square"
+                            class="w-6 h-6 text-[#FDD017]"
+                        /> Fale Conosco via WhatsApp:
+                    </h3>
+
+                    <div class="grid gap-4">
+                        <!-- Botão Único WhatsApp -->
+                        <button
+                            type="button"
+                            id="btn-whatsapp-simples"
+                            class="w-full text-left group bg-[#FDD017] text-[#000000] p-4 rounded-2xl flex items-center gap-5 hover:bg-[#ffdf4d] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(253,208,23,0.3)] animate-pulse-subtle"
+                        >
+                            <div
+                                class="w-12 h-12 bg-[#000000]/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#000000]/20 transition-colors"
+                            >
+                                <svg
+                                    class="w-7 h-7 group-hover:animate-wave origin-bottom"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                ><path
+                                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-black text-lg">
+                                    Falar com Especialista
+                                </h4>
+                                <p
+                                    class="text-[10px] font-bold text-[#000000]/70 uppercase tracking-widest mt-0.5"
+                                >
+                                    Atendimento em todo o Espírito Santo
+                                </p>
+                            </div>
+                            <Icon
+                                name="arrow-up-right"
+                                class="w-6 h-6 ml-auto opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"
+                            />
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Informações de Apoio -->
+                <div
+                    class="mt-4 space-y-4 bg-white/5 border border-white/10 rounded-[2rem] p-8 backdrop-blur-md"
+                >
+                    <div class="flex items-center gap-4 text-[#F8F5ED]">
+                        <div
+                            class="w-10 h-10 rounded-full bg-[#FDD017]/10 flex items-center justify-center shrink-0"
+                        >
+                            <Icon
+                                name="clock"
+                                class="w-5 h-5 text-[#FDD017]"
+                            />
+                        </div>
+                        <div>
+                            <h5
+                                class="text-xs font-bold text-[#FDD017] tracking-widest uppercase mb-1"
+                            >
+                                Horário de Funcionamento
+                            </h5>
+                            <p class="text-sm font-medium opacity-80">
+                                Seg - Sex: 7h às 18h | Sáb: 7h às 12h
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 text-[#F8F5ED]">
+                        <div
+                            class="w-10 h-10 rounded-full bg-[#FDD017]/10 flex items-center justify-center shrink-0"
+                        >
+                            <Icon
+                                name="mail"
+                                class="w-5 h-5 text-[#FDD017]"
+                            />
+                        </div>
+                        <div class="min-w-0">
+                            <h5
+                                class="text-xs font-bold text-[#FDD017] tracking-widest uppercase mb-1"
+                            >
+                                E-mail Comercial
+                            </h5>
+                            <p
+                                class="text-sm font-medium opacity-80 break-all"
+                            >
+                                contato@evolutionmanutencoes.com.br
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mensagem Final Animada -->
+                <div class="mt-4 flex items-center gap-3">
+                    <span class="relative flex h-3 w-3">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FDD017] opacity-75"
+                        ></span>
+                        <span
+                            class="relative inline-flex rounded-full h-3 w-3 bg-[#FDD017]"
+                        ></span>
+                    </span>
+                    <p
+                        class="text-sm md:text-base font-bold text-[#F8F5ED] tracking-wide"
+                    >
+                        Sua energia está esperando para evoluir. <span
+                            class="text-[#FDD017]"
+                            >Dê o primeiro passo!</span
+                        >
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* --- 5ª DOBRA (CONTATO) --- */
+    .input-group input:not(:placeholder-shown) + label,
+    .input-group textarea:not(:placeholder-shown) + label {
+        top: 0.5rem;
+        font-size: 10px;
+        color: rgba(0, 0, 0, 0.8);
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    @keyframes wave {
+        0%,
+        100% {
+            transform: rotate(0deg);
+        }
+        25% {
+            transform: rotate(-10deg);
+        }
+        50% {
+            transform: rotate(10deg);
+        }
+        75% {
+            transform: rotate(-10deg);
+        }
+    }
+    .animate-wave {
+        animation: wave 1s ease-in-out infinite;
+    }
+
+    @keyframes pulse-subtle {
+        0%,
+        100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.01);
+        }
+    }
+    .animate-pulse-subtle {
+        animation: pulse-subtle 3s infinite ease-in-out;
+    }
+
+    @keyframes fade-in {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .animate-fade-in {
+        animation: fade-in 0.5s ease-out forwards;
+    }
+</style>
+
+<script>
+    // --- FORMULÁRIO INTERAÇÕES COM BINDING PROGRAMÁTICO ---
+    
+    // Funcionalidade de Label Flutuante e Ícone Check
+    const inputs = document.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>("#evolution-form input, #evolution-form textarea");
+    
+    inputs.forEach((input) => {
+        const checkInput = (el: HTMLInputElement | HTMLTextAreaElement) => {
+            const checkIcon = el.parentElement?.querySelector(".input-check");
+            if (el.value.trim() !== "") {
+                if (checkIcon) {
+                    checkIcon.classList.remove("opacity-0", "scale-0");
+                    checkIcon.classList.add("opacity-100", "scale-100");
+                }
+            } else {
+                if (checkIcon) {
+                    checkIcon.classList.add("opacity-0", "scale-0");
+                    checkIcon.classList.remove("opacity-100", "scale-100");
+                }
+            }
+        };
+
+        input.addEventListener("input", () => checkInput(input));
+        // Executa inicialmente caso o navegador pré-preencha
+        checkInput(input);
+    });
+
+    // Esconder Sugestões ao digitar no problema
+    const problemaTextarea = document.getElementById("problema") as HTMLTextAreaElement | null;
+    const suggestions = document.querySelector(".suggestions-container");
+
+    if (problemaTextarea) {
+        problemaTextarea.addEventListener("input", () => {
+            if (suggestions) {
+                suggestions.classList.add("opacity-0");
+            }
+        });
+    }
+
+    // Clique nas Sugestões preenche o textarea automaticamente
+    const chipSuggestions = document.querySelectorAll(".suggestions-container span");
+    chipSuggestions.forEach((chip) => {
+        chip.addEventListener("click", () => {
+            if (problemaTextarea) {
+                problemaTextarea.value = chip.textContent || "";
+                problemaTextarea.dispatchEvent(new Event("input"));
+                if (suggestions) {
+                    suggestions.classList.add("opacity-0");
+                }
+            }
+        });
+    });
+
+    // Phone Mask
+    const phoneInput = document.getElementById("telefone") as HTMLInputElement | null;
+    if (phoneInput) {
+        phoneInput.addEventListener("input", function (e) {
+            const target = e.target as HTMLInputElement;
+            let x = target.value
+                .replace(/\D/g, "")
+                .match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+            if (x) {
+                target.value = !x[2]
+                    ? x[1]
+                    : "(" + x[1] + ") " + x[2] + (x[3] ? "-" + x[3] : "");
+            }
+        });
+    }
+
+    // Submit do Formulário
+    const submitBtn = document.getElementById("submit-btn");
+    
+    if (submitBtn) {
+        submitBtn.addEventListener("click", () => {
+            const btnText = submitBtn.querySelector(".btn-text");
+            const btnLoader = submitBtn.querySelector(".btn-loader");
+            const successMsg = document.getElementById("success-msg");
+
+            if (!btnText || !btnLoader || !successMsg) return;
+
+            // Collect Form Data
+            const nomeInput = (document.getElementById("nome") as HTMLInputElement)?.value || "";
+            const nome = nomeInput.trim() !== "" ? nomeInput : "Cliente";
+            const problemaInput = (document.getElementById("problema") as HTMLTextAreaElement)?.value || "";
+            const problema =
+                problemaInput.trim() !== ""
+                    ? problemaInput
+                    : "Gostaria de um orçamento para minha usina solar.";
+
+            // Create WhatsApp Message
+            const text = `Olá, Evolution Manutenção! Meu nome é *${nome}*.\n\nPreciso de ajuda com o seguinte:\n_${problema}_`;
+            const encodedText = encodeURIComponent(text);
+            const whatsappUrl = `https://wa.me/5527999999999?text=${encodedText}`;
+
+            // Show loader
+            btnText.classList.add("opacity-0");
+            btnLoader.classList.remove("opacity-0", "scale-50");
+            btnLoader.classList.add("opacity-100", "scale-100");
+
+            setTimeout(() => {
+                // Hide loader
+                btnText.classList.remove("opacity-0");
+                btnLoader.classList.add("opacity-0", "scale-50");
+                btnLoader.classList.remove("opacity-100", "scale-100");
+
+                // Show success message temporarily
+                successMsg.classList.remove("hidden");
+                setTimeout(() => successMsg.classList.add("hidden"), 3000);
+
+                // Redirect to WhatsApp in new tab
+                window.open(whatsappUrl, "_blank");
+            }, 800);
+        });
+    }
+
+    // Botão de WhatsApp Simples Comercial
+    const btnWhatsSimples = document.getElementById("btn-whatsapp-simples");
+    if (btnWhatsSimples) {
+        btnWhatsSimples.addEventListener("click", (e) => {
+            e.preventDefault();
+            const text = `Olá, Evolution Manutenção! Gostaria de falar com um especialista.`;
+            const encodedText = encodeURIComponent(text);
+            const whatsappUrl = `https://wa.me/5527999999999?text=${encodedText}`;
+            window.open(whatsappUrl, "_blank");
+        });
+    }
+</script>

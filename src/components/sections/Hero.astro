@@ -1,0 +1,133 @@
+---
+import Icon from "../Icon.astro";
+---
+
+<main
+    class="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-8 w-full max-w-5xl mx-auto text-center pb-12"
+>
+    <!-- Badge -->
+    <div
+        class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#FDD017]/30 bg-[#FDD017]/5 backdrop-blur-sm mb-6 opacity-0"
+        id="badge-animate"
+    >
+        <span class="relative flex h-2 w-2">
+            <span
+                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FDD017] opacity-75"
+            ></span>
+            <span
+                class="relative inline-flex rounded-full h-2 w-2 bg-[#FDD017]"
+            ></span>
+        </span>
+        <span
+            class="text-[10px] font-bold tracking-widest uppercase text-[#FDD017]"
+            >A Nova Era da Manutenção</span
+        >
+    </div>
+
+    <!-- Headline -->
+    <h1
+        class="text-[1.75rem] md:text-5xl lg:text-[4rem] font-extrabold leading-tight tracking-tight mb-6 min-h-[120px] md:min-h-[140px] flex items-center justify-center flex-wrap px-2"
+    >
+        <span id="headline"></span><span class="typewriter-cursor"></span>
+    </h1>
+
+    <!-- Subheadline -->
+    <p
+        class="text-sm sm:text-base md:text-xl font-medium text-white/70 max-w-2xl leading-relaxed mb-10 opacity-0 px-2"
+        id="subheadline"
+    >
+        Especialistas em manutenção que transformam problemas em <span
+            class="text-[#F8F5ED] font-bold relative inline-block"
+            >potência<span
+                class="absolute bottom-1 left-0 w-full h-1 bg-[#FDD017]/40 -z-10"
+            ></span>
+        </span> e tranquilidade.
+    </p>
+
+    <!-- CTA (Hero Pattern do DS) -->
+    <div class="opacity-0 mb-12" id="cta-animate">
+        <a
+            class="group isolate inline-flex cursor-pointer overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_10px_rgba(253,208,23,0.35)] bg-gradient-to-b from-[#F8F5ED]/10 via-[#F8F5ED]/0 to-[#F8F5ED]/5 rounded-full relative shadow-[0_0_20px_rgba(253,208,23,0.2),0_4px_30px_rgba(253,208,23,0.1)]"
+            href="#contato"
+        >
+            <!-- Borda Giratória (Spin Animation) -->
+            <div
+                class="absolute inset-0 overflow-hidden rounded-full"
+            >
+                <div
+                    class="absolute inset-[-100%] w-[300%] h-[300%] left-[-100%] top-[-100%] animate-[spin_4s_linear_infinite]"
+                    style="background: conic-gradient(from 0deg, transparent 0deg, transparent 80deg, rgba(253,208,23,0.9) 180deg, transparent 280deg, transparent 360deg);"
+                >
+                </div>
+            </div>
+            <!-- Fundo Escuro Interno -->
+            <div
+                class="absolute inset-[1px] rounded-full backdrop-blur-xl z-0 bg-[#000000]/90"
+            >
+            </div>
+
+            <!-- Conteúdo Interno -->
+            <div
+                class="z-10 flex gap-4 sm:w-auto overflow-hidden w-full rounded-full pt-3 pr-5 pb-3 pl-4 relative items-center"
+            >
+                <!-- Ícone com Gradiente (Melhoria Criativa) -->
+                <div
+                    class="relative z-20 w-8 h-8 rounded-full bg-gradient-to-b from-[#FDD017] to-yellow-600 flex items-center justify-center shadow-lg shadow-[#FDD017]/30 ring-1 ring-white/20 group-hover:rotate-180 transition-transform duration-700"
+                >
+                    <Icon
+                        name="sun"
+                        class="w-4 h-4 text-[#000000]"
+                        fill="#000000"
+                    />
+                </div>
+
+                <!-- Texto -->
+                <span
+                    class="whitespace-nowrap relative z-10 font-bold tracking-widest text-sm md:text-base text-[#F8F5ED]/95 group-hover:text-[#FDD017] transition-colors uppercase"
+                    >Falar com Especialista</span
+                >
+
+                <!-- Seta Direita -->
+                <span
+                    class="inline-flex items-center justify-center z-10 bg-white/10 w-7 h-7 rounded-full ml-1 relative group-hover:translate-x-1 group-hover:bg-[#FDD017] group-hover:text-[#000000] transition-all duration-300 text-white/80"
+                >
+                    <Icon name="arrow-right" class="w-3.5 h-3.5" />
+                </span>
+            </div>
+        </a>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div
+        class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-0 cursor-pointer hover:scale-110 transition-transform"
+        id="scroll-indicator"
+        onclick="document.getElementById('diferenciais').scrollIntoView({behavior: 'smooth'})"
+    >
+        <Icon
+            name="chevron-down"
+            class="w-8 h-8 text-[#FDD017] animate-bounce"
+        />
+    </div>
+</main>
+
+<style>
+    .typewriter-cursor {
+        display: inline-block;
+        width: 4px;
+        height: 0.9em;
+        background-color: #fdd017;
+        margin-left: 6px;
+        animation: blink 0.8s step-end infinite;
+        transform: translateY(2px);
+        box-shadow: 0 0 8px #fdd017;
+    }
+    @keyframes blink {
+        0%,
+        100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0;
+        }
+    }
+</style>
