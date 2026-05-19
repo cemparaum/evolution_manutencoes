@@ -18,7 +18,10 @@ import Icon from "../components/Icon.astro";
             type="image/svg+xml"
             href="/evolution_manutencoes/raw_file/LOGOBRUTOsvg.svg"
         />
-        <link rel="shortcut icon" href="/evolution_manutencoes/raw_file/LOGOBRUTOsvg.svg" />
+        <link
+            rel="shortcut icon"
+            href="/evolution_manutencoes/raw_file/LOGOBRUTOsvg.svg"
+        />
         <!-- Preconnects -->
         <link
             rel="preconnect"
@@ -386,7 +389,7 @@ import Icon from "../components/Icon.astro";
         </style>
 
         <!-- Google Tag Manager (Lazy Load Otimizado para Lighthouse) -->
-        <script is:inline>
+        <script>
             const loadGTM = () => {
                 if (window.gtmLoaded) return;
                 window.gtmLoaded = true;
@@ -1142,51 +1145,120 @@ import Icon from "../components/Icon.astro";
 
                 <!-- Grade de Cards Premium -->
                 <style>
-                    .hide-scrollbar::-webkit-scrollbar { display: none; }
-                    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+                    .hide-scrollbar::-webkit-scrollbar {
+                        display: none;
+                    }
+                    .hide-scrollbar {
+                        -ms-overflow-style: none;
+                        scrollbar-width: none;
+                    }
                 </style>
-                <div 
+                <div
                     id="servicos-grid"
                     class="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-6 hide-scrollbar px-4 md:px-0 py-8 scroll-smooth"
                 >
                     <!-- Card 1: Manutenção Preventiva -->
-                    <div class="card-container w-[85vw] max-w-[350px] md:max-w-none md:w-full shrink-0 snap-center h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer">
-                        <div class="card-flipper shadow-2xl hover:shadow-[0_40px_80px_-20px_rgba(253,208,23,0.25)] rounded-[2.5rem]">
+                    <div
+                        class="card-container w-[85vw] max-w-[350px] md:max-w-none md:w-full shrink-0 snap-center h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer"
+                    >
+                        <div
+                            class="card-flipper shadow-2xl hover:shadow-[0_40px_80px_-20px_rgba(253,208,23,0.25)] rounded-[2.5rem]"
+                        >
                             <!-- Front (True Glassmorphism) -->
-                            <div class="card-front bg-[#111111]/40 backdrop-blur-3xl border border-white/10 p-10 flex flex-col justify-between overflow-hidden">
+                            <div
+                                class="card-front bg-[#111111]/40 backdrop-blur-3xl border border-white/10 p-10 flex flex-col justify-between overflow-hidden"
+                            >
                                 <!-- Reflexos de vidro e luz -->
-                                <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-30 pointer-events-none"></div>
-                                <div class="absolute -top-32 -left-32 w-80 h-80 bg-[#FDD017]/20 blur-[80px] rounded-full pointer-events-none animate-pulse"></div>
-                                
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-30 pointer-events-none"
+                                >
+                                </div>
+                                <div
+                                    class="absolute -top-32 -left-32 w-80 h-80 bg-[#FDD017]/20 blur-[80px] rounded-full pointer-events-none animate-pulse"
+                                >
+                                </div>
+
                                 <!-- Ícones em Camadas -->
-                                <div class="relative w-full h-48 flex items-center justify-center mt-4">
-                                    <div class="absolute w-20 h-20 bg-[#FDD017]/30 rounded-full blur-[30px] animate-pulse"></div>
-                                    <div class="relative z-10 w-28 h-28 bg-white/5 backdrop-blur-xl border border-white/20 rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] flex items-center justify-center transform group-hover:scale-110 transition-transform duration-700">
-                                        <Icon name="shield-check" class="w-14 h-14 text-[#FDD017]" />
+                                <div
+                                    class="relative w-full h-48 flex items-center justify-center mt-4"
+                                >
+                                    <div
+                                        class="absolute w-20 h-20 bg-[#FDD017]/30 rounded-full blur-[30px] animate-pulse"
+                                    >
                                     </div>
-                                    <div class="absolute top-2 right-4 animate-float-slow">
-                                        <div class="w-12 h-12 bg-white/5 backdrop-blur-lg rounded-full flex items-center justify-center shadow-lg border border-white/20">
-                                            <Icon name="search" class="w-5 h-5 text-white" />
+                                    <div
+                                        class="relative z-10 w-28 h-28 bg-white/5 backdrop-blur-xl border border-white/20 rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] flex items-center justify-center transform group-hover:scale-110 transition-transform duration-700"
+                                    >
+                                        <Icon
+                                            name="shield-check"
+                                            class="w-14 h-14 text-[#FDD017]"
+                                        />
+                                    </div>
+                                    <div
+                                        class="absolute top-2 right-4 animate-float-slow"
+                                    >
+                                        <div
+                                            class="w-12 h-12 bg-white/5 backdrop-blur-lg rounded-full flex items-center justify-center shadow-lg border border-white/20"
+                                        >
+                                            <Icon
+                                                name="search"
+                                                class="w-5 h-5 text-white"
+                                            />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="relative z-10">
-                                    <div class="w-12 h-1.5 bg-[#FDD017] mb-6 rounded-full shadow-[0_0_15px_rgba(253,208,23,0.4)]"></div>
-                                    <h3 class="text-[28px] font-black text-white tracking-tight leading-none mb-3">Manutenção<br/>Preventiva</h3>
-                                    <p class="text-[#FDD017]/80 font-bold uppercase tracking-[0.15em] text-[10px]">INSPEÇÃO & BLINDAGEM</p>
+                                    <div
+                                        class="w-12 h-1.5 bg-[#FDD017] mb-6 rounded-full shadow-[0_0_15px_rgba(253,208,23,0.4)]"
+                                    >
+                                    </div>
+                                    <h3
+                                        class="text-[28px] font-black text-white tracking-tight leading-none mb-3"
+                                    >
+                                        Manutenção<br />Preventiva
+                                    </h3>
+                                    <p
+                                        class="text-[#FDD017]/80 font-bold uppercase tracking-[0.15em] text-[10px]"
+                                    >
+                                        INSPEÇÃO & BLINDAGEM
+                                    </p>
                                 </div>
                             </div>
                             <!-- Back (Dark) -->
-                            <div class="card-back bg-[#0A0A0A] border border-[#FDD017]/30 p-10 flex flex-col justify-between overflow-hidden">
-                                <div class="absolute inset-0 opacity-[0.15]" style="background-image: radial-gradient(#FDD017 1px, transparent 1px); background-size: 24px 24px;"></div>
-                                <div class="relative z-10">
-                                    <div class="w-14 h-14 rounded-2xl bg-[#FDD017]/10 flex items-center justify-center mb-8 border border-[#FDD017]/20">
-                                        <Icon name="shield" class="w-7 h-7 text-[#FDD017]" />
-                                    </div>
-                                    <h3 class="text-3xl font-black text-white mb-4 leading-tight">Prevenção<br/>Total</h3>
-                                    <p class="text-white/60 font-medium leading-relaxed text-sm">Inspeções termográficas e análises profundas que localizam microfissuras e falhas invisíveis a olho nu, garantindo 100% de performance contínua.</p>
+                            <div
+                                class="card-back bg-[#0A0A0A] border border-[#FDD017]/30 p-10 flex flex-col justify-between overflow-hidden"
+                            >
+                                <div
+                                    class="absolute inset-0 opacity-[0.15]"
+                                    style="background-image: radial-gradient(#FDD017 1px, transparent 1px); background-size: 24px 24px;"
+                                >
                                 </div>
-                                <button class="relative z-10 w-full bg-[#FDD017] text-[#000000] py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_30px_rgba(253,208,23,0.3)] hover:bg-[#ffdf4d]">
+                                <div class="relative z-10">
+                                    <div
+                                        class="w-14 h-14 rounded-2xl bg-[#FDD017]/10 flex items-center justify-center mb-8 border border-[#FDD017]/20"
+                                    >
+                                        <Icon
+                                            name="shield"
+                                            class="w-7 h-7 text-[#FDD017]"
+                                        />
+                                    </div>
+                                    <h3
+                                        class="text-3xl font-black text-white mb-4 leading-tight"
+                                    >
+                                        Prevenção<br />Total
+                                    </h3>
+                                    <p
+                                        class="text-white/60 font-medium leading-relaxed text-sm"
+                                    >
+                                        Inspeções termográficas e análises
+                                        profundas que localizam microfissuras e
+                                        falhas invisíveis a olho nu, garantindo
+                                        100% de performance contínua.
+                                    </p>
+                                </div>
+                                <button
+                                    class="relative z-10 w-full bg-[#FDD017] text-[#000000] py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_30px_rgba(253,208,23,0.3)] hover:bg-[#ffdf4d]"
+                                >
                                     Saiba Mais
                                 </button>
                             </div>
@@ -1194,43 +1266,108 @@ import Icon from "../components/Icon.astro";
                     </div>
 
                     <!-- Card 2: Manutenção Corretiva -->
-                    <div class="card-container w-[85vw] max-w-[350px] md:max-w-none md:w-full shrink-0 snap-center h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer">
-                        <div class="card-flipper shadow-2xl hover:shadow-[0_40px_80px_-20px_rgba(253,208,23,0.25)] rounded-[2.5rem]">
+                    <div
+                        class="card-container w-[85vw] max-w-[350px] md:max-w-none md:w-full shrink-0 snap-center h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer"
+                    >
+                        <div
+                            class="card-flipper shadow-2xl hover:shadow-[0_40px_80px_-20px_rgba(253,208,23,0.25)] rounded-[2.5rem]"
+                        >
                             <!-- Front (True Glassmorphism) -->
-                            <div class="card-front bg-[#111111]/40 backdrop-blur-3xl border border-white/10 p-10 flex flex-col justify-between overflow-hidden">
+                            <div
+                                class="card-front bg-[#111111]/40 backdrop-blur-3xl border border-white/10 p-10 flex flex-col justify-between overflow-hidden"
+                            >
                                 <!-- Reflexos de vidro e luz -->
-                                <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-30 pointer-events-none"></div>
-                                <div class="absolute -top-32 -left-32 w-80 h-80 bg-[#FDD017]/20 blur-[80px] rounded-full pointer-events-none animate-pulse"></div>
-                                
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-30 pointer-events-none"
+                                >
+                                </div>
+                                <div
+                                    class="absolute -top-32 -left-32 w-80 h-80 bg-[#FDD017]/20 blur-[80px] rounded-full pointer-events-none animate-pulse"
+                                >
+                                </div>
+
                                 <!-- Ícones em Camadas -->
-                                <div class="relative w-full h-48 flex items-center justify-center mt-4">
-                                    <div class="absolute w-20 h-20 bg-[#FDD017]/30 rounded-full blur-[30px] animate-pulse"></div>
-                                    <div class="relative z-10 w-28 h-28 bg-white/5 backdrop-blur-xl border border-white/20 rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] flex items-center justify-center transform group-hover:scale-110 transition-transform duration-700">
-                                        <Icon name="zap" class="w-14 h-14 text-[#FDD017]" />
+                                <div
+                                    class="relative w-full h-48 flex items-center justify-center mt-4"
+                                >
+                                    <div
+                                        class="absolute w-20 h-20 bg-[#FDD017]/30 rounded-full blur-[30px] animate-pulse"
+                                    >
                                     </div>
-                                    <div class="absolute bottom-4 left-6 animate-float-delayed">
-                                        <div class="w-12 h-12 bg-white/5 backdrop-blur-lg rounded-full flex items-center justify-center shadow-lg border border-white/20">
-                                            <Icon name="wrench" class="w-5 h-5 text-white" />
+                                    <div
+                                        class="relative z-10 w-28 h-28 bg-white/5 backdrop-blur-xl border border-white/20 rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] flex items-center justify-center transform group-hover:scale-110 transition-transform duration-700"
+                                    >
+                                        <Icon
+                                            name="zap"
+                                            class="w-14 h-14 text-[#FDD017]"
+                                        />
+                                    </div>
+                                    <div
+                                        class="absolute bottom-4 left-6 animate-float-delayed"
+                                    >
+                                        <div
+                                            class="w-12 h-12 bg-white/5 backdrop-blur-lg rounded-full flex items-center justify-center shadow-lg border border-white/20"
+                                        >
+                                            <Icon
+                                                name="wrench"
+                                                class="w-5 h-5 text-white"
+                                            />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="relative z-10">
-                                    <div class="w-12 h-1.5 bg-[#FDD017] mb-6 rounded-full shadow-[0_0_15px_rgba(253,208,23,0.4)]"></div>
-                                    <h3 class="text-[28px] font-black text-white tracking-tight leading-none mb-3">Manutenção<br/>Corretiva</h3>
-                                    <p class="text-[#FDD017]/80 font-bold uppercase tracking-[0.15em] text-[10px]">INTERVENÇÃO IMEDIATA</p>
+                                    <div
+                                        class="w-12 h-1.5 bg-[#FDD017] mb-6 rounded-full shadow-[0_0_15px_rgba(253,208,23,0.4)]"
+                                    >
+                                    </div>
+                                    <h3
+                                        class="text-[28px] font-black text-white tracking-tight leading-none mb-3"
+                                    >
+                                        Manutenção<br />Corretiva
+                                    </h3>
+                                    <p
+                                        class="text-[#FDD017]/80 font-bold uppercase tracking-[0.15em] text-[10px]"
+                                    >
+                                        INTERVENÇÃO IMEDIATA
+                                    </p>
                                 </div>
                             </div>
                             <!-- Back (Dark) -->
-                            <div class="card-back bg-[#0A0A0A] border border-[#FDD017]/30 p-10 flex flex-col justify-between overflow-hidden">
-                                <div class="absolute inset-0 opacity-[0.15]" style="background-image: radial-gradient(#FDD017 1px, transparent 1px); background-size: 24px 24px;"></div>
-                                <div class="relative z-10">
-                                    <div class="w-14 h-14 rounded-2xl bg-[#FDD017]/10 flex items-center justify-center mb-8 border border-[#FDD017]/20">
-                                        <Icon name="power" class="w-7 h-7 text-[#FDD017]" />
-                                    </div>
-                                    <h3 class="text-3xl font-black text-white mb-4 leading-tight">Resposta<br/>Imediata</h3>
-                                    <p class="text-white/60 font-medium leading-relaxed text-sm">Problemas acontecem. Nossa equipe técnica de elite entra em ação rapidamente para consertar inversores e módulos, reduzindo seu tempo de inatividade a zero.</p>
+                            <div
+                                class="card-back bg-[#0A0A0A] border border-[#FDD017]/30 p-10 flex flex-col justify-between overflow-hidden"
+                            >
+                                <div
+                                    class="absolute inset-0 opacity-[0.15]"
+                                    style="background-image: radial-gradient(#FDD017 1px, transparent 1px); background-size: 24px 24px;"
+                                >
                                 </div>
-                                <button class="relative z-10 w-full bg-[#FDD017] text-[#000000] py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_30px_rgba(253,208,23,0.3)] hover:bg-[#ffdf4d]">
+                                <div class="relative z-10">
+                                    <div
+                                        class="w-14 h-14 rounded-2xl bg-[#FDD017]/10 flex items-center justify-center mb-8 border border-[#FDD017]/20"
+                                    >
+                                        <Icon
+                                            name="power"
+                                            class="w-7 h-7 text-[#FDD017]"
+                                        />
+                                    </div>
+                                    <h3
+                                        class="text-3xl font-black text-white mb-4 leading-tight"
+                                    >
+                                        Resposta<br />Imediata
+                                    </h3>
+                                    <p
+                                        class="text-white/60 font-medium leading-relaxed text-sm"
+                                    >
+                                        Problemas acontecem. Nossa equipe
+                                        técnica de elite entra em ação
+                                        rapidamente para consertar inversores e
+                                        módulos, reduzindo seu tempo de
+                                        inatividade a zero.
+                                    </p>
+                                </div>
+                                <button
+                                    class="relative z-10 w-full bg-[#FDD017] text-[#000000] py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_30px_rgba(253,208,23,0.3)] hover:bg-[#ffdf4d]"
+                                >
                                     Saiba Mais
                                 </button>
                             </div>
@@ -1238,48 +1375,119 @@ import Icon from "../components/Icon.astro";
                     </div>
 
                     <!-- Card 3: Limpeza Técnica -->
-                    <div class="card-container w-[85vw] max-w-[350px] md:max-w-none md:w-full shrink-0 snap-center h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer">
-                        <div class="card-flipper shadow-2xl hover:shadow-[0_40px_80px_-20px_rgba(253,208,23,0.25)] rounded-[2.5rem]">
+                    <div
+                        class="card-container w-[85vw] max-w-[350px] md:max-w-none md:w-full shrink-0 snap-center h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer"
+                    >
+                        <div
+                            class="card-flipper shadow-2xl hover:shadow-[0_40px_80px_-20px_rgba(253,208,23,0.25)] rounded-[2.5rem]"
+                        >
                             <!-- Front (True Glassmorphism) -->
-                            <div class="card-front bg-[#111111]/40 backdrop-blur-3xl border border-white/10 p-10 flex flex-col justify-between overflow-hidden">
+                            <div
+                                class="card-front bg-[#111111]/40 backdrop-blur-3xl border border-white/10 p-10 flex flex-col justify-between overflow-hidden"
+                            >
                                 <!-- Reflexos de vidro e luz -->
-                                <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-30 pointer-events-none"></div>
-                                <div class="absolute -top-32 -left-32 w-80 h-80 bg-[#FDD017]/20 blur-[80px] rounded-full pointer-events-none animate-pulse"></div>
-                                
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-30 pointer-events-none"
+                                >
+                                </div>
+                                <div
+                                    class="absolute -top-32 -left-32 w-80 h-80 bg-[#FDD017]/20 blur-[80px] rounded-full pointer-events-none animate-pulse"
+                                >
+                                </div>
+
                                 <!-- Ícones em Camadas -->
-                                <div class="relative w-full h-48 flex items-center justify-center mt-4">
-                                    <div class="absolute w-20 h-20 bg-[#FDD017]/30 rounded-full blur-[30px] animate-pulse"></div>
-                                    <div class="relative z-10 w-28 h-28 bg-white/5 backdrop-blur-xl border border-white/20 rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] flex items-center justify-center transform group-hover:scale-110 transition-transform duration-700">
-                                        <Icon name="droplets" class="w-14 h-14 text-[#FDD017]" />
+                                <div
+                                    class="relative w-full h-48 flex items-center justify-center mt-4"
+                                >
+                                    <div
+                                        class="absolute w-20 h-20 bg-[#FDD017]/30 rounded-full blur-[30px] animate-pulse"
+                                    >
                                     </div>
-                                    <div class="absolute top-2 right-4 animate-float-slow">
-                                        <div class="w-8 h-8 bg-white/5 backdrop-blur-lg rounded-full flex items-center justify-center shadow-lg border border-white/20">
-                                            <Icon name="sparkles" class="w-3 h-3 text-white" />
+                                    <div
+                                        class="relative z-10 w-28 h-28 bg-white/5 backdrop-blur-xl border border-white/20 rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] flex items-center justify-center transform group-hover:scale-110 transition-transform duration-700"
+                                    >
+                                        <Icon
+                                            name="droplets"
+                                            class="w-14 h-14 text-[#FDD017]"
+                                        />
+                                    </div>
+                                    <div
+                                        class="absolute top-2 right-4 animate-float-slow"
+                                    >
+                                        <div
+                                            class="w-8 h-8 bg-white/5 backdrop-blur-lg rounded-full flex items-center justify-center shadow-lg border border-white/20"
+                                        >
+                                            <Icon
+                                                name="sparkles"
+                                                class="w-3 h-3 text-white"
+                                            />
                                         </div>
                                     </div>
-                                    <div class="absolute bottom-6 left-8 animate-float-delayed">
-                                        <div class="w-10 h-10 bg-white/5 backdrop-blur-lg rounded-full flex items-center justify-center shadow-lg border border-white/20">
-                                            <Icon name="sun" class="w-4 h-4 text-white" />
+                                    <div
+                                        class="absolute bottom-6 left-8 animate-float-delayed"
+                                    >
+                                        <div
+                                            class="w-10 h-10 bg-white/5 backdrop-blur-lg rounded-full flex items-center justify-center shadow-lg border border-white/20"
+                                        >
+                                            <Icon
+                                                name="sun"
+                                                class="w-4 h-4 text-white"
+                                            />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="relative z-10">
-                                    <div class="w-12 h-1.5 bg-[#FDD017] mb-6 rounded-full shadow-[0_0_15px_rgba(253,208,23,0.4)]"></div>
-                                    <h3 class="text-[28px] font-black text-white tracking-tight leading-none mb-3">Limpeza<br/>Técnica</h3>
-                                    <p class="text-[#FDD017]/80 font-bold uppercase tracking-[0.15em] text-[10px]">LAVAGEM ESPECIALIZADA</p>
+                                    <div
+                                        class="w-12 h-1.5 bg-[#FDD017] mb-6 rounded-full shadow-[0_0_15px_rgba(253,208,23,0.4)]"
+                                    >
+                                    </div>
+                                    <h3
+                                        class="text-[28px] font-black text-white tracking-tight leading-none mb-3"
+                                    >
+                                        Limpeza<br />Técnica
+                                    </h3>
+                                    <p
+                                        class="text-[#FDD017]/80 font-bold uppercase tracking-[0.15em] text-[10px]"
+                                    >
+                                        LAVAGEM ESPECIALIZADA
+                                    </p>
                                 </div>
                             </div>
                             <!-- Back (Dark) -->
-                            <div class="card-back bg-[#0A0A0A] border border-[#FDD017]/30 p-10 flex flex-col justify-between overflow-hidden">
-                                <div class="absolute inset-0 opacity-[0.15]" style="background-image: radial-gradient(#FDD017 1px, transparent 1px); background-size: 24px 24px;"></div>
-                                <div class="relative z-10">
-                                    <div class="w-14 h-14 rounded-2xl bg-[#FDD017]/10 flex items-center justify-center mb-8 border border-[#FDD017]/20">
-                                        <Icon name="sun-medium" class="w-7 h-7 text-[#FDD017]" />
-                                    </div>
-                                    <h3 class="text-3xl font-black text-white mb-4 leading-tight">Potência<br/>Restaurada</h3>
-                                    <p class="text-white/60 font-medium leading-relaxed text-sm">Remoção meticulosa de sujidades usando produtos que não agridem os módulos, restaurando até 30% da potência perdida pela poeira.</p>
+                            <div
+                                class="card-back bg-[#0A0A0A] border border-[#FDD017]/30 p-10 flex flex-col justify-between overflow-hidden"
+                            >
+                                <div
+                                    class="absolute inset-0 opacity-[0.15]"
+                                    style="background-image: radial-gradient(#FDD017 1px, transparent 1px); background-size: 24px 24px;"
+                                >
                                 </div>
-                                <button class="relative z-10 w-full bg-[#FDD017] text-[#000000] py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_30px_rgba(253,208,23,0.3)] hover:bg-[#ffdf4d]">
+                                <div class="relative z-10">
+                                    <div
+                                        class="w-14 h-14 rounded-2xl bg-[#FDD017]/10 flex items-center justify-center mb-8 border border-[#FDD017]/20"
+                                    >
+                                        <Icon
+                                            name="sun-medium"
+                                            class="w-7 h-7 text-[#FDD017]"
+                                        />
+                                    </div>
+                                    <h3
+                                        class="text-3xl font-black text-white mb-4 leading-tight"
+                                    >
+                                        Potência<br />Restaurada
+                                    </h3>
+                                    <p
+                                        class="text-white/60 font-medium leading-relaxed text-sm"
+                                    >
+                                        Remoção meticulosa de sujidades usando
+                                        produtos que não agridem os módulos,
+                                        restaurando até 30% da potência perdida
+                                        pela poeira.
+                                    </p>
+                                </div>
+                                <button
+                                    class="relative z-10 w-full bg-[#FDD017] text-[#000000] py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_30px_rgba(253,208,23,0.3)] hover:bg-[#ffdf4d]"
+                                >
                                     Saiba Mais
                                 </button>
                             </div>
@@ -1288,9 +1496,14 @@ import Icon from "../components/Icon.astro";
                 </div>
 
                 <!-- Mobile Carousel Indicator -->
-                <div class="flex md:hidden flex-col items-center justify-center mt-6 opacity-0 translate-y-8 servico-indicator">
+                <div
+                    class="flex md:hidden flex-col items-center justify-center mt-6 opacity-0 translate-y-8 servico-indicator"
+                >
                     <div class="flex gap-2">
-                        <div class="w-8 h-1.5 rounded-full bg-[#FDD017] shadow-[0_0_10px_rgba(253,208,23,0.5)]"></div>
+                        <div
+                            class="w-8 h-1.5 rounded-full bg-[#FDD017] shadow-[0_0_10px_rgba(253,208,23,0.5)]"
+                        >
+                        </div>
                         <div class="w-3 h-1.5 rounded-full bg-white/20"></div>
                         <div class="w-3 h-1.5 rounded-full bg-white/20"></div>
                     </div>
@@ -2094,6 +2307,7 @@ import Icon from "../components/Icon.astro";
                             </div>
                             <img
                                 src="/evolution_manutencoes/raw_file/LOGOBRUTOsvg.svg"
+                                bli
                                 alt="Evolution Logo"
                                 loading="lazy"
                                 class="relative z-10 h-10 md:h-12 object-contain filter drop-shadow-lg"
@@ -2343,7 +2557,7 @@ import Icon from "../components/Icon.astro";
         </button>
 
         <!-- INITIALIZATION SCRIPT -->
-        <script is:inline>
+        <script>
             document.addEventListener("DOMContentLoaded", () => {
                 gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
