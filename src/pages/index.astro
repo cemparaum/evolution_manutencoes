@@ -186,9 +186,9 @@ import Footer from "../components/sections/Footer.astro";
                 // @ts-ignore
                 gsap.fromTo(
                     ".liquid-fill",
-                    { height: "0%" },
+                    { scaleY: 0, transformOrigin: "bottom" },
                     {
-                        height: "100%",
+                        scaleY: 1,
                         duration: 4.5,
                         ease: "power2.inOut",
                         repeat: -1,
@@ -226,43 +226,45 @@ import Footer from "../components/sections/Footer.astro";
         });
 
         // --- BENTO GRID 3D HOVER EFFECT ---
-        const bentoItems = document.querySelectorAll(".bento-item");
+        if (window.matchMedia("(hover: hover)").matches) {
+            const bentoItems = document.querySelectorAll(".bento-item");
 
-        bentoItems.forEach((item) => {
-            // Configura perspectiva para o efeito 3D
-            // @ts-ignore
-            gsap.set(item, { transformPerspective: 1000 });
-
-            item.addEventListener("mousemove", (e) => {
-                const mouseEvent = e as MouseEvent;
-                const rect = item.getBoundingClientRect();
-                // Posição do mouse relativa ao centro do card (-1 a 1)
-                const x = (mouseEvent.clientX - rect.left - rect.width / 2) / (rect.width / 2);
-                const y = (mouseEvent.clientY - rect.top - rect.height / 2) / (rect.height / 2);
-
-                // Rotaciona de forma equilibrada (máx 8 graus) e aplica scale sutil para elegância
+            bentoItems.forEach((item) => {
+                // Configura perspectiva para o efeito 3D
                 // @ts-ignore
-                gsap.to(item, {
-                    rotationY: x * 8,
-                    rotationX: -y * 8,
-                    scale: 1.02,
-                    ease: "power2.out",
-                    duration: 0.5,
+                gsap.set(item, { transformPerspective: 1000 });
+
+                item.addEventListener("mousemove", (e) => {
+                    const mouseEvent = e as MouseEvent;
+                    const rect = item.getBoundingClientRect();
+                    // Posição do mouse relativa ao centro do card (-1 a 1)
+                    const x = (mouseEvent.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+                    const y = (mouseEvent.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+
+                    // Rotaciona de forma equilibrada (máx 8 graus) e aplica scale sutil para elegância
+                    // @ts-ignore
+                    gsap.to(item, {
+                        rotationY: x * 8,
+                        rotationX: -y * 8,
+                        scale: 1.02,
+                        ease: "power2.out",
+                        duration: 0.5,
+                    });
+                });
+
+                item.addEventListener("mouseleave", () => {
+                    // Efeito elástico ao soltar o card
+                    // @ts-ignore
+                    gsap.to(item, {
+                        rotationY: 0,
+                        rotationX: 0,
+                        scale: 1,
+                        ease: "elastic.out(1, 0.3)",
+                        duration: 1.5,
+                    });
                 });
             });
-
-            item.addEventListener("mouseleave", () => {
-                // Efeito elástico ao soltar o card
-                // @ts-ignore
-                gsap.to(item, {
-                    rotationY: 0,
-                    rotationX: 0,
-                    scale: 1,
-                    ease: "elastic.out(1, 0.3)",
-                    duration: 1.5,
-                });
-            });
-        });
+        }
 
         // --- 4ª DOBRA: SOBRE NÓS SCROLL ANIMATIONS ---
         // @ts-ignore
