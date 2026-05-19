@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Icon from '../components/Icon.astro';
 ---
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -11,14 +12,9 @@ import '../styles/global.css';
     <link rel="shortcut icon" href="/raw_file/LOGOBRUTOsvg.svg">
     <!-- Preconnects -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="preconnect" href="https://unpkg.com" crossorigin>
 
     <!-- Preloads for Critical Scripts and LCP -->
-    <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" as="script">
-
-    <!-- Lucide Icons -->
-    <script defer src="https://unpkg.com/lucide@latest"></script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -364,7 +360,7 @@ import '../styles/global.css';
                     
                     <!-- Ícone com Gradiente (Melhoria Criativa) -->
                     <div class="relative z-20 w-8 h-8 rounded-full bg-gradient-to-b from-[#FDD017] to-yellow-600 flex items-center justify-center shadow-lg shadow-[#FDD017]/30 ring-1 ring-white/20 group-hover:rotate-180 transition-transform duration-700">
-                        <i data-lucide="sun" class="w-4 h-4 text-[#000000] fill-[#000000]"></i>
+                        <Icon name="sun" class="w-4 h-4 text-[#000000]" fill="#000000" />
                     </div>
                     
                     <!-- Texto -->
@@ -372,7 +368,7 @@ import '../styles/global.css';
                     
                     <!-- Seta Direita -->
                     <span class="inline-flex items-center justify-center z-10 bg-white/10 w-7 h-7 rounded-full ml-1 relative group-hover:translate-x-1 group-hover:bg-[#FDD017] group-hover:text-[#000000] transition-all duration-300 text-white/80">
-                        <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        <Icon name="arrow-right" class="w-3.5 h-3.5" />
                     </span>
                     
                 </div>
@@ -381,7 +377,7 @@ import '../styles/global.css';
 
         <!-- Scroll Indicator -->
         <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-0 cursor-pointer hover:scale-110 transition-transform" id="scroll-indicator" onclick="document.getElementById('diferenciais').scrollIntoView({behavior: 'smooth'})">
-            <i data-lucide="chevron-down" class="w-8 h-8 text-[#FDD017] animate-bounce"></i>
+            <Icon name="chevron-down" class="w-8 h-8 text-[#FDD017] animate-bounce" />
         </div>
     </main>
     </header>
@@ -459,7 +455,7 @@ import '../styles/global.css';
                     
                     <div class="relative z-10 max-w-lg mt-auto">
                         <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-[#FDD017]/10 backdrop-blur-md border border-[#FDD017]/20 flex items-center justify-center mb-4 md:mb-6 shadow-[0_0_15px_rgba(253,208,23,0.15)] group-hover:scale-110 transition-transform duration-500">
-                            <i data-lucide="microscope" class="w-6 h-6 md:w-7 md:h-7 text-[#FDD017]"></i>
+                            <Icon name="microscope" class="w-6 h-6 md:w-7 md:h-7 text-[#FDD017]" />
                         </div>
                         <h3 class="text-2xl md:text-3xl font-medium tracking-tight text-white mb-3 md:mb-4">Diagnóstico Preciso e Rápido</h3>
                         <p class="text-base md:text-lg text-white/50 leading-relaxed font-medium">Inspeção aérea avançada detecta pontos quentes invisíveis a olho nu. Cortamos as falhas pela raiz antes que elas afetem a sua geração de energia e o seu bolso.</p>
@@ -469,7 +465,7 @@ import '../styles/global.css';
                 <!-- Bloco B: Agilidade (Quadrado Superior Direito) -->
                 <div class="bento-item opacity-0 translate-y-12 relative overflow-hidden bg-white/5 border border-white/10 rounded-[2rem] p-8 flex flex-col justify-between group shadow-2xl backdrop-blur-md">
                     <div class="absolute -top-4 -right-4 p-6 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all duration-700 pointer-events-none">
-                        <i data-lucide="zap" class="w-32 h-32 text-[#FDD017]"></i>
+                        <Icon name="zap" class="w-32 h-32 text-[#FDD017]" />
                     </div>
                     
                     <!-- Borda Giratória Hover -->
@@ -480,7 +476,7 @@ import '../styles/global.css';
                     
                     <div class="relative z-10">
                         <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:bg-[#FDD017]/10 transition-colors">
-                            <i data-lucide="clock" class="w-5 h-5 text-[#FDD017]" aria-hidden="true"></i>
+                            <Icon name="clock" class="w-5 h-5 text-[#FDD017]" aria-hidden="true" />
                         </div>
                         <h3 class="text-xl font-semibold text-white mb-1">Suporte Ininterrupto</h3>
                         <p class="text-sm text-white/50 font-medium">Monitoramento ativo e equipes a postos a qualquer momento.</p>
@@ -502,7 +498,7 @@ import '../styles/global.css';
                     
                     <div class="relative z-10">
                         <div class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:bg-[#FDD017]/10 transition-colors">
-                            <i data-lucide="droplets" class="w-5 h-5 text-[#FDD017]"></i>
+                            <Icon name="droplets" class="w-5 h-5 text-[#FDD017]" />
                         </div>
                         <h3 class="text-xl font-semibold text-white mb-1">Performance Garantida</h3>
                         <p class="text-sm text-white/50 font-medium">Limpeza manual meticulosa.</p>
@@ -517,7 +513,7 @@ import '../styles/global.css';
                 <div class="bento-item opacity-0 translate-y-12 md:col-span-3 h-auto min-h-[140px] relative overflow-hidden bg-gradient-to-r from-[#FDD017] to-[#d4aa00] rounded-[2rem] p-8 md:px-12 flex flex-col md:flex-row items-start md:items-center justify-between group cursor-pointer shadow-2xl shadow-[#FDD017]/10 hover:shadow-[#FDD017]/30 transition-all duration-500 hover:-translate-y-1">
                     <div class="flex flex-col md:flex-row items-start md:items-center gap-6 mb-6 md:mb-0 relative z-10">
                         <div class="w-16 h-16 rounded-2xl bg-black/10 backdrop-blur-sm border border-black/10 flex items-center justify-center shrink-0 group-hover:rotate-12 transition-transform duration-500">
-                            <i data-lucide="handshake" class="w-8 h-8 text-[#000000]"></i>
+                            <Icon name="handshake" class="w-8 h-8 text-[#000000]" />
                         </div>
                         <div>
                             <h3 class="text-2xl font-bold text-[#000000] tracking-tight mb-2">Especialização Inovadora</h3>
@@ -525,7 +521,7 @@ import '../styles/global.css';
                         </div>
                     </div>
                     <a href="#contato" class="relative z-10 bg-[#000000] text-[#FDD017] px-8 py-4 rounded-full font-bold text-xs tracking-[0.2em] uppercase flex items-center gap-3 transform group-hover:scale-105 transition-transform duration-300 shadow-xl">
-                        Fale com Especialista <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        Fale com Especialista <Icon name="arrow-right" class="w-4 h-4" />
                     </a>
                 </div>
 
@@ -558,9 +554,7 @@ import '../styles/global.css';
                 .hide-scrollbar::-webkit-scrollbar { display: none; }
                 .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
             </style>
-            <div class="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-6 md:gap-10 pb-8 md:pb-0 hide-scrollbar" id="servicos-grid">
-                
-                <!-- Card 1: Manutenção Preventiva -->
+            <div class="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-6                 <!-- Card 1: Manutenção Preventiva -->
                 <div class="card-container w-[85vw] max-w-[350px] md:max-w-none md:w-full shrink-0 snap-center h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer">
                     <div class="card-flipper shadow-2xl hover:shadow-[0_40px_80px_-20px_rgba(253,208,23,0.25)] rounded-[2.5rem]">
                         <!-- Front (True Glassmorphism) -->
@@ -573,11 +567,11 @@ import '../styles/global.css';
                             <div class="relative w-full h-48 flex items-center justify-center mt-4">
                                 <div class="absolute w-20 h-20 bg-[#FDD017]/30 rounded-full blur-[30px] animate-pulse"></div>
                                 <div class="relative z-10 w-28 h-28 bg-white/5 backdrop-blur-xl border border-white/20 rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] flex items-center justify-center transform group-hover:scale-110 transition-transform duration-700">
-                                    <i data-lucide="shield-check" class="w-14 h-14 text-[#FDD017]"></i>
+                                    <Icon name="shield-check" class="w-14 h-14 text-[#FDD017]" />
                                 </div>
                                 <div class="absolute top-2 right-4 animate-float-slow">
                                     <div class="w-12 h-12 bg-white/5 backdrop-blur-lg rounded-full flex items-center justify-center shadow-lg border border-white/20">
-                                        <i data-lucide="search" class="w-5 h-5 text-white"></i>
+                                        <Icon name="search" class="w-5 h-5 text-white" />
                                     </div>
                                 </div>
                             </div>
@@ -592,7 +586,7 @@ import '../styles/global.css';
                             <div class="absolute inset-0 opacity-[0.15]" style="background-image: radial-gradient(#FDD017 1px, transparent 1px); background-size: 24px 24px;"></div>
                             <div class="relative z-10">
                                 <div class="w-14 h-14 rounded-2xl bg-[#FDD017]/10 flex items-center justify-center mb-8 border border-[#FDD017]/20">
-                                    <i data-lucide="shield" class="w-7 h-7 text-[#FDD017]"></i>
+                                    <Icon name="shield" class="w-7 h-7 text-[#FDD017]" />
                                 </div>
                                 <h3 class="text-3xl font-black text-white mb-4 leading-tight">Prevenção<br/>Total</h3>
                                 <p class="text-white/60 font-medium leading-relaxed text-sm">Inspeções termográficas e análises profundas que localizam microfissuras e falhas invisíveis a olho nu, garantindo 100% de performance contínua.</p>
@@ -617,11 +611,11 @@ import '../styles/global.css';
                             <div class="relative w-full h-48 flex items-center justify-center mt-4">
                                 <div class="absolute w-20 h-20 bg-[#FDD017]/30 rounded-full blur-[30px] animate-pulse"></div>
                                 <div class="relative z-10 w-28 h-28 bg-white/5 backdrop-blur-xl border border-white/20 rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] flex items-center justify-center transform group-hover:scale-110 transition-transform duration-700">
-                                    <i data-lucide="zap" class="w-14 h-14 text-[#FDD017]"></i>
+                                    <Icon name="zap" class="w-14 h-14 text-[#FDD017]" />
                                 </div>
                                 <div class="absolute bottom-4 left-6 animate-float-delayed">
                                     <div class="w-12 h-12 bg-white/5 backdrop-blur-lg rounded-full flex items-center justify-center shadow-lg border border-white/20">
-                                        <i data-lucide="wrench" class="w-5 h-5 text-white"></i>
+                                        <Icon name="wrench" class="w-5 h-5 text-white" />
                                     </div>
                                 </div>
                             </div>
@@ -636,7 +630,7 @@ import '../styles/global.css';
                             <div class="absolute inset-0 opacity-[0.15]" style="background-image: radial-gradient(#FDD017 1px, transparent 1px); background-size: 24px 24px;"></div>
                             <div class="relative z-10">
                                 <div class="w-14 h-14 rounded-2xl bg-[#FDD017]/10 flex items-center justify-center mb-8 border border-[#FDD017]/20">
-                                    <i data-lucide="power" class="w-7 h-7 text-[#FDD017]"></i>
+                                    <Icon name="power" class="w-7 h-7 text-[#FDD017]" />
                                 </div>
                                 <h3 class="text-3xl font-black text-white mb-4 leading-tight">Resposta<br/>Imediata</h3>
                                 <p class="text-white/60 font-medium leading-relaxed text-sm">Problemas acontecem. Nossa equipe técnica de elite entra em ação rapidamente para consertar inversores e módulos, reduzindo seu tempo de inatividade a zero.</p>
@@ -661,16 +655,16 @@ import '../styles/global.css';
                             <div class="relative w-full h-48 flex items-center justify-center mt-4">
                                 <div class="absolute w-20 h-20 bg-[#FDD017]/30 rounded-full blur-[30px] animate-pulse"></div>
                                 <div class="relative z-10 w-28 h-28 bg-white/5 backdrop-blur-xl border border-white/20 rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] flex items-center justify-center transform group-hover:scale-110 transition-transform duration-700">
-                                    <i data-lucide="droplets" class="w-14 h-14 text-[#FDD017]"></i>
+                                    <Icon name="droplets" class="w-14 h-14 text-[#FDD017]" />
                                 </div>
                                 <div class="absolute top-2 right-4 animate-float-slow">
                                     <div class="w-8 h-8 bg-white/5 backdrop-blur-lg rounded-full flex items-center justify-center shadow-lg border border-white/20">
-                                        <i data-lucide="sparkles" class="w-3 h-3 text-white"></i>
+                                        <Icon name="sparkles" class="w-3 h-3 text-white" />
                                     </div>
                                 </div>
                                 <div class="absolute bottom-6 left-8 animate-float-delayed">
                                     <div class="w-10 h-10 bg-white/5 backdrop-blur-lg rounded-full flex items-center justify-center shadow-lg border border-white/20">
-                                        <i data-lucide="sun" class="w-4 h-4 text-white"></i>
+                                        <Icon name="sun" class="w-4 h-4 text-white" />
                                     </div>
                                 </div>
                             </div>
@@ -685,7 +679,7 @@ import '../styles/global.css';
                             <div class="absolute inset-0 opacity-[0.15]" style="background-image: radial-gradient(#FDD017 1px, transparent 1px); background-size: 24px 24px;"></div>
                             <div class="relative z-10">
                                 <div class="w-14 h-14 rounded-2xl bg-[#FDD017]/10 flex items-center justify-center mb-8 border border-[#FDD017]/20">
-                                    <i data-lucide="sun-medium" class="w-7 h-7 text-[#FDD017]"></i>
+                                    <Icon name="sun-medium" class="w-7 h-7 text-[#FDD017]" />
                                 </div>
                                 <h3 class="text-3xl font-black text-white mb-4 leading-tight">Potência<br/>Restaurada</h3>
                                 <p class="text-white/60 font-medium leading-relaxed text-sm">Remoção meticulosa de sujidades usando produtos que não agridem os módulos, restaurando até 30% da potência perdida pela poeira.</p>
@@ -693,9 +687,9 @@ import '../styles/global.css';
                             <button class="relative z-10 w-full bg-[#FDD017] text-[#000000] py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_30px_rgba(253,208,23,0.3)] hover:bg-[#ffdf4d]">
                                 Saiba Mais
                             </button>
-                        </div>
                     </div>
                 </div>
+            </div>
 
             </div>
 
@@ -776,7 +770,7 @@ import '../styles/global.css';
                             <!-- Conteúdo do Card -->
                             <div class="relative z-10 w-full pt-2">
                                 <div class="inline-flex items-center gap-2 mb-4 md:justify-center w-full">
-                                    <i data-lucide="compass" class="w-4 h-4 text-[#FDD017]/60 group-hover:text-[#FDD017] transition-colors duration-500"></i>
+                                    <Icon name="compass" class="w-4 h-4 text-[#FDD017]/60 group-hover:text-[#FDD017] transition-colors duration-500" />
                                     <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FDD017]">Origem</span>
                                 </div>
                                 <h3 class="text-2xl font-medium text-white mb-3 group-hover:text-[#FDD017] transition-colors duration-500">A Fundação</h3>
@@ -810,7 +804,7 @@ import '../styles/global.css';
                             <!-- Conteúdo do Card -->
                             <div class="relative z-10 w-full pt-2">
                                 <div class="inline-flex items-center gap-2 mb-4 md:justify-center w-full">
-                                    <i data-lucide="trending-up" class="w-4 h-4 text-[#FDD017]/60 group-hover:text-[#FDD017] transition-colors duration-500"></i>
+                                    <Icon name="trending-up" class="w-4 h-4 text-[#FDD017]/60 group-hover:text-[#FDD017] transition-colors duration-500" />
                                     <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FDD017]">Evolução</span>
                                 </div>
                                 <h3 class="text-2xl font-medium text-white mb-3 group-hover:text-[#FDD017] transition-colors duration-500">Expansão</h3>
@@ -844,7 +838,7 @@ import '../styles/global.css';
                             <!-- Conteúdo do Card -->
                             <div class="relative z-10 w-full pt-2">
                                 <div class="inline-flex items-center gap-2 mb-4 md:justify-center w-full">
-                                    <i data-lucide="award" class="w-4 h-4 text-[#FDD017] transition-colors duration-500"></i>
+                                    <Icon name="award" class="w-4 h-4 text-[#FDD017] transition-colors duration-500" />
                                     <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-[#FDD017]">Presente</span>
                                 </div>
                                 <h3 class="text-2xl font-medium text-white mb-3 group-hover:text-[#FDD017] transition-colors duration-500">Excelência</h3>
@@ -868,7 +862,7 @@ import '../styles/global.css';
                     <div class="relative z-10 flex flex-col h-full justify-center">
                         <div class="flex items-center gap-4 mb-10">
                             <div class="w-16 h-16 bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl flex items-center justify-center shadow-2xl group-hover:bg-[#FDD017]/20 group-hover:border-[#FDD017]/50 transition-all duration-700 group-hover:scale-110 group-hover:rotate-6">
-                                <i data-lucide="target" class="w-8 h-8 text-[#FDD017]"></i>
+                                <Icon name="target" class="w-8 h-8 text-[#FDD017]" />
                             </div>
                             <div>
                                 <h4 class="text-xs font-bold tracking-[0.3em] uppercase text-[#FDD017]/80">Nossa Missão</h4>
@@ -889,11 +883,11 @@ import '../styles/global.css';
                         <div class="absolute inset-0 bg-gradient-to-t from-[#FDD017]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         <div class="relative z-10">
                             <div class="w-14 h-14 bg-white/5 border border-white/10 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 group-hover:bg-[#FDD017]/20 group-hover:border-[#FDD017]/50">
-                                <i data-lucide="handshake" class="w-6 h-6 text-[#FDD017]"></i>
+                                <Icon name="handshake" class="w-6 h-6 text-[#FDD017]" />
                             </div>
                             <h4 class="text-2xl font-medium text-white mb-4 group-hover:text-[#FDD017] transition-colors duration-500">Parceria Transparente</h4>
                             <p class="text-sm text-white/60 font-medium leading-relaxed group-hover:text-white/80 transition-colors duration-300">
-                                Agimos com integridade brutal. Mostramos o problema, a solução e os dados reais de ganho de performance. Sem letras miúdas.
+                                Agimos com integridade brutal. Mostramos o problem, a solução e os dados reais de ganho de performance. Sem letras miúdas.
                             </p>
                         </div>
                     </div>
@@ -903,7 +897,7 @@ import '../styles/global.css';
                         <div class="absolute inset-0 bg-gradient-to-t from-[#FDD017]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         <div class="relative z-10">
                             <div class="w-14 h-14 bg-white/5 border border-white/10 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 group-hover:bg-[#FDD017]/20 group-hover:border-[#FDD017]/50">
-                                <i data-lucide="brain-circuit" class="w-6 h-6 text-[#FDD017]"></i>
+                                <Icon name="brain-circuit" class="w-6 h-6 text-[#FDD017]" />
                             </div>
                             <h4 class="text-2xl font-medium text-white mb-4 group-hover:text-[#FDD017] transition-colors duration-500">Inteligência Técnica</h4>
                             <p class="text-sm text-white/60 font-medium leading-relaxed group-hover:text-white/80 transition-colors duration-300">
@@ -958,14 +952,14 @@ import '../styles/global.css';
                             <div class="input-group relative">
                                 <input type="text" id="nome" class="w-full bg-[#F8F5ED] text-[#000000] border-2 border-transparent rounded-xl px-5 pt-7 pb-3 text-sm md:text-base font-bold focus:outline-none focus:border-[#FDD017] transition-colors peer shadow-inner" placeholder=" " required oninput="checkInput(this)">
                                 <label for="nome" class="absolute left-5 top-5 text-[#000000]/60 text-sm md:text-base font-bold transition-all peer-focus:text-[10px] peer-focus:top-2 peer-focus:text-[#000000]/80 pointer-events-none uppercase tracking-widest">Nome Completo</label>
-                                <i data-lucide="check" class="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#FDD017] opacity-0 scale-0 transition-all duration-300 input-check"></i>
+                                <Icon name="check" class="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#FDD017] opacity-0 scale-0 transition-all duration-300 input-check" />
                             </div>
 
                             <!-- Input Telefone -->
                             <div class="input-group relative">
                                 <input type="tel" id="telefone" class="w-full bg-[#F8F5ED] text-[#000000] border-2 border-transparent rounded-xl px-5 pt-7 pb-3 text-sm md:text-base font-bold focus:outline-none focus:border-[#FDD017] transition-colors peer shadow-inner mask-phone" placeholder=" " required oninput="checkInput(this)">
                                 <label for="telefone" class="absolute left-5 top-5 text-[#000000]/60 text-sm md:text-base font-bold transition-all peer-focus:text-[10px] peer-focus:top-2 peer-focus:text-[#000000]/80 pointer-events-none uppercase tracking-widest">WhatsApp</label>
-                                <i data-lucide="check" class="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#FDD017] opacity-0 scale-0 transition-all duration-300 input-check"></i>
+                                <Icon name="check" class="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#FDD017] opacity-0 scale-0 transition-all duration-300 input-check" />
                             </div>
                         </div>
 
@@ -973,14 +967,14 @@ import '../styles/global.css';
                         <div class="input-group relative">
                             <input type="email" id="email" class="w-full bg-[#F8F5ED] text-[#000000] border-2 border-transparent rounded-xl px-5 pt-7 pb-3 text-sm md:text-base font-bold focus:outline-none focus:border-[#FDD017] transition-colors peer shadow-inner" placeholder=" " required oninput="checkInput(this)">
                             <label for="email" class="absolute left-5 top-5 text-[#000000]/60 text-sm md:text-base font-bold transition-all peer-focus:text-[10px] peer-focus:top-2 peer-focus:text-[#000000]/80 pointer-events-none uppercase tracking-widest">E-mail</label>
-                            <i data-lucide="check" class="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#FDD017] opacity-0 scale-0 transition-all duration-300 input-check"></i>
+                            <Icon name="check" class="absolute right-5 top-1/2 -translate-y-1/2 w-5 h-5 text-[#FDD017] opacity-0 scale-0 transition-all duration-300 input-check" />
                         </div>
 
                         <!-- Input Problema (Sugestões Animadas) -->
                         <div class="input-group relative problem-group">
                             <textarea id="problema" rows="3" class="w-full bg-[#F8F5ED] text-[#000000] border-2 border-transparent rounded-xl px-5 pt-8 pb-3 text-sm md:text-base font-bold focus:outline-none focus:border-[#FDD017] transition-colors peer shadow-inner resize-none" placeholder=" " required oninput="checkInput(this); hideSuggestions()"></textarea>
                             <label for="problema" class="absolute left-5 top-5 text-[#000000]/60 text-sm md:text-base font-bold transition-all peer-focus:text-[10px] peer-focus:top-2 peer-focus:text-[#000000]/80 pointer-events-none uppercase tracking-widest">Qual problema seu sistema apresenta?</label>
-                            <i data-lucide="check" class="absolute right-5 top-5 w-5 h-5 text-[#FDD017] opacity-0 scale-0 transition-all duration-300 input-check"></i>
+                            <Icon name="check" class="absolute right-5 top-5 w-5 h-5 text-[#FDD017] opacity-0 scale-0 transition-all duration-300 input-check" />
                             
                             <!-- Sugestões Animadas -->
                             <div class="absolute left-5 bottom-3 right-10 flex gap-2 overflow-x-auto no-scrollbar suggestions-container pointer-events-none transition-opacity duration-300">
@@ -994,17 +988,17 @@ import '../styles/global.css';
                         <button type="button" onclick="submitForm()" id="submit-btn" class="w-full bg-[#FDD017] text-[#000000] py-4 rounded-xl font-black text-[11px] md:text-sm tracking-widest md:tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_40px_rgba(253,208,23,0.4)] hover:bg-[#ffdf4d] hover:-translate-y-1 relative overflow-hidden group flex items-center justify-center min-h-[4rem]">
                             <span class="btn-text relative z-10 flex items-center justify-center gap-2 w-full px-4">
                                 <span>Enviar para WhatsApp</span> 
-                                <i data-lucide="arrow-right" class="w-4 h-4 shrink-0 group-hover:translate-x-2 transition-transform"></i>
+                                <Icon name="arrow-right" class="w-4 h-4 shrink-0 group-hover:translate-x-2 transition-transform" />
                             </span>
                             <span class="btn-loader absolute inset-0 flex items-center justify-center opacity-0 scale-50 transition-all duration-300">
-                                <i data-lucide="settings" class="w-6 h-6 animate-spin text-[#000000]"></i>
+                                <Icon name="settings" class="w-6 h-6 animate-spin text-[#000000]" />
                             </span>
                             <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
                         </button>
                         
                         <!-- Success Message -->
                         <div id="success-msg" class="hidden text-center text-[#FDD017] font-bold text-sm tracking-widest uppercase mt-4 animate-fade-in flex items-center justify-center gap-2">
-                            <i data-lucide="check-circle" class="w-5 h-5"></i> Redirecionando para o WhatsApp...
+                            <Icon name="check-circle" class="w-5 h-5" /> Redirecionando para o WhatsApp...
                         </div>
                     </div>
                 </div>
@@ -1015,7 +1009,7 @@ import '../styles/global.css';
                     <!-- WhatsApp Buttons -->
                     <div class="space-y-6">
                         <h3 class="text-2xl font-bold text-[#F8F5ED] flex items-center gap-3">
-                            <i data-lucide="message-square" class="w-6 h-6 text-[#FDD017]"></i> Fale Conosco via WhatsApp:
+                            <Icon name="message-square" class="w-6 h-6 text-[#FDD017]" /> Fale Conosco via WhatsApp:
                         </h3>
                         
                         <div class="grid gap-4">
@@ -1028,7 +1022,7 @@ import '../styles/global.css';
                                     <h4 class="font-black text-lg">Falar com Especialista</h4>
                                     <p class="text-[10px] font-bold text-[#000000]/70 uppercase tracking-widest mt-0.5">Atendimento em todo o Espírito Santo</p>
                                 </div>
-                                <i data-lucide="arrow-up-right" class="w-6 h-6 ml-auto opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"></i>
+                                <Icon name="arrow-up-right" class="w-6 h-6 ml-auto opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
                             </button>
                         </div>
                     </div>
@@ -1037,7 +1031,7 @@ import '../styles/global.css';
                     <div class="mt-4 space-y-4 bg-white/5 border border-white/10 rounded-[2rem] p-8 backdrop-blur-md">
                         <div class="flex items-center gap-4 text-[#F8F5ED]">
                             <div class="w-10 h-10 rounded-full bg-[#FDD017]/10 flex items-center justify-center shrink-0">
-                                <i data-lucide="clock" class="w-5 h-5 text-[#FDD017]"></i>
+                                <Icon name="clock" class="w-5 h-5 text-[#FDD017]" />
                             </div>
                             <div>
                                 <h5 class="text-xs font-bold text-[#FDD017] tracking-widest uppercase mb-1">Horário de Funcionamento</h5>
@@ -1046,7 +1040,7 @@ import '../styles/global.css';
                         </div>
                         <div class="flex items-center gap-4 text-[#F8F5ED]">
                             <div class="w-10 h-10 rounded-full bg-[#FDD017]/10 flex items-center justify-center shrink-0">
-                                <i data-lucide="mail" class="w-5 h-5 text-[#FDD017]"></i>
+                                <Icon name="mail" class="w-5 h-5 text-[#FDD017]" />
                             </div>
                             <div class="min-w-0">
                                 <h5 class="text-xs font-bold text-[#FDD017] tracking-widest uppercase mb-1">E-mail Comercial</h5>
@@ -1149,15 +1143,15 @@ import '../styles/global.css';
                     <h4 class="text-lg font-black tracking-widest text-[#FDD017] uppercase mb-6">Contato</h4>
                     <ul class="flex flex-col gap-5">
                         <li class="flex items-start gap-3 group">
-                            <i data-lucide="map-pin" class="w-5 h-5 text-[#FDD017] shrink-0 mt-0.5 opacity-80 group-hover:opacity-100 group-hover:animate-bounce transition-all"></i>
+                            <Icon name="map-pin" class="w-5 h-5 text-[#FDD017] shrink-0 mt-0.5 opacity-80 group-hover:opacity-100 group-hover:animate-bounce transition-all" />
                             <span class="text-sm font-medium text-[#F8F5ED]/80 leading-relaxed">Vitória, Espírito Santo<br>Atendimento em todo o estado.</span>
                         </li>
                         <li class="flex items-center gap-3 group">
-                            <i data-lucide="phone" class="w-5 h-5 text-[#FDD017] shrink-0 opacity-80 group-hover:opacity-100 group-hover:animate-pulse transition-all"></i>
+                            <Icon name="phone" class="w-5 h-5 text-[#FDD017] shrink-0 opacity-80 group-hover:opacity-100 group-hover:animate-pulse transition-all" />
                             <a href="#" class="text-sm font-bold text-[#FDD017] hover:text-[#ffdf4d] transition-colors">(27) 99999-9999</a>
                         </li>
                         <li class="flex items-center gap-3 group">
-                            <i data-lucide="mail" class="w-5 h-5 text-[#FDD017] shrink-0 opacity-80 group-hover:opacity-100 group-hover:animate-pulse transition-all"></i>
+                            <Icon name="mail" class="w-5 h-5 text-[#FDD017] shrink-0 opacity-80 group-hover:opacity-100 group-hover:animate-pulse transition-all" />
                             <a href="mailto:contato@evolutionmanutencoes.com.br" class="text-sm font-medium text-[#F8F5ED]/80 hover:text-[#FDD017] transition-colors">contato@evolutionmanutencoes.com.br</a>
                         </li>
                     </ul>
@@ -1187,13 +1181,12 @@ import '../styles/global.css';
 
     <!-- BACK TO TOP BUTTON -->
     <button id="back-to-top" class="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[60] w-10 h-10 md:w-12 md:h-12 bg-black/40 backdrop-blur-md border border-[#FDD017]/40 rounded-full flex items-center justify-center opacity-0 pointer-events-none translate-y-8 transition-all duration-500 hover:bg-[#FDD017]/10 hover:border-[#FDD017]/80 group shadow-lg" aria-label="Voltar ao topo">
-        <i data-lucide="chevron-up" class="w-5 h-5 text-[#FDD017] group-hover:-translate-y-0.5 transition-all duration-300"></i>
+        <Icon name="chevron-up" class="w-5 h-5 text-[#FDD017] group-hover:-translate-y-0.5 transition-all duration-300" />
     </button>
 
     <!-- INITIALIZATION SCRIPT -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            lucide.createIcons();
             gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
             const tl = gsap.timeline();
