@@ -23,7 +23,7 @@ import Footer from "../components/sections/Footer.astro";
 
 <script>
     // @ts-ignore
-    document.addEventListener("DOMContentLoaded", () => {
+    window.addEventListener("load", () => {
         // @ts-ignore
         gsap.registerPlugin(TextPlugin, ScrollTrigger);
 
@@ -405,5 +405,14 @@ import Footer from "../components/sections/Footer.astro";
             delay: 0.6,
             ease: "power2.out",
         });
+
+        // @ts-ignore
+        ScrollTrigger.refresh();
+
+        // Garante recalculo perfeito do posicionamento de todos os gatilhos no mobile real
+        setTimeout(() => {
+            // @ts-ignore
+            ScrollTrigger.refresh();
+        }, 300);
     });
 </script>
