@@ -555,7 +555,8 @@ import Icon from '../components/Icon.astro';
                 .hide-scrollbar::-webkit-scrollbar { display: none; }
                 .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
             </style>
-            <div class="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-6                 <!-- Card 1: Manutenção Preventiva -->
+            <div id="servicos-grid" class="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-6 hide-scrollbar px-4 md:px-0 py-8 scroll-smooth">
+                <!-- Card 1: Manutenção Preventiva -->
                 <div class="card-container w-[85vw] max-w-[350px] md:max-w-none md:w-full shrink-0 snap-center h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer">
                     <div class="card-flipper shadow-2xl hover:shadow-[0_40px_80px_-20px_rgba(253,208,23,0.25)] rounded-[2.5rem]">
                         <!-- Front (True Glassmorphism) -->
