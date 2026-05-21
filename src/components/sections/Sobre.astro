@@ -420,24 +420,73 @@ import Icon from "../Icon.astro";
 
 <style>
     /* =============================================
+       PERFORMANCE FIX: Isola a seção Sobre do
+       solar-glow-wrapper (mix-blend-mode: screen)
+       que causa flickering no mobile.
+       ============================================= */
+    #sobre {
+        /* Cria um novo stacking context isolado.
+           Isso impede que o mix-blend-mode: screen
+           do solar-glow-wrapper recompute pixels
+           contra o background desta seção, eliminando
+           o flicker preto/colorido no mobile. */
+        isolation: isolate;
+    }
+
+    /* =============================================
        MOBILE: Estado "hover ativo" permanente
-       No mobile não há cursor, então os cards ficam
-       sempre no estado totalmente visível (= hover desktop)
+       + Otimizações de GPU para eliminar flickering
        ============================================= */
     @media (max-width: 767px) {
+
+        /* --- PERFORMANCE: Eliminar efeitos pesados --- */
+
+        /* Textura SVG noise: muito cara com mix-blend-overlay no mobile */
+        #sobre > div:first-child {
+            display: none !important;
+        }
+
+        /* Blob de glow decorativo: reduzir blur massivo de 150px */
+        #sobre > div:nth-child(2) {
+            filter: blur(80px) !important;
+            opacity: 0.3 !important;
+        }
+
+        /* Desativar backdrop-blur nos cards (desnecessário em bg sólido escuro) */
+        #sobre .backdrop-blur-2xl,
+        #sobre .backdrop-blur-xl,
+        #sobre .backdrop-blur-md {
+            -webkit-backdrop-filter: none !important;
+            backdrop-filter: none !important;
+        }
+
+        /* Parar animações pulse contínuas nos nodes da timeline */
+        .timeline-node .animate-pulse {
+            animation: none !important;
+        }
+
+        /* Promover a seção inteira para a GPU de forma estável */
+        #sobre {
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            will-change: auto;
+        }
 
         /* --- MISSÃO BLOCK --- */
         .missao-block {
             box-shadow: 0 20px 60px rgba(253, 208, 23, 0.15) !important;
             border-color: rgba(255,255,255,0.20) !important;
+            -webkit-backdrop-filter: none !important;
+            backdrop-filter: none !important;
         }
         /* Radial glow fundo sempre visível */
         .missao-block > div:first-child {
             opacity: 1 !important;
         }
-        /* Glow blur do fundo sempre visível */
+        /* Glow blur do fundo: reduzir de 100px para algo mais leve */
         .missao-block > div:nth-child(2) {
             background-color: rgba(253, 208, 23, 0.20) !important;
+            filter: blur(60px) !important;
         }
         /* Ícone Target */
         .missao-block .group-hover\:bg-\[\#FDD017\]\/20 {
@@ -462,6 +511,8 @@ import Icon from "../Icon.astro";
             background-color: rgba(255, 255, 255, 0.10) !important;
             border-color: rgba(253, 208, 23, 0.30) !important;
             box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(253,208,23,0.1) !important;
+            -webkit-backdrop-filter: none !important;
+            backdrop-filter: none !important;
         }
         /* Gradient de fundo sempre visível */
         .valor-item > div:first-child {
@@ -506,6 +557,15 @@ import Icon from "../Icon.astro";
         .timeline-node .group-hover\:via-\[\#FDD017\] {
             --tw-gradient-via: #FDD017 !important;
             background-image: linear-gradient(to right, transparent, #FDD017, transparent) !important;
+        }
+
+        /* Cards da timeline: remover blur e transições pesadas */
+        .timeline-node .backdrop-blur-2xl {
+            -webkit-backdrop-filter: none !important;
+            backdrop-filter: none !important;
+        }
+        .timeline-node .blur-2xl {
+            filter: blur(16px) !important;
         }
     }
 </style>

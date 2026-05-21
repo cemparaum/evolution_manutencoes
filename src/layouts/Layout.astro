@@ -149,6 +149,16 @@ const {
                 }
             }
 
+            /* MOBILE FIX: O solar-glow-wrapper com mix-blend-mode: screen
+               causa recomposição constante de GPU no mobile, provocando
+               flickering do background (preto/colorido) em várias seções.
+               No mobile não há mouse para o follower, então podemos escondê-lo. */
+            @media (max-width: 767px) {
+                .solar-glow-wrapper {
+                    display: none !important;
+                }
+            }
+
             /* --- DS BEAM GRID --- */
             .ds-grid {
                 position: absolute;
