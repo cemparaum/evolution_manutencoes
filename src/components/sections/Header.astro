@@ -1,13 +1,16 @@
 ---
 // Header.astro
+const baseUrl = import.meta.env.BASE_URL;
+const isHome = Astro.url.pathname === baseUrl || Astro.url.pathname === `${baseUrl}index.html` || Astro.url.pathname === baseUrl.replace(/\/$/, "");
 ---
 
 <nav
-    class="relative z-50 w-full px-6 md:px-12 py-8 flex justify-between items-center opacity-0"
+    class={`absolute top-0 left-0 w-full z-[100] px-6 md:px-12 py-8 flex justify-between items-center ${isHome ? "opacity-0" : "opacity-100"}`}
     id="nav-animate"
 >
     <!-- Brand Logo -->
-    <div
+    <a
+        href={baseUrl}
         class="relative inline-flex items-center justify-center transform transition-transform hover:scale-105"
     >
         <!-- Círculo branco ao fundo para destacar o raio preto vazado do SVG -->
@@ -22,30 +25,30 @@
             height="80"
             class="relative z-10 h-12 md:h-16 lg:h-20 object-contain filter drop-shadow-lg"
         />
-    </div>
+    </a>
 
     <!-- Menu Links (Desktop) -->
     <div
         class="hidden md:flex gap-8 text-[11px] font-extrabold tracking-[0.2em] text-white/50 uppercase"
     >
-        <a href="#" class="hover:text-[#FDD017] transition-colors">Início</a>
+        <a href={isHome ? "#" : baseUrl} class="hover:text-[#FDD017] transition-colors">Início</a>
         <a
-            href="#diferenciais"
+            href={isHome ? "#diferenciais" : `${baseUrl}#diferenciais`}
             class="hover:text-[#FDD017] transition-colors"
             >Diferenciais</a
         >
         <a
-            href="#servicos"
+            href={isHome ? "#servicos" : `${baseUrl}#servicos`}
             class="hover:text-[#FDD017] transition-colors"
             >Serviços</a
         >
         <a
-            href="#sobre"
+            href={isHome ? "#sobre" : `${baseUrl}#sobre`}
             class="hover:text-[#FDD017] transition-colors"
             >Sobre Nós</a
         >
         <a
-            href="#contato"
+            href={`${baseUrl}contato`}
             class="hover:text-[#FDD017] transition-colors">Contato</a
         >
     </div>
@@ -76,7 +79,7 @@
 <!-- Mobile Menu Overlay -->
 <div
     id="mobile-menu"
-    class="fixed inset-0 bg-[#000000]/60 z-[60] hidden flex-col items-center justify-start pt-32 backdrop-blur-lg transition-all duration-300 opacity-0 translate-y-[-20px]"
+    class="fixed inset-0 bg-[#000000]/60 z-[110] hidden flex-col items-center justify-start pt-32 backdrop-blur-lg transition-all duration-300 opacity-0 translate-y-[-20px]"
 >
     <button
         id="close-menu-btn"
@@ -102,27 +105,27 @@
         class="flex flex-col items-center gap-10 text-xl font-bold tracking-widest text-[#F8F5ED] uppercase"
     >
         <a
-            href="#"
+            href={isHome ? "#" : baseUrl}
             class="mobile-link hover:text-[#FDD017] transition-colors"
             >Início</a
         >
         <a
-            href="#diferenciais"
+            href={isHome ? "#diferenciais" : `${baseUrl}#diferenciais`}
             class="mobile-link hover:text-[#FDD017] transition-colors"
             >Diferenciais</a
         >
         <a
-            href="#servicos"
+            href={isHome ? "#servicos" : `${baseUrl}#servicos`}
             class="mobile-link hover:text-[#FDD017] transition-colors"
             >Serviços</a
         >
         <a
-            href="#sobre"
+            href={isHome ? "#sobre" : `${baseUrl}#sobre`}
             class="mobile-link hover:text-[#FDD017] transition-colors"
             >Sobre Nós</a
         >
         <a
-            href="#contato"
+            href={`${baseUrl}contato`}
             class="mobile-link hover:text-[#FDD017] transition-colors"
             >Contato</a
         >

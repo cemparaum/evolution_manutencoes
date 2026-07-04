@@ -253,5 +253,21 @@ const {
         </div>
 
         <slot />
+        
+        <!-- Universal Lucide Icons initialization -->
+        <script is:inline>
+            const initLucide = () => {
+                if (typeof lucide !== "undefined") {
+                    lucide.createIcons();
+                }
+            };
+            // Run on DOMContentLoaded and fallback on window load
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", initLucide);
+            } else {
+                initLucide();
+            }
+            window.addEventListener("load", initLucide);
+        </script>
     </body>
 </html>

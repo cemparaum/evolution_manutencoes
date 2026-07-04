@@ -1,5 +1,7 @@
 ---
 import Icon from "../Icon.astro";
+const baseUrl = import.meta.env.BASE_URL;
+const isHome = Astro.url.pathname === baseUrl || Astro.url.pathname === `${baseUrl}index.html` || Astro.url.pathname === baseUrl.replace(/\/$/, "");
 ---
 
 <footer
@@ -21,9 +23,10 @@ import Icon from "../Icon.astro";
         >
             <!-- Coluna 1: Logo e Descrição -->
             <div
-                class="flex flex-col items-start footer-col opacity-0 translate-y-8"
+                class={`flex flex-col items-start footer-col ${isHome ? "opacity-0 translate-y-8" : "opacity-100"}`}
             >
-                <div
+                <a
+                    href={baseUrl}
                     class="relative inline-flex items-center justify-center transform transition-transform hover:scale-105 mb-6 group"
                 >
                     <div
@@ -38,7 +41,7 @@ import Icon from "../Icon.astro";
                         loading="lazy"
                         class="relative z-10 h-10 md:h-12 object-contain filter drop-shadow-lg"
                     />
-                </div>
+                </a>
                 <p
                     class="text-sm text-[#F8F5ED]/70 leading-relaxed mb-6 font-medium"
                 >
@@ -125,7 +128,7 @@ import Icon from "../Icon.astro";
 
             <!-- Coluna 2: Navegação Rápida -->
             <div
-                class="flex flex-col footer-col opacity-0 translate-y-8"
+                class={`flex flex-col footer-col ${isHome ? "opacity-0 translate-y-8" : "opacity-100"}`}
             >
                 <h4
                     class="text-lg font-black tracking-widest text-[#FDD017] uppercase mb-6"
@@ -135,7 +138,7 @@ import Icon from "../Icon.astro";
                 <ul class="flex flex-col gap-4">
                     <li>
                         <a
-                            href="#"
+                            href={isHome ? "#" : baseUrl}
                             class="text-[#F8F5ED]/80 font-bold hover:text-[#FDD017] transition-colors relative inline-block group"
                         >
                             Início
@@ -146,7 +149,7 @@ import Icon from "../Icon.astro";
                     </li>
                     <li>
                         <a
-                            href="#diferenciais"
+                            href={isHome ? "#diferenciais" : `${baseUrl}#diferenciais`}
                             class="text-[#F8F5ED]/80 font-bold hover:text-[#FDD017] transition-colors relative inline-block group"
                         >
                             Diferenciais
@@ -157,7 +160,7 @@ import Icon from "../Icon.astro";
                     </li>
                     <li>
                         <a
-                            href="#servicos"
+                            href={isHome ? "#servicos" : `${baseUrl}#servicos`}
                             class="text-[#F8F5ED]/80 font-bold hover:text-[#FDD017] transition-colors relative inline-block group"
                         >
                             Serviços
@@ -168,7 +171,7 @@ import Icon from "../Icon.astro";
                     </li>
                     <li>
                         <a
-                            href="#sobre"
+                            href={isHome ? "#sobre" : `${baseUrl}#sobre`}
                             class="text-[#F8F5ED]/80 font-bold hover:text-[#FDD017] transition-colors relative inline-block group"
                         >
                             Sobre Nós
@@ -179,7 +182,7 @@ import Icon from "../Icon.astro";
                     </li>
                     <li>
                         <a
-                            href="#contato"
+                            href={`${baseUrl}contato`}
                             class="text-[#F8F5ED]/80 font-bold hover:text-[#FDD017] transition-colors relative inline-block group"
                         >
                             Contato
@@ -193,7 +196,7 @@ import Icon from "../Icon.astro";
 
             <!-- Coluna 3: Contato -->
             <div
-                class="flex flex-col footer-col opacity-0 translate-y-8"
+                class={`flex flex-col footer-col ${isHome ? "opacity-0 translate-y-8" : "opacity-100"}`}
             >
                 <h4
                     class="text-lg font-black tracking-widest text-[#FDD017] uppercase mb-6"
@@ -229,9 +232,9 @@ import Icon from "../Icon.astro";
                             class="w-5 h-5 text-[#FDD017] shrink-0 opacity-80 group-hover:opacity-100 group-hover:animate-pulse transition-all"
                         />
                         <a
-                            href="mailto:contato@evolutionmanutencoes.com.br"
+                            href="mailto:atendimento.evolutionmanutencao@gmail.com"
                             class="text-sm font-medium text-[#F8F5ED]/80 hover:text-[#FDD017] transition-colors"
-                            >contato@evolutionmanutencoes.com.br</a
+                            >atendimento.evolutionmanutencao@gmail.com</a
                         >
                     </li>
                 </ul>
@@ -240,7 +243,7 @@ import Icon from "../Icon.astro";
 
         <!-- Direitos Autorais e Políticas -->
         <div
-            class="border-t border-white/10 pt-8 mt-8 flex flex-col md:flex-row items-center justify-between gap-4 footer-bottom opacity-0"
+            class={`border-t border-white/10 pt-8 mt-8 flex flex-col md:flex-row items-center justify-between gap-4 footer-bottom ${isHome ? "opacity-0" : "opacity-100"}`}
         >
             <p class="text-xs font-medium text-[#F8F5ED]/50">
                 &copy; 2026 Evolution Manutenção. Todos os direitos

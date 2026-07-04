@@ -1,5 +1,6 @@
 ---
 import Icon from "../Icon.astro";
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <section
@@ -53,13 +54,272 @@ import Icon from "../Icon.astro";
                 scrollbar-width: none;
             }
         </style>
-        <div
+                <div class="relative w-full group/carousel">
+            <!-- Prev arrow -->
+            <button
+                id="carousel-prev"
+                class="absolute -left-4 lg:-left-16 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/10 hover:border-[#FDD017] bg-black/60 backdrop-blur-md flex items-center justify-center text-white/70 hover:text-[#FDD017] transition-all hover:scale-110 z-30 hidden md:flex cursor-pointer shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:bg-[#FDD017]/10"
+                aria-label="Anterior"
+            >
+                <Icon name="chevron-left" class="w-6 h-6" />
+            </button>
+            
+            <!-- Next arrow -->
+            <button
+                id="carousel-next"
+                class="absolute -right-4 lg:-right-16 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full border border-white/10 hover:border-[#FDD017] bg-black/60 backdrop-blur-md flex items-center justify-center text-white/70 hover:text-[#FDD017] transition-all hover:scale-110 z-30 hidden md:flex cursor-pointer shadow-[0_0_20px_rgba(0,0,0,0.5)] hover:bg-[#FDD017]/10"
+                aria-label="Próximo"
+            >
+                <Icon name="chevron-right" class="w-6 h-6" />
+            </button>
+
+            <div
             id="servicos-grid"
-            class="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-6 hide-scrollbar px-4 md:px-0 py-8 scroll-smooth"
+            class="flex overflow-x-auto snap-x snap-mandatory gap-6 hide-scrollbar px-4 md:px-0 py-8 scroll-smooth w-full"
         >
+                        <!-- Card 4: Instalação Solar -->
+            <div
+                class="card-container w-[85vw] max-w-[350px] md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-center h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer"
+            >
+                <div
+                    class="card-flipper shadow-2xl hover:shadow-[0_40px_80px_-20px_rgba(253,208,23,0.25)] rounded-[2.5rem]"
+                >
+                    <!-- Front (True Glassmorphism) -->
+                    <div
+                        class="card-front bg-[#111111]/40 backdrop-blur-3xl border border-white/10 p-10 flex flex-col justify-between overflow-hidden"
+                    >
+                        <!-- Reflexos de vidro e luz -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-30 pointer-events-none"
+                        >
+                        </div>
+                        <div
+                            class="absolute -top-32 -left-32 w-80 h-80 bg-[#FDD017]/20 blur-[80px] rounded-full pointer-events-none animate-pulse"
+                        >
+                        </div>
+
+                        <!-- Ícones em Camadas -->
+                        <div
+                            class="relative w-full h-48 flex items-center justify-center mt-4"
+                        >
+                            <div
+                                class="absolute w-20 h-20 bg-[#FDD017]/30 rounded-full blur-[30px] animate-pulse"
+                            >
+                            </div>
+                            <div
+                                class="relative z-10 w-28 h-28 bg-white/5 backdrop-blur-xl border border-white/20 rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] flex items-center justify-center transform group-hover:scale-110 transition-transform duration-700"
+                            >
+                                <Icon
+                                    name="sun"
+                                    class="w-14 h-14 text-[#FDD017]"
+                                    aria-hidden="true"
+                                />
+                            </div>
+                            <div
+                                class="absolute top-2 right-4 animate-float-slow"
+                            >
+                                <div
+                                    class="w-12 h-12 bg-white/5 backdrop-blur-lg rounded-full flex items-center justify-center shadow-lg border border-white/20"
+                                >
+                                    <Icon
+                                        name="trending-up"
+                                        class="w-5 h-5 text-white"
+                                    />
+                                </div>
+                            </div>
+                            <div
+                                class="absolute bottom-4 left-6 animate-float-delayed"
+                            >
+                                <div
+                                    class="w-10 h-10 bg-white/5 backdrop-blur-lg rounded-full flex items-center justify-center shadow-lg border border-white/20"
+                                >
+                                    <Icon
+                                        name="wrench"
+                                        class="w-4 h-4 text-white"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative z-10">
+                            <div
+                                class="w-12 h-1.5 bg-[#FDD017] mb-6 rounded-full shadow-[0_0_15px_rgba(253,208,23,0.4)]"
+                            >
+                            </div>
+                            <h3
+                                class="text-[28px] font-black text-white tracking-tight leading-none mb-3"
+                            >
+                                Instalação<br />Solar
+                            </h3>
+                            <p
+                                class="text-[#FDD017]/80 font-bold uppercase tracking-[0.15em] text-[10px]"
+                            >
+                                PROJETO & ENGENHARIA
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Back (Dark) -->
+                    <div
+                        class="card-back bg-[#0A0A0A] border border-[#FDD017]/30 p-10 flex flex-col justify-between overflow-hidden"
+                    >
+                        <div
+                            class="absolute inset-0 opacity-[0.15]"
+                            style="background-image: radial-gradient(#FDD017 1px, transparent 1px); background-size: 24px 24px;"
+                        >
+                        </div>
+                        <div class="relative z-10">
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-[#FDD017]/10 flex items-center justify-center mb-8 border border-[#FDD017]/20"
+                            >
+                                <Icon
+                                    name="sun-medium"
+                                    class="w-7 h-7 text-[#FDD017]"
+                                    aria-hidden="true"
+                                />
+                            </div>
+                            <h3
+                                class="text-3xl font-black text-white mb-4 leading-tight"
+                            >
+                                Energia<br />Própria
+                            </h3>
+                            <p
+                                class="text-white/60 font-medium leading-relaxed text-sm"
+                            >
+                                Desenho e instalação completa de sistemas fotovoltaicos sob medida para sua residência ou empresa, garantindo máxima eficiência desde o primeiro dia.
+                            </p>
+                        </div>
+                        <a
+                            href={`${baseUrl}instalacao-solar`}
+                            class="relative z-10 w-full bg-[#FDD017] text-[#000000] py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_30px_rgba(253,208,23,0.3)] hover:bg-[#ffdf4d] text-center inline-block"
+                        >
+                            Saiba Mais
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: Carregador Veicular -->
+            <div
+                class="card-container w-[85vw] max-w-[350px] md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-center h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer"
+            >
+                <div
+                    class="card-flipper shadow-2xl hover:shadow-[0_40px_80px_-20px_rgba(253,208,23,0.25)] rounded-[2.5rem]"
+                >
+                    <!-- Front (True Glassmorphism) -->
+                    <div
+                        class="card-front bg-[#111111]/40 backdrop-blur-3xl border border-white/10 p-10 flex flex-col justify-between overflow-hidden"
+                    >
+                        <!-- Reflexos de vidro e luz -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-30 pointer-events-none"
+                        >
+                        </div>
+                        <div
+                            class="absolute -top-32 -left-32 w-80 h-80 bg-[#FDD017]/20 blur-[80px] rounded-full pointer-events-none animate-pulse"
+                        >
+                        </div>
+
+                        <!-- Ícones em Camadas -->
+                        <div
+                            class="relative w-full h-48 flex items-center justify-center mt-4"
+                        >
+                            <div
+                                class="absolute w-20 h-20 bg-[#FDD017]/30 rounded-full blur-[30px] animate-pulse"
+                            >
+                            </div>
+                            <div
+                                class="relative z-10 w-28 h-28 bg-white/5 backdrop-blur-xl border border-white/20 rounded-[2rem] shadow-[0_8px_32px_rgba(0,0,0,0.3)] flex items-center justify-center transform group-hover:scale-110 transition-transform duration-700"
+                            >
+                                <Icon
+                                    name="zap"
+                                    class="w-14 h-14 text-[#FDD017]"
+                                    aria-hidden="true"
+                                />
+                            </div>
+                            <div
+                                class="absolute top-2 right-4 animate-float-slow"
+                            >
+                                <div
+                                    class="w-12 h-12 bg-white/5 backdrop-blur-lg rounded-full flex items-center justify-center shadow-lg border border-white/20"
+                                >
+                                    <Icon
+                                        name="power"
+                                        class="w-5 h-5 text-white"
+                                    />
+                                </div>
+                            </div>
+                            <div
+                                class="absolute bottom-4 left-6 animate-float-delayed"
+                            >
+                                <div
+                                    class="w-10 h-10 bg-white/5 backdrop-blur-lg rounded-full flex items-center justify-center shadow-lg border border-white/20"
+                                >
+                                    <Icon
+                                        name="shield-check"
+                                        class="w-4 h-4 text-white"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative z-10">
+                            <div
+                                class="w-12 h-1.5 bg-[#FDD017] mb-6 rounded-full shadow-[0_0_15px_rgba(253,208,23,0.4)]"
+                            >
+                            </div>
+                            <h3
+                                class="text-[28px] font-black text-white tracking-tight leading-none mb-3"
+                            >
+                                Carregador<br />Veicular
+                            </h3>
+                            <p
+                                class="text-[#FDD017]/80 font-bold uppercase tracking-[0.15em] text-[10px]"
+                            >
+                                MOBILIDADE ELÉTRICA
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Back (Dark) -->
+                    <div
+                        class="card-back bg-[#0A0A0A] border border-[#FDD017]/30 p-10 flex flex-col justify-between overflow-hidden"
+                    >
+                        <div
+                            class="absolute inset-0 opacity-[0.15]"
+                            style="background-image: radial-gradient(#FDD017 1px, transparent 1px); background-size: 24px 24px;"
+                        >
+                        </div>
+                        <div class="relative z-10">
+                            <div
+                                class="w-14 h-14 rounded-2xl bg-[#FDD017]/10 flex items-center justify-center mb-8 border border-[#FDD017]/20"
+                            >
+                                <Icon
+                                    name="power"
+                                    class="w-7 h-7 text-[#FDD017]"
+                                    aria-hidden="true"
+                                />
+                            </div>
+                            <h3
+                                class="text-3xl font-black text-white mb-4 leading-tight"
+                            >
+                                Recarga<br />Rápida
+                            </h3>
+                            <p
+                                class="text-white/60 font-medium leading-relaxed text-sm"
+                            >
+                                Infraestrutura completa de recarga elétrica residencial e comercial (Wallbox), com proteção dedicada e dimensionamento adequado à sua rede.
+                            </p>
+                        </div>
+                        <a
+                            href={`${baseUrl}carregador-veicular`}
+                            class="relative z-10 w-full bg-[#FDD017] text-[#000000] py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_30px_rgba(253,208,23,0.3)] hover:bg-[#ffdf4d] text-center inline-block"
+                        >
+                            Saiba Mais
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <!-- Card 1: Manutenção Preventiva -->
             <div
-                class="card-container w-[85vw] max-w-[350px] md:max-w-none md:w-full shrink-0 snap-center h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer"
+                class="card-container w-[85vw] max-w-[350px] md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-center h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer"
             >
                 <div
                     class="card-flipper shadow-2xl hover:shadow-[0_40px_80px_-20px_rgba(253,208,23,0.25)] rounded-[2.5rem]"
@@ -156,18 +416,19 @@ import Icon from "../Icon.astro";
                                 100% de performance contínua.
                             </p>
                         </div>
-                        <button
-                            class="relative z-10 w-full bg-[#FDD017] text-[#000000] py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_30px_rgba(253,208,23,0.3)] hover:bg-[#ffdf4d]"
+                        <a
+                            href={`${baseUrl}manutencao-preventiva`}
+                            class="relative z-10 w-full bg-[#FDD017] text-[#000000] py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_30px_rgba(253,208,23,0.3)] hover:bg-[#ffdf4d] text-center inline-block"
                         >
                             Saiba Mais
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
 
             <!-- Card 2: Manutenção Corretiva -->
             <div
-                class="card-container w-[85vw] max-w-[350px] md:max-w-none md:w-full shrink-0 snap-center h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer"
+                class="card-container w-[85vw] max-w-[350px] md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-center h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer"
             >
                 <div
                     class="card-flipper shadow-2xl hover:shadow-[0_40px_80px_-20px_rgba(253,208,23,0.25)] rounded-[2.5rem]"
@@ -265,18 +526,19 @@ import Icon from "../Icon.astro";
                                 inatividade a zero.
                             </p>
                         </div>
-                        <button
-                            class="relative z-10 w-full bg-[#FDD017] text-[#000000] py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_30px_rgba(253,208,23,0.3)] hover:bg-[#ffdf4d]"
+                        <a
+                            href={`${baseUrl}manutencao-corretiva`}
+                            class="relative z-10 w-full bg-[#FDD017] text-[#000000] py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_30px_rgba(253,208,23,0.3)] hover:bg-[#ffdf4d] text-center inline-block"
                         >
                             Saiba Mais
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
 
             <!-- Card 3: Limpeza Técnica -->
             <div
-                class="card-container w-[85vw] max-w-[350px] md:max-w-none md:w-full shrink-0 snap-center h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer"
+                class="card-container w-[85vw] max-w-[350px] md:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)] shrink-0 snap-center h-[520px] servico-item opacity-0 translate-y-12 group cursor-pointer"
             >
                 <div
                     class="card-flipper shadow-2xl hover:shadow-[0_40px_80px_-20px_rgba(253,208,23,0.25)] rounded-[2.5rem]"
@@ -385,19 +647,21 @@ import Icon from "../Icon.astro";
                                 pela poeira.
                             </p>
                         </div>
-                        <button
-                            class="relative z-10 w-full bg-[#FDD017] text-[#000000] py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_30px_rgba(253,208,23,0.3)] hover:bg-[#ffdf4d]"
+                        <a
+                            href={`${baseUrl}limpeza-tecnica`}
+                            class="relative z-10 w-full bg-[#FDD017] text-[#000000] py-4 rounded-xl font-black text-xs tracking-[0.2em] uppercase transition-all duration-300 hover:shadow-[0_0_30px_rgba(253,208,23,0.3)] hover:bg-[#ffdf4d] text-center inline-block"
                         >
                             Saiba Mais
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
+                </div>
         </div>
 
-        <!-- Mobile Carousel Indicator -->
+        <!-- Carousel Indicator (dots visible on all screens) -->
         <div
-            class="flex md:hidden flex-col items-center justify-center mt-6 opacity-0 translate-y-8 servico-indicator"
+            class="flex flex-col items-center justify-center mt-8 opacity-0 translate-y-8 servico-indicator"
         >
             <div class="flex gap-2">
                 <div
@@ -486,22 +750,131 @@ import Icon from "../Icon.astro";
         });
     });
 
-    // --- CAROUSEL INDICATOR LOGIC ---
+    // --- CAROUSEL NAVIGATION & AUTOPLAY LOGIC ---
     const servicosGrid = document.getElementById("servicos-grid");
+    const prevBtn = document.getElementById("carousel-prev");
+    const nextBtn = document.getElementById("carousel-next");
     const indicatorDots = document.querySelectorAll(".servico-indicator .flex.gap-2 > div");
     
     if (servicosGrid && indicatorDots.length > 0) {
+        const getCardScrollStep = () => {
+            const card = servicosGrid.querySelector(".card-container");
+            if (card) {
+                return (card as HTMLElement).offsetWidth + 24; // Card width + gap-6 (24px)
+            }
+            return 300;
+        };
+        
+        // Autoplay settings
+        let autoplayInterval: any;
+        let isPaused = false;
+        
+        const startAutoplay = () => {
+            stopAutoplay();
+            autoplayInterval = setInterval(() => {
+                if (!isPaused) {
+                    const maxScrollLeft = servicosGrid.scrollWidth - servicosGrid.clientWidth;
+                    if (servicosGrid.scrollLeft >= maxScrollLeft - 10) {
+                        // Go back to start
+                        servicosGrid.scrollTo({
+                            left: 0,
+                            behavior: "smooth"
+                        });
+                    } else {
+                        // Scroll forward
+                        servicosGrid.scrollBy({
+                            left: getCardScrollStep(),
+                            behavior: "smooth"
+                        });
+                    }
+                }
+            }, 5000); // Auto slide every 5 seconds
+        };
+        
+        const stopAutoplay = () => {
+            if (autoplayInterval) {
+                clearInterval(autoplayInterval);
+            }
+        };
+        
+        // Pause autoplay on mouse hover
+        const carouselWrapper = servicosGrid.closest(".relative.w-full");
+        if (carouselWrapper) {
+            carouselWrapper.addEventListener("mouseenter", () => {
+                isPaused = true;
+            });
+            carouselWrapper.addEventListener("mouseleave", () => {
+                isPaused = false;
+            });
+        }
+        
+        // Start autoplay on load
+        startAutoplay();
+        
+        // Manual Prev / Next Buttons
+        prevBtn?.addEventListener("click", () => {
+            servicosGrid.scrollBy({
+                left: -getCardScrollStep(),
+                behavior: "smooth"
+            });
+            startAutoplay(); // Reset timer
+        });
+        
+        nextBtn?.addEventListener("click", () => {
+            servicosGrid.scrollBy({
+                left: getCardScrollStep(),
+                behavior: "smooth"
+            });
+            startAutoplay(); // Reset timer
+        });
+        
+        // Click dots to scroll
+        indicatorDots.forEach((dot, index) => {
+            dot.addEventListener("click", () => {
+                const cardWidth = servicosGrid.querySelector(".card-container")?.getBoundingClientRect().width || 0;
+                if (cardWidth > 0) {
+                    const isDesktop = window.innerWidth >= 768;
+                    let targetIndex = 0;
+                    if (isDesktop) {
+                        targetIndex = index; // Desktop mapping: index 0, 1, 2
+                    } else {
+                        targetIndex = index * 2; // Mobile mapping: index 0, 2, 4
+                    }
+                    
+                    servicosGrid.scrollTo({
+                        left: targetIndex * (cardWidth + 24),
+                        behavior: "smooth"
+                    });
+                }
+                startAutoplay(); // Reset timer
+            });
+        });
+        
+        // Update dots state on scroll
         const updateIndicators = () => {
             const scrollLeft = servicosGrid.scrollLeft;
-            const cardWidth = servicosGrid.querySelector(".card-container")?.offsetWidth || 0;
+            const cardWidth = servicosGrid.querySelector(".card-container")?.getBoundingClientRect().width || 0;
             
             if (cardWidth > 0) {
-                // Calculate active index based on scroll position plus half the gap
-                const activeIndex = Math.round(scrollLeft / (cardWidth + 24)); // 24px is gap-6
+                const activeIndex = Math.round(scrollLeft / (cardWidth + 24));
+                const isDesktop = window.innerWidth >= 768;
+                let dotIndex = 0;
+                
+                if (isDesktop) {
+                    dotIndex = Math.min(activeIndex, 2);
+                } else {
+                    if (activeIndex >= 4) {
+                        dotIndex = 2;
+                    } else if (activeIndex >= 2) {
+                        dotIndex = 1;
+                    } else {
+                        dotIndex = 0;
+                    }
+                }
                 
                 indicatorDots.forEach((dot, index) => {
                     const htmlDot = dot as HTMLElement;
-                    if (index === activeIndex) {
+                    if (index === dotIndex) {
                         htmlDot.className = "w-8 h-1.5 rounded-full bg-[#FDD017] shadow-[0_0_10px_rgba(253,208,23,0.5)] transition-all duration-300 cursor-pointer";
                     } else {
                         htmlDot.className = "w-3 h-1.5 rounded-full bg-white/20 transition-all duration-300 cursor-pointer";
@@ -512,20 +885,7 @@ import Icon from "../Icon.astro";
         
         servicosGrid.addEventListener("scroll", updateIndicators, { passive: true });
         
-        // Allow clicking dots to scroll to the respective card
-        indicatorDots.forEach((dot, index) => {
-            dot.addEventListener("click", () => {
-                const cardWidth = servicosGrid.querySelector(".card-container")?.offsetWidth || 0;
-                if (cardWidth > 0) {
-                    servicosGrid.scrollTo({
-                        left: index * (cardWidth + 24),
-                        behavior: "smooth"
-                    });
-                }
-            });
-        });
-        
-        // Trigger initially to ensure proper state
+        // Initial setup
         updateIndicators();
     }
 </script>
