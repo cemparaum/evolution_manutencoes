@@ -1,6 +1,7 @@
 ---
 import Icon from "../Icon.astro";
-const baseUrl = import.meta.env.BASE_URL;
+const _baseUrl = import.meta.env.BASE_URL;
+const baseUrl = _baseUrl.endsWith('/') ? _baseUrl : _baseUrl + '/';
 const isHome = Astro.url.pathname === baseUrl || Astro.url.pathname === `${baseUrl}index.html` || Astro.url.pathname === baseUrl.replace(/\/$/, "");
 ---
 
