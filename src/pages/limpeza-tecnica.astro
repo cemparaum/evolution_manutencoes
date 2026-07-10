@@ -5,9 +5,47 @@ import Footer from "../components/sections/Footer.astro";
 import Icon from "../components/Icon.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Limpeza Técnica de Painéis Solares",
+  "description": "Remoção meticulosa de sujidades usando produtos que não agridem os módulos, restaurando até 30% da potência perdida pela poeira.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Evolution Manutenção",
+    "image": "https://evolutionmanutencoes.com.br/evolution_manutencoes/raw_file/LOGOBRUTOsvg.svg",
+    "url": "https://evolutionmanutencoes.com.br"
+  },
+  "areaServed": "BR",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Serviços de Limpeza Solar",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Inspeção de Sujeira"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Limpeza Mecânica Suave"
+        }
+      }
+    ]
+  }
+});
 ---
 
-<Layout title="Limpeza Técnica | Evolution Manutenção">
+<Layout 
+    title="Limpeza Técnica | Evolution Manutenção"
+    description="Limpeza técnica e lavagem especializada de painéis solares. Restaure até 30% da potência da sua usina com nossa manutenção profissional."
+    schema={schema}
+>
     <Header />
     
     <main class="relative pt-28 md:pt-32 pb-20 overflow-hidden selection:bg-[#FDD017]/30">

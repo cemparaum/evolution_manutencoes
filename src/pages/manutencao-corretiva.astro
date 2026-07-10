@@ -5,9 +5,61 @@ import Footer from "../components/sections/Footer.astro";
 import Icon from "../components/Icon.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Manutenção Corretiva de Energia Solar",
+  "description": "Nossa equipe técnica de elite entra em ação rapidamente para consertar inversores e módulos, reduzindo seu tempo de inatividade a zero.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Evolution Manutenção",
+    "image": "https://evolutionmanutencoes.com.br/evolution_manutencoes/raw_file/LOGOBRUTOsvg.svg",
+    "url": "https://evolutionmanutencoes.com.br"
+  },
+  "areaServed": "BR",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Serviços de Manutenção Corretiva Solar",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Chamado Técnico e Triagem"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Diagnóstico Local"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Substituição e Reparo"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Comissionamento"
+        }
+      }
+    ]
+  }
+});
 ---
 
-<Layout title="Manutenção Corretiva | Evolution Manutenção">
+<Layout 
+    title="Manutenção Corretiva | Evolution Manutenção"
+    description="Serviço ágil de manutenção corretiva para painéis solares e inversores. Resolvemos falhas e paradas na geração da sua usina com rapidez e segurança."
+    schema={schema}
+>
     <Header />
     
     <main class="relative pt-28 md:pt-32 pb-20 overflow-hidden selection:bg-[#FDD017]/30">

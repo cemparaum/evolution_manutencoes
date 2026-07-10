@@ -3,11 +3,17 @@ import "../styles/global.css";
 interface Props {
     title?: string;
     description?: string;
+    image?: string;
+    canonicalURL?: string;
+    schema?: string;
 }
 
 const { 
     title = "Evolution Manutenção | O Poder do Sol", 
-    description = "Especialistas em manutenção preventiva, corretiva e limpeza técnica de usinas solares. Blindagem e inteligência técnica para maximizar o retorno do seu investimento."
+    description = "Especialistas em manutenção preventiva, corretiva e limpeza técnica de usinas solares. Blindagem e inteligência técnica para maximizar o retorno do seu investimento.",
+    image = "https://evolutionmanutencoes.com.br/evolution_manutencoes/raw_file/LOGOBRUTOsvg.svg",
+    canonicalURL = new URL(Astro.url.pathname, "https://evolutionmanutencoes.com.br").href,
+    schema
 } = Astro.props;
 ---
 
@@ -18,6 +24,25 @@ const {
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
         <meta name="description" content={description} />
         <title>{title}</title>
+        
+        <!-- Canonical URL -->
+        <link rel="canonical" href={canonicalURL} />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={image} />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={canonicalURL} />
+        <meta property="twitter:title" content={title} />
+        <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content={image} />
+
+        {schema && <script type="application/ld+json" set:html={schema} />}
         <link
             rel="icon"
             type="image/svg+xml"

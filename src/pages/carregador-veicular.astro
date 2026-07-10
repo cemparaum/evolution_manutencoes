@@ -5,9 +5,61 @@ import Footer from "../components/sections/Footer.astro";
 import Icon from "../components/Icon.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Instalação de Carregador de Carro Elétrico",
+  "description": "Infraestrutura completa de recarga elétrica residencial e comercial (Wallbox), com proteção dedicada e dimensionamento adequado à sua rede.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Evolution Manutenção",
+    "image": "https://evolutionmanutencoes.com.br/evolution_manutencoes/raw_file/LOGOBRUTOsvg.svg",
+    "url": "https://evolutionmanutencoes.com.br"
+  },
+  "areaServed": "BR",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Serviços de Instalação de Carregador Veicular (Wallbox)",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Análise de Carga"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Projeto de Proteção Elétrica"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Instalação de Infraestrutura"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Teste e Entrega"
+        }
+      }
+    ]
+  }
+});
 ---
 
-<Layout title="Carregador Veicular | Evolution Manutenção">
+<Layout 
+    title="Carregador Veicular | Evolution Manutenção"
+    description="Instalação segura e profissional de carregadores para veículos elétricos (Wallbox). Preparamos a infraestrutura elétrica para recarga rápida na sua garagem."
+    schema={schema}
+>
     <Header />
     
     <main class="relative pt-28 md:pt-32 pb-20 overflow-hidden selection:bg-[#FDD017]/30">

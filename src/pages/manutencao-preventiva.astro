@@ -5,9 +5,54 @@ import Footer from "../components/sections/Footer.astro";
 import Icon from "../components/Icon.astro";
 
 const baseUrl = import.meta.env.BASE_URL;
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Manutenção Preventiva de Energia Solar",
+  "description": "Inspeções termográficas e análises profundas que localizam microfissuras e falhas invisíveis a olho nu, garantindo 100% de performance contínua para sua usina solar.",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Evolution Manutenção",
+    "image": "https://evolutionmanutencoes.com.br/evolution_manutencoes/raw_file/LOGOBRUTOsvg.svg",
+    "url": "https://evolutionmanutencoes.com.br"
+  },
+  "areaServed": "BR",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Serviços de Manutenção Preventiva Solar",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Análise Termográfica"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Inspeção Elétrica"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Emissão de Laudo de Performance"
+        }
+      }
+    ]
+  }
+});
 ---
 
-<Layout title="Manutenção Preventiva | Evolution Manutenção ">
+<Layout 
+    title="Manutenção Preventiva | Evolution Manutenção "
+    description="Inspeções termográficas e análises profundas para garantir 100% de performance contínua da sua usina solar, prevenindo falhas antes que ocorram."
+    schema={schema}
+>
     <Header />
     
     <main class="relative pt-28 md:pt-32 pb-20 overflow-hidden selection:bg-[#FDD017]/30">
